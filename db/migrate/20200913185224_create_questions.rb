@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
     create_table :questions do |t|
       t.string :title
       t.string :content
-      t.integer :user_id
+      t.integer :creator_id
       t.string :jurisdiction
       t.string :field
 
