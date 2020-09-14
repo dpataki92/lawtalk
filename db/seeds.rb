@@ -18,7 +18,7 @@ u14 = User.create(username: "user222", email: "mknohvu@gmail.com", password_dige
 u15 = User.create(username: "user333", email: "obibv@gmail.com", password_digest: BCrypt::Password.create("legalpw0324"), fields: "family, immigration", location: "Spain")
 u16 = User.create(username: "user444", email: "lnibvuotci@gmail.com", password_digest: BCrypt::Password.create("attorneypw23r"), fields: "immigration", location: "France")
 u17 = User.create(username: "user555", email: "oubvct@gmail.com", password_digest: BCrypt::Password.create("pw2er3"), fields: "immigration", location: "Spain")
-u18 = User.create(username: "user666", email: "ergt4r@gmail.com", password_digest: BCrypt::Password.create("rth4j5"), fields: "immigration", "tax", location: "Spain")
+u18 = User.create(username: "user666", email: "ergt4r@gmail.com", password_digest: BCrypt::Password.create("rth4j5"), fields: "immigration, tax", location: "Spain")
 u19 = User.create(username: "user777", email: "tbrthhz@gmail.com", password_digest: BCrypt::Password.create("g35th4wh"), fields: "immigration", location: "Ireland")
 u20 = User.create(username: "user888", email: "weffw@gmail.com", password_digest: BCrypt::Password.create("43z4h6h"), fields: "labour", location: "Germany")
 u21 = User.create(username: "user999", email: "fwf@gmail.com", password_digest: BCrypt::Password.create("345h5"), fields: "criminal", location: "Portugal")
@@ -132,7 +132,7 @@ u43.followed_questions << q18
 Answer.all.each do |a|
     n = rand(6)
     n.times {
-        user = User.all[rand(0..User.all.size)]
+        user = User.all[rand(0..User.all.size-1)]
         a.comments.create(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", user: user)
         user.followed_questions << a.question
     }
@@ -145,3 +145,40 @@ u11.followed_questions << q7
 u23.followed_questions << q14
 u36.followed_questions << q12
 u36.followed_questions << q13
+
+
+# Creating random user reactions to answers and comments (50% - ignore, 40% - upvote 10% - downvote)
+User.all.each do |u|
+    10.times {
+        answer = Answer.all[rand(0..Answer.all.size-1)]
+        if answer.user != u
+            num = rand(1..10)
+            if num > 5 && num < 10
+                answer.upvotes += 1
+                answer.user.upvotes += 1
+                answer.save
+            elsif num === 10
+                answer.downvotes += 1
+                answer.user.downvotes += 1
+                answer.save
+            end
+        end
+    }
+    
+    5.times {
+        comment = Comment.all[rand(0..Comment.all.size-1)]
+        if comment.user != u 
+            num = rand(1..10)
+            if num > 5 && num < 10
+                comment.upvotes += 1
+                comment.user.upvotes += 1
+                comment.save
+            elsif num === 10
+                comment.downvotes += 1
+                comment.user.downvotes += 1
+                comment.save
+            end
+        end
+    }
+     
+end
