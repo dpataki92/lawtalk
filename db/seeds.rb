@@ -38,17 +38,17 @@ u32 = User.create(username: "USuser010", email: "US1333tg@gmail.com", password_d
 u33 = User.create(username: "USuser951", email: "USnttz@gmail.com", password_digest: BCrypt::Password.create("USuser33pw"), location: "India")
 
 # Creating users who answered questions related to US law
-u34 = User.create(username: "USuser000", email: "USuser34@gmail.com", password_digest: BCrypt::Password.create("USuser34pw"), location: "United States")
-u35 = User.create(username: "USuser111", email: "USttfdc@gmail.com", password_digest: BCrypt::Password.create("USpkfnjbhrpewrt"), location: "United States")
-u36 = User.create(username: "USuser222", email: "USeeddw@gmail.com", password_digest: BCrypt::Password.create("USwgretbger"), location: "United States")
-u37 = User.create(username: "USuser333", email: "USwefeq@gmail.com", password_digest: BCrypt::Password.create("USrebtrbn"), location: "United States")
-u38 = User.create(username: "USuser444", email: "USrtgbbtvrbb@gmail.com", password_digest: BCrypt::Password.create("USbrtwnbh45z"), location: "United States")
-u39 = User.create(username: "USuser555", email: "USfevevr@gmail.com", password_digest: BCrypt::Password.create("USwrbtrnzt"), location: "United States")
-u40 = User.create(username: "USuser666", email: "USqwwx@gmail.com", password_digest: BCrypt::Password.create("USrtnztne"), location: "United States")
-u41 = User.create(username: "USuser777", email: "USnzjtz23@gmail.com", password_digest: BCrypt::Password.create("USergtbt4"), location: "United States")
-u42 = User.create(username: "USuser888", email: "USewfefvh4@gmail.com", password_digest: BCrypt::Password.create("USrvrtbmtréb"), location: "United States")
-u43 = User.create(username: "USuser999", email: "US1333tg5h@gmail.com", password_digest: BCrypt::Password.create("US354t3"), location: "United States")
-u44 = User.create(username: "USuser0909", email: "USnttzum@gmail.com", password_digest: BCrypt::Password.create("USuser44pw"), location: "United States")
+u34 = User.create(username: "USuser000", email: "USuser34@gmail.com", password_digest: BCrypt::Password.create("USuser34pw"), fields: "tax", location: "United States")
+u35 = User.create(username: "USuser111", email: "USttfdc@gmail.com", password_digest: BCrypt::Password.create("USpkfnjbhrpewrt"), fields: "tax, immigration", location: "United States")
+u36 = User.create(username: "USuser222", email: "USeeddw@gmail.com", password_digest: BCrypt::Password.create("USwgretbger"), fields: "tax, immigration", location: "United States")
+u37 = User.create(username: "USuser333", email: "USwefeq@gmail.com", password_digest: BCrypt::Password.create("USrebtrbn"), fields: "tax, immigration", location: "United States")
+u38 = User.create(username: "USuser444", email: "USrtgbbtvrbb@gmail.com", password_digest: BCrypt::Password.create("USbrtwnbh45z"), fields: "immigration", location: "United States")
+u39 = User.create(username: "USuser555", email: "USfevevr@gmail.com", password_digest: BCrypt::Password.create("USwrbtrnzt"), fields: "tax, immigration", location: "United States")
+u40 = User.create(username: "USuser666", email: "USqwwx@gmail.com", password_digest: BCrypt::Password.create("USrtnztne"), fields: "family", location: "United States")
+u41 = User.create(username: "USuser777", email: "USnzjtz23@gmail.com", password_digest: BCrypt::Password.create("USergtbt4"), fields: "family", location: "United States")
+u42 = User.create(username: "USuser888", email: "USewfefvh4@gmail.com", password_digest: BCrypt::Password.create("USrvrtbmtréb"), fields: "environmental", location: "United States")
+u43 = User.create(username: "USuser999", email: "US1333tg5h@gmail.com", password_digest: BCrypt::Password.create("US354t3"), fields: "environmental",  location: "United States")
+u44 = User.create(username: "USuser0909", email: "USnttzum@gmail.com", password_digest: BCrypt::Password.create("USuser44pw"), fields: "environmental", location: "United States")
 
 # Creating questions (EU law threads)
 q1 = Question.create(creator: u1, title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", content: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", field: "Tax Law")
@@ -76,40 +76,72 @@ q20 = Question.create(creator: u29, title: "Ut Sed ut perspiciatis unde?", conte
 
 # Creating answers (EU law threads)
 q1.answers.create(content: "NO. If you move to another EU country for more than 6 months, you must under EU rules register your car in the new country.For registration taxes, however, there are no EU-wide rules. Countries may levy car-registration taxes or not, as they choose. Some –including Cyprus–do NOT tax you if you had to pay a similar tax when you bought the car new.", user: u12)
-q1.answers.create(content: "If a country does tax imported second-hand cars, it must take account of the residual value when setting the amount of registration tax. Example: your type of car has a value in the new country of€10,000 when new and the tax on such a car would be €2,500 so that the car would cost €12,500 intotal and the tax component of the price would be 20%. Assume that you move the car when it is 5 years old and that after 5 years a similar car in the new country would be expected to have lost 30% of its value and only to be worth about €8,750. In that case the tax to be applied in the newcountry could only be 20% of €8,750 i.e. €1750. ", user: u12)
+u12.followed_questions << q1
+q1.answers.create(content: "If a country does tax imported second-hand cars, it must take account of the residual value when setting the amount of registration tax. Example: your type of car has a value in the new country of€10,000 when new and the tax on such a car would be €2,500 so that the car would cost €12,500 intotal and the tax component of the price would be 20%. Assume that you move the car when it is 5 years old and that after 5 years a similar car in the new country would be expected to have lost 30% of its value and only to be worth about €8,750. In that case the tax to be applied in the newcountry could only be 20% of €8,750 i.e. €1750. ", user: u13)
+u13.followed_questions << q1
 q2.answers.create(content: "MAYBE. Under EU law, a country cannot limit tax deductions for residents to houses or apartmentsbought or built on its own territory.However, countries ARE allowed to apply different rules to different situations. Example: somecountries allow a tax deduction for the purchase of primary homes but NOT for holiday homes or investment properties. In such a situation, it might NOT be illegal for your country to refuse you a tax deduction for property located abroad if that property will not become your primary home immediately after purchase.", user: u12)
+u12.followed_questions << q2
 q3.answers.create(content: "NO. If you inherit property located in an EU country other than the country in which you live, you may be subject to the inheritance-tax laws of both countries and there is nothing in EU law that prohibits double taxation", user: u13)
+u13.followed_questions << q3
 q4.answers.create(content: "The payment of maintenance by one spouse to the other is an interim measure, i.e. maintenance is paid only until the divorce is granted. Once the divorce has been granted, one spouse may claim only a compensatory payment (prestation compensatoire) or damages from the other spouse. This can be set amicably in a divorce by judicial or non-judicial mutual consent or by the judge in other cases.", user: u14)
+u14.followed_questions << q4
 q4.answers.create(content: "The aim of this compensatory payment is to compensate for the disparity that the breakdown of the marriage may create in the respective living conditions of the spouses. Its amount is set by the judge according to the incomes and needs of each spouse. It is by nature a lump sum that is paid, in principle, in the form of capital: either through the payment of a sum of money for which terms of payment may be agreed; or through the allocation of owned assets or a right of use, habitation or usufruct, either on a temporary basis or for life.", user: u15)
+u15.followed_questions << q4
 q4.answers.create(content: "Exceptionally, the compensatory payment may be set as a life annuity, which may, in the event of changes in the resources or needs of the spouses, be revised downwards. Damages can be awarded to a spouse if the divorce has particularly severe consequences for him/her: where he/she is the respondent in a divorce due to irretrievable breakdown of the marriage and has not applied for divorce; or where the divorce is granted against the other spouse and the blame lies entirely with the latter.", user: u16)
+u16.followed_questions << q4
 q5.answers.create(content: "Since the reform introduced by Law 15/2005, divorce in Spain does not require any grounds, since maintaining the marriage bond is considered to be a manifestation of the free will of the spouses.", user: u17)
+u17.followed_questions << q5
 q6.answers.create(content: "They will need a visa because Colombia is on the list of countries whose nationals require a visa. However, as family members of an EU citizen travelling with you, they have a right to obtain thevisa and can get it free of charge and under an accelerated procedure. Besides, a uniform short stayvisa will be valid for all countries of the Schengen area.", user: u18)
+u18.followed_questions << q6
 q7.answers.create(content: "Yes. Since he is your wife’s son and dependent on you, he can join you in Ireland.", user: u19)
+u19.followed_questions << q7
 q8.answers.create(content: "Workers are entitled to at least 24 working days of paid annual leave per calendar year. That is four weeks’ holiday per year, as Saturdays also count as working days. You only gain this entitlement after being employed for six months. If you are employed for a shorter period than six months, you are entitled to holiday leave on a pro rata basis (two working days per month). Your holiday entitlement is set out in your employment contract. If a collective agreement applies to your employment relationship, the amount of holiday to which you are entitled is usually higher.", user: u20)
+u20.followed_questions << q8
 q9.answers.create(content: "Your employer is required to give you a written employment contract no later than 1 month after the start of the employment relationship. You and the employer both sign the employment contract. Even if a contract has been concluded orally, your employer must give you a written document setting out the main terms of the contract no later than 1 month after the start of the employment relationship. The employer must sign the document setting out the terms of the contract.", user: u20)
+u20.followed_questions << q9
 q10.answers.create(content: "Yes, the European Preservation Order and the European Production Order made this mandatory and they are legally binding.", user: u21)
+u21.followed_questions << q10
 
 # Creating answers (US law threads)
 q11.answers.create(content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u34)
+u34.followed_questions << q11
 q11.answers.create(content: "Vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u35)
+u35.followed_questions << q11
 q12.answers.create(content: "Eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u35)
+u35.followed_questions << q12
 q12.answers.create(content: "Et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u36)
+u36.followed_questions << q12
 q12.answers.create(content: "Accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u37)
+u37.followed_questions << q12
 q13.answers.create(content: "Et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u38)
+u38.followed_questions << q13
 q14.answers.create(content: "Iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u39)
+u39.followed_questions << q14
 q14.answers.create(content: "At dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u40)
+u40.followed_questions << q14
 q15.answers.create(content: "Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ", user: u41)
+u41.followed_questions << q15
 q16.answers.create(content: "Ducimus vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. ", user: u42)
+u42.followed_questions << q16
 q17.answers.create(content: "Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u43)
+u43.followed_questions << q17
 q18.answers.create(content: "Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u43)
-
+u43.followed_questions << q18
 
 # Creating commments
 Answer.all.each do |a|
     n = rand(6)
     n.times {
         user = User.all[rand(0..User.all.size)]
-        user.comments.create(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", answer: a)
+        a.comments.create(content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", user: user)
+        user.followed_questions << a.question
     }
 end
 
+# Making certain users follow threads
+u1.followed_questions << q3
+u1.followed_questions << q11
+u11.followed_questions << q7
+u23.followed_questions << q14
+u36.followed_questions << q12
+u36.followed_questions << q13
