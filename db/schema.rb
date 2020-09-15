@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_154820) do
     t.string "password_digest"
     t.string "location"
     t.string "fields"
+    t.string "avatar"
     t.integer "upvotes", default: 0
     t.integer "downvotes", default: 0
     t.datetime "created_at", precision: 6, null: false
