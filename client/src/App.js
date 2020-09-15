@@ -13,7 +13,7 @@ class App extends React.Component {
   },
   body: JSON.stringify({
     user: {
-      username: "Pataki2222",
+      username: "Pataki",
       password: "trialpassword",
       location: "Hungary",
       avatar: "default.jpg",
@@ -24,8 +24,6 @@ class App extends React.Component {
   .then(r => r.json())
   .then(function(json) {
     console.log(json)
-    console.log(json.status)
-    console.log(json.reason)
   })
     }
   
