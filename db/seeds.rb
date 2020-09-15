@@ -50,6 +50,27 @@ u42 = User.create(username: "USuser888", email: "USewfefvh4@gmail.com", password
 u43 = User.create(username: "USuser999", email: "US1333tg5h@gmail.com", password_digest: BCrypt::Password.create("US354t3"), fields: "environmental",  location: "United States")
 u44 = User.create(username: "USuser0909", email: "USnttzum@gmail.com", password_digest: BCrypt::Password.create("USuser44pw"), fields: "environmental", location: "United States")
 
+# assigning avatars to users
+def avatar_assign
+    users = User.all
+    counter = 1
+    30.times {
+        shuffled_users = users.shuffle
+        user = shuffled_users.find {|u| u.avatar === nil}
+        user.avatar = "user_#{counter}.jpg"
+        counter += 1
+        user.save
+    }
+
+    User.all.each do |u|
+        if u.avatar === nil
+            u.avatar = "default.jpg"
+            u.save
+        end
+    end
+end
+avatar_assign
+
 # Creating questions (EU law threads)
 q1 = Question.create(creator: u1, title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", content: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", field: "Tax Law")
 q2 = Question.create(creator: u1, title: "Tax exemptions on purchases of property", content: "I am planning to move to the Republic of Cyprus from Hungary where I work and pay taxes. If I buy or build a home in another Member State, am I eligible for a tax deduction in my home country?", jurisdiction: "Hungary", field: "Tax Law")
