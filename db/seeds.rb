@@ -156,10 +156,12 @@ User.all.each do |u|
             if num > 5 && num < 10
                 answer.upvotes += 1
                 answer.user.upvotes += 1
+                answer.user.save
                 answer.save
             elsif num === 10
                 answer.downvotes += 1
                 answer.user.downvotes += 1
+                answer.user
                 answer.save
             end
         end
@@ -172,10 +174,12 @@ User.all.each do |u|
             if num > 5 && num < 10
                 comment.upvotes += 1
                 comment.user.upvotes += 1
+                comment.user.save
                 comment.save
             elsif num === 10
                 comment.downvotes += 1
                 comment.user.downvotes += 1
+                comment.user.save
                 comment.save
             end
         end
