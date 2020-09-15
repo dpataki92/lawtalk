@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         if @user.valid?
           render json: { user: UserSerializer.new(@user) }, status: :created
         else
-          render json: { error: 'failed to create user' }, status: :not_created
+          render json: { error: 'failed to create user' }, status: :not_acceptable
         end
       end
     
