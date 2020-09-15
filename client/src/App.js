@@ -5,11 +5,28 @@ import './App.css';
 class App extends React.Component {
 
   componentDidMount() {
-    fetch(`api/users`)
-      .then(resp => resp.json())
-      .then(function(json) {
-        console.log(json.message);
-      });
+    fetch('api/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  },
+  body: JSON.stringify({
+    user: {
+      username: "Pataki2222",
+      password: "trialpassword",
+      location: "Hungary",
+      avatar: "default.jpg",
+      fields: "tax"
+    }
+  })
+})
+  .then(r => r.json())
+  .then(function(json) {
+    console.log(json)
+    console.log(json.status)
+    console.log(json.reason)
+  })
     }
   
   render () {
