@@ -3,6 +3,7 @@ import '../App.css';
 import Home from './home';
 
 
+
 class Login extends React.Component {
 	state = {
 		username:  '',
@@ -32,7 +33,6 @@ class Login extends React.Component {
 	  .then(function(json) {
 		console.log(json);
 		localStorage.setItem('jwt_token', json.jwt);
-		this.context.router.push("/api/home")
 	  })
 	}
 

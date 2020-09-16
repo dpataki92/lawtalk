@@ -3,6 +3,15 @@ import '../App.css';
 
 
 class Home extends React.Component {
+    componentDidMount() {
+        fetch("/api/profile")
+        .then(resp => resp.json())
+        .then(function(json) {
+            let p = document.createElement("p")
+            p.innerText = "Hi, " + json.user.username
+            document.querySelector("div").appendChild(p)
+        })
+    }
     render() {
         return(
             <div className="container-fluid mt-100">
