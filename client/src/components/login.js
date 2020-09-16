@@ -3,7 +3,7 @@ import '../App.css';
 import Home from './home';
 
 
-const Login = props => {
+class Login extends React.Component {
 	state = {
 		username:  '',
 		password: ''
@@ -15,21 +15,41 @@ const Login = props => {
 		})
 	}
 
+	handleOnSubmit = (e) => {
+		e.preventDefault();
+		const bodyData = {user: {
+			username: e.target.querySelector("#username").value,
+			password: e.target.querySelector("#password").value
+		  }
+	  }
+	
+	  fetch("/api/login", {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(bodyData)
+	  })
+	  .then(resp => resp.json())
+	  .then(function(json) {
+		console.log(json);
+	  })
+	}
+
+	render () {
     return (
         <div className="limiter" id="login-form">
 		<div className="container-login100">
 			<div className="wrap-login100">
-				<form className="login100-form validate-form">
+				<form className="login100-form validate-form" onSubmit={this.handleOnSubmit}>
 					<span className="login100-form-title p-b-34">
 						Lawtalk
 					</span>
 					
 					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="first-name" className="input100" type="text" name="username" placeholder="Username" required onChange={e=> this.handleOnChange(e)} value={this.state.username}/>
+						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={this.handleOnChange} value={this.state.username}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input className="input100" type="password" name="pass" placeholder="Password" required onChange={e=> this.handleOnChange(e)} value={this.state.password}/>
+						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={this.handleOnChange} value={this.state.password}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -57,7 +77,7 @@ const Login = props => {
 			</div>
 		</div>
 	</div>
-    )
+    )}
 }
 
 export default Login;
