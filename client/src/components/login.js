@@ -1,29 +1,9 @@
 import React from 'react';
 import '../App.css'; 
-import Home from './home';
-
+import { connect } from 'react-redux';
 
 
 class Login extends React.Component {
-	state = {
-		username:  '',
-		password: ''
-	}
-
-	handleOnChange = (e) => {
-		this.setState({
-			[e.target.name]: e.target.value
-		})
-	}
-
-	handleOnSubmit = (e) => {
-		e.preventDefault();
-		const bodyData = {user: {
-			username: e.target.querySelector("#username").value,
-			password: e.target.querySelector("#password").value
-		  }
-	  }
-	}
 
 	render () {
     return (
@@ -36,11 +16,11 @@ class Login extends React.Component {
 					</span>
 					
 					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={this.handleOnChange} value={this.state.username}/>
+						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={this.handleOnChange} value={this.props.username}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={this.handleOnChange} value={this.state.password}/>
+						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={this.handleOnChange} value={this.props.password}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -71,4 +51,13 @@ class Login extends React.Component {
     )}
 }
 
-export default Login;
+const mapStateToProps = state => {
+	return {
+		username: state.loginForm.username,
+		password: state.loginForm.password
+	}
+}
+
+
+
+export default connect(mapStateToProps)(Login);
