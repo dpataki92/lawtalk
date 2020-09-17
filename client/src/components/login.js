@@ -23,17 +23,6 @@ class Login extends React.Component {
 			password: e.target.querySelector("#password").value
 		  }
 	  }
-	
-	  fetch("/api/login", {
-		method: "POST",
-		headers: {"Content-Type": "application/json"},
-		body: JSON.stringify(bodyData)
-	  })
-	  .then(resp => resp.json())
-	  .then(function(json) {
-		console.log(json);
-		localStorage.setItem('jwt_token', json.jwt);
-	  })
 	}
 
 	render () {
