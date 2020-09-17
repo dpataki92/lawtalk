@@ -8,7 +8,7 @@ class Home extends React.Component {
         .then(resp => resp.json())
         .then(function(json) {
             let p = document.createElement("p")
-            p.innerText = "Hi, " + json.user.username
+            p.innerText = "Hi, " + json.username
             document.querySelector("div").appendChild(p)
         })
     }
