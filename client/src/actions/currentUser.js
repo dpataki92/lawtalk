@@ -8,6 +8,7 @@ export const setCurrentUser = user => {
 
 // asynchronous action creators
 export const login = credentials => {
+    console.log("credentials are:", credentials)
     return dispatch => {
         return fetch("/api/login", {
             method: "POST",

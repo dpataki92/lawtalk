@@ -2,8 +2,9 @@ import React from 'react';
 import '../App.css'; 
 import { connect } from 'react-redux';
 import { updateLoginForm } from '../actions/loginForm.js';
+import { login } from '../actions/currentUser.js';
 
-const Login = ({loginForm, updateLoginForm}) => {
+const Login = ({loginForm, updateLoginForm, login}) => {
 
 	const handleInputChange = e => {
 		const {name, value} = e.target
@@ -13,12 +14,17 @@ const Login = ({loginForm, updateLoginForm}) => {
 		}
 		updateLoginForm(updatedFormInfo)
 	}
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		login(loginForm)
+	}
 		
     return (
         <div className="limiter" id="login-form">
 		<div className="container-login100">
 			<div className="wrap-login100">
-				<form className="login100-form validate-form" onSubmit={undefined}>
+				<form className="login100-form validate-form" onSubmit={handleSubmit}>
 					<span className="login100-form-title p-b-34">
 						Lawtalk
 					</span>
@@ -65,4 +71,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { updateLoginForm } )(Login);
+export default connect(mapStateToProps, { updateLoginForm, login } )(Login);
