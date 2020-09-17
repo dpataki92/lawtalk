@@ -1,26 +1,34 @@
 import React from 'react';
 import '../App.css'; 
 import { connect } from 'react-redux';
+import { updateLoginForm } from '../actions/loginForm.js';
 
+const Login = ({loginForm, updateLoginForm}) => {
 
-class Login extends React.Component {
-
-	render () {
+	const handleInputChange = e => {
+		const {name, value} = e.target
+		const updatedFormInfo = {
+			...loginForm,
+			[name]: value
+		}
+		updateLoginForm(updatedFormInfo)
+	}
+		
     return (
         <div className="limiter" id="login-form">
 		<div className="container-login100">
 			<div className="wrap-login100">
-				<form className="login100-form validate-form" onSubmit={this.handleOnSubmit}>
+				<form className="login100-form validate-form" onSubmit={undefined}>
 					<span className="login100-form-title p-b-34">
 						Lawtalk
 					</span>
 					
 					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={this.handleOnChange} value={this.props.username}/>
+						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={handleInputChange} value={loginForm.username}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={this.handleOnChange} value={this.props.password}/>
+						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={handleInputChange} value={loginForm.password}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -49,15 +57,12 @@ class Login extends React.Component {
 		</div>
 	</div>
     )}
-}
 
 const mapStateToProps = state => {
 	return {
-		username: state.loginForm.username,
-		password: state.loginForm.password
+		loginForm: state.loginForm
 	}
 }
 
 
-
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, { updateLoginForm } )(Login);
