@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_154820) do
+ActiveRecord::Schema.define(version: 2020_09_18_193039) do
 
   create_table "answers", force: :cascade do |t|
     t.string "content"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_154820) do
     t.string "field"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "followings_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|

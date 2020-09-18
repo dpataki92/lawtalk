@@ -4,8 +4,6 @@ import  { logout } from "../actions/currentUser.js";
 import { connect, ReactReduxContext } from "react-redux";
 import Navbar from "./navbar.js"
 
-
-
 class Home extends React.Component {
 
     handleLogout = (e) => {
