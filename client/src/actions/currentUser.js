@@ -48,7 +48,13 @@ export const getCurrentUser = () => {
         })
         .then(resp => resp.json())
         .then(json => {
-            dispatch(setCurrentUser(json.user))
+            console.log(json)
+            if (json.user) {
+                dispatch(setCurrentUser(json.user))
+            } else {
+                dispatch(setCurrentUser(null))
+            }
+            
         })
     }
 }

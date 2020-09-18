@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
 import  { logout } from "../actions/currentUser.js";
-import { connect } from "react-redux";
+import { connect, ReactReduxContext } from "react-redux";
+import Navbar from "./navbar.js"
 
 
 
@@ -14,6 +15,9 @@ class Home extends React.Component {
 
     render() {
         return(
+            <React.Fragment>
+            <Navbar />
+            <br></br>
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
         <div> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
@@ -151,6 +155,7 @@ class Home extends React.Component {
     </nav>
     
 </div>
+</React.Fragment>
         )
     }
 }
