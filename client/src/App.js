@@ -3,22 +3,27 @@ import './App.css';
 import Login from "./components/login"
 import Home from './components/home';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
+import  {getCurrentUser } from "./actions/currentUser.js";
 
 class App extends React.Component {
 
+  componentDidMount() {
+    this.props.getCurrentUser();
+  }
+
   render () {
     return (
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route path="/" exact component={Login}/>
-            <Route path="/api/home" component={Home}/>
-          </Switch>
-        </div>
-      </Router>
+        this.props.currentUser ? <Home /> : <Login />
     );
   }
   
 }
 
-export default App;
+const mapStateToProps = ({currentUser}) => {
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps, { getCurrentUser })(App);

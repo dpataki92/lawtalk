@@ -6,6 +6,15 @@ export const setCurrentUser = user => {
     }
 }
 
+export const logout = () => {
+    return dispatch => {
+      localStorage.clear();
+      return dispatch({
+        type: "LOGOUT"
+      });
+    }
+  }
+
 // asynchronous action creators
 export const login = credentials => {
     console.log("credentials are:", credentials)

@@ -1,23 +1,24 @@
 import React from 'react';
-import '../App.css'; 
+import '../App.css';
+import  { logout } from "../actions/currentUser.js";
+import { connect } from "react-redux";
+
 
 
 class Home extends React.Component {
-    componentDidMount() {
-        fetch("/api/profile")
-        .then(resp => resp.json())
-        .then(function(json) {
-            let p = document.createElement("p")
-            p.innerText = "Hi, " + json.username
-            document.querySelector("div").appendChild(p)
-        })
+
+    handleLogout = (e) => {
+        e.preventDefault();
+        this.props.logout();
     }
+
     render() {
         return(
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
-        <div> <button type="button" className="btn btn-shadow btn-wide btn-primary"> <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
+        <div> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
         <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" className="form-control" placeholder="Search..."/> </div>
+        <button onClick={this.handleLogout}>Logout</button>
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">
@@ -148,9 +149,18 @@ class Home extends React.Component {
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true">»</a></li>
         </ul>
     </nav>
+    
 </div>
         )
     }
 }
 
-export default Home;
+const mapStateToProps = ({currentUser}) => {
+    return {
+      currentUser
+    }
+  }
+
+
+
+export default connect(mapStateToProps, { logout })(Home);
