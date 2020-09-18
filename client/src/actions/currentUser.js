@@ -18,7 +18,28 @@ export const login = credentials => {
           .then(resp => resp.json())
           .then(function(json) {
             console.log(json);
-            localStorage.setItem('jwt_token', json.jwt);
+            if (json.message) {
+                alert(json.message)
+            } else {
+                localStorage.setItem('jwt_token', json.jwt);
+                dispatch((setCurrentUser(json.user)));
+            }
           })
+    }
+}
+
+export const getCurrentUser = () => {
+    return dispatch => {
+        return fetch("/api/profile", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`
+            }
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            dispatch(setCurrentUser(json.user))
+        })
     }
 }
