@@ -23,11 +23,15 @@ class QuestionList extends Component {
                         <React.Fragment>
                             <hr className="m-0"/>
                             <QuestionRow
-                            key={id} 
-                            title={question.title}
-                            replies={question.replies.length} 
-                            lastRespondent= {this.props.lastRespondent} 
-                            lastResponseDate= {this.props.lastResponseDate} 
+                          key={id} 
+                          title={question.title}
+                          jurisdiction={question.jurisdiction}
+                          field={question.field}
+                          creator={question.creator}
+                          replies={question.replies} 
+                          lastRespondent= {question.lastRespondent} 
+                          lastResponseDate= {question.lastResponseDate}
+                          lastRespondentAvatar={question.lastRespondentAvatar}
                             />
                         </React.Fragment>
                     )

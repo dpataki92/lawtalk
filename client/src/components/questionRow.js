@@ -10,7 +10,7 @@ const QuestionRow = props => {
                 <div className="d-none d-md-block col-4">
                     <div className="row no-gutters align-items-center">
                     <div className="col-4">{props.replies}</div>
-                        <div className="media col-8 align-items-center"> <img src={`/${props.lastRespondentAvatar}`} alt="last respondent's profile picture" className="d-block ui-w-30 rounded-circle"/>
+                        <div className="media col-8 align-items-center"> <img src={`/${props.lastRespondentAvatar}`} alt="last respondent's profile picture" className="d-block ui-w-30 rounded-circle" style={{width: "70px", height: "80px"}}/>
                             <div className="media-body flex-truncate ml-2">
     <div className="line-height-1 text-truncate">{props.lastResponseDate}</div> <a href="javascript:void(0)" className="text-muted small text-truncate" data-abc="true">by {props.lastRespondent}</a>
                             </div>
