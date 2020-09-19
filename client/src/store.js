@@ -8,7 +8,8 @@ import loginFormReducer from './reducers/loginForm.js';
 const reducer = combineReducers({
     users: usersReducer,
     currentUser: currentUserReducer,
-    loginForm: loginFormReducer
+    loginForm: loginFormReducer,
+    questions: questionReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import QuestionRow from './questionRow.js';
 
 class QuestionList extends Component {
@@ -61,6 +62,13 @@ class QuestionList extends Component {
         </nav>
         
     </div>)
-        }   
-                
+        }            
 }
+
+const mapStateToProps = ({questions}) => {
+    return {
+      questions
+    }
+  }
+
+export default connect(mapStateToProps)(QuestionList);
