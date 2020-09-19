@@ -10,9 +10,13 @@ class QuestionList extends Component {
                     return <QuestionRow
                           key={id} 
                           title={question.title}
+                          jurisdiction={question.jurisdiction}
+                          field={question.field}
+                          creator={question.creator}
                           replies={question.replies.length} 
                           lastRespondent= {this.props.lastRespondent} 
-                          lastResponseDate= {this.props.lastResponseDate} 
+                          lastResponseDate= {this.props.lastResponseDate}
+                          lastRespondentAvatar={this.props.lastRespondentAvatar}
                         />
                 } else {
                     return (

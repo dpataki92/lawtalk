@@ -32,6 +32,7 @@ class Question < ApplicationRecord
                 jurisdiction: q.jurisdiction,
                 field: q.field,
                 replies: q.answers.size,
+                creator: q.creator,
                 creationDate: q.last_response_data[0],
                 lastRespondent: q.last_response_data[1],
                 lastRespondentAvatar: q.last_response_data[2]
