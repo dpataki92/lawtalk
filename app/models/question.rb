@@ -38,11 +38,6 @@ class Question < ApplicationRecord
                 lastRespondent: q.last_response_data[1],
                 lastRespondentAvatar: q.last_response_data[2]
             }
-            if q.creator === ApplicationController.new.current_user
-                question_data_hash.badge = "Created"
-            elsif ApplicationController.new.current_user.followed_questions.include?(q)
-                question_data_hash.badge = "Followed"
-            end
            questions_data_array << question_data_hash
         end
         questions_data_array
@@ -76,8 +71,8 @@ class Question < ApplicationRecord
         if !page_number.empty?
             page_number = page_number.to_i
         end
-        if page_number == "" && page_number == 1
-            questions[0..page_number*6-1]
+        if page_number == "" || page_number == 1
+            questions[0..5]
         elsif (page_number-1)*6 < questions.size 
             questions[(page_number-1)*6..page_number*6-1]
         else

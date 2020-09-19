@@ -8,14 +8,37 @@ import  { getCurrentQuestions } from "../actions/questions.js";
 
 class Home extends React.Component {
 
+    state = {
+        field: "",
+        jurisdiction: "",
+        searchWord: "",
+        pageNumber: ""
+    }
+
+
     componentDidMount() {
-        this.props.getCurrentQuestions();
+        this.props.getCurrentQuestions(this.state);
         console.log(this.props)
     }
 
     handleLogout = (e) => {
         e.preventDefault();
         this.props.logout();
+    }
+
+    handleOnChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handlePageChange = (e) => {
+        this.setState({
+            pageNumber: e.target.innerText
+        })
+        document.querySelector("li.page-item.active").classList = "page-item";
+        e.target.parentNode.classList = "page-item active";
+        this.getCurrentQuestions(this.state)
     }
 
     render() {
@@ -26,7 +49,7 @@ class Home extends React.Component {
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
         <div> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
-        <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" className="form-control" placeholder="Search..."/> </div>
+        <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
         <button onClick={this.handleLogout}>Logout</button>
     </div>
     <div className="card mb-3">
