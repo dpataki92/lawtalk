@@ -8,6 +8,7 @@ class Question < ApplicationRecord
     scope :recent, -> { order(created_at: :desc) }
     scope :relevant, -> { order('followings_count DESC') }
 
+
     def creation_date_in_words
         self.created_at.strftime("%B %d, %Y")
     end
@@ -40,5 +41,29 @@ class Question < ApplicationRecord
            questions_data_array << question_data_hash
         end
         questions_data_array
+    end
+
+    def self.field(field)
+        if (field.empty?)
+            where('field != ""')
+        else
+            where(field: field)  
+        end
+    end
+
+    def self.jurisdiction(jurisdiction)
+        if (jurisdiction.empty?)
+            where('jurisdiction != ""')
+        else
+            where(jurisdiction: jurisdiction)  
+        end
+    end
+
+    def self.search_word(word)
+        if (word.empty?)
+            where('title != ""')
+        else
+            Question.all.select {|q| q.title.include?(word.strip)}
+        end 
     end
 end
