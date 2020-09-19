@@ -14,24 +14,30 @@ class Question < ApplicationRecord
 
     def last_response_data
         last_response = self.answers.recent.first
-        last_response_creation_date = last_response.creation_date_in_words
-        last_response_user = last_response.user.username
-        last_response_user_avatar = last_response.user.avatar
-        [last_response_creation_date, last_response_user, last_response_user_avatar]
+        if last_response
+            last_response_creation_date = last_response.creation_date_in_words
+            last_response_user = last_response.user.username
+            last_response_user_avatar = last_response.user.avatar
+            [last_response_creation_date, last_response_user, last_response_user_avatar]
+        else
+            ["No reply yet", "-", "default.jpg"]
+        end
     end
 
     def self.questions_data_for_list(questions)
         questions_data_array = []
-        question.each do |q|
+        questions.each do |q|
             question_data_hash = {
                 title: q.title, 
                 jurisdiction: q.jurisdiction,
                 field: q.field,
                 replies: q.answers.size,
-                creationDate: q.last_response_data[0]
-                lastRespondent: q.last_response_data[1]
+                creationDate: q.last_response_data[0],
+                lastRespondent: q.last_response_data[1],
                 lastRespondentAvatar: q.last_response_data[2]
             }
            questions_data_array << question_data_hash
         end
+        questions_data_array
+    end
 end

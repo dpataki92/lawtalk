@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
     def index
-        questions = Quuestion.all.recent[0..6]
-        render json: {questions: QuestionSerializer.new(questions).to_serialized_json, lastRespondent: questions.recent.first.user.username, } 
+        questions = Question.all.recent[0..5]
+        render json: {questions: Question.questions_data_for_list(questions)} 
     end
 end
