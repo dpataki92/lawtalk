@@ -78,8 +78,10 @@ class Question < ApplicationRecord
         end
         if page_number == "" && page_number == 1
             questions[0..page_number*6-1]
-        else
+        elsif (page_number-1)*6 < questions.size 
             questions[(page_number-1)*6..page_number*6-1]
+        else
+            questions
         end
     end
 end
