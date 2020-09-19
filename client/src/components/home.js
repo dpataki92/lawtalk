@@ -4,8 +4,14 @@ import  { logout } from "../actions/currentUser.js";
 import { connect, ReactReduxContext } from "react-redux";
 import Navbar from "./navbar.js"
 import QuestionList from './questionList';
+import  { getCurrentQuestions } from "../actions/questions.js";
 
 class Home extends React.Component {
+
+    componentDidMount() {
+        this.props.getCurrentQuestions();
+        console.log(this.props)
+    }
 
     handleLogout = (e) => {
         e.preventDefault();
@@ -35,8 +41,9 @@ class Home extends React.Component {
                 </div>
             </div>
         </div>
-     <QuestionList questions={questions}/>
+     
     </div>
+    <QuestionList questions={this.props.questions}/>
     <nav>
         <ul className="pagination mb-5">
             <li className="page-item disabled"><a className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
@@ -62,4 +69,4 @@ const mapStateToProps = ({currentUser, questions}) => {
 
 
 
-export default connect(mapStateToProps, { logout })(Home);
+export default connect(mapStateToProps, { logout, getCurrentQuestions })(Home);

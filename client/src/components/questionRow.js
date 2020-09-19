@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const questionRow = props => {
+const QuestionRow = props => {
     return(
         <div className="card-body py-3">
             <div className="row no-gutters align-items-center">
@@ -22,4 +22,4 @@ const questionRow = props => {
     )
 }
 
-export default questionRow;
+export default QuestionRow;
