@@ -34,10 +34,15 @@ class Question < ApplicationRecord
                 field: q.field,
                 replies: q.answers.size,
                 creator: q.creator.username,
-                creationDate: q.last_response_data[0],
+                lastResponseDate: q.last_response_data[0],
                 lastRespondent: q.last_response_data[1],
                 lastRespondentAvatar: q.last_response_data[2]
             }
+            if q.creator === ApplicationController.new.current_user
+                question_data_hash.badge = "Created"
+            elsif ApplicationController.new.current_user.followed_questions.include?(q)
+                question_data_hash.badge = "Followed"
+            end
            questions_data_array << question_data_hash
         end
         questions_data_array
@@ -63,7 +68,18 @@ class Question < ApplicationRecord
         if (word.empty?)
             where('title != ""')
         else
-            Question.all.select {|q| q.title.include?(word.strip)}
+            Question.all.select {|q| q.title.include?(word.strip.downcase)}
         end 
+    end
+
+    def self.page_cut(questions, page_number)
+        if !page_number.empty?
+            page_number = page_number.to_i
+        end
+        if page_number == "" && page_number == 1
+            questions[0..page_number*6-1]
+        else
+            questions[(page_number-1)*6..page_number*6-1]
+        end
     end
 end

@@ -4,7 +4,7 @@ const QuestionRow = props => {
     return(
         <div className="card-body py-3">
             <div className="row no-gutters align-items-center">
-                <div className="col"> <a href="javascript:void(0)" className="text-big" data-abc="true">{props.title}</a>
+    <div className="col"> <a href="javascript:void(0)" className="text-big" data-abc="true">{props.title}</a> <span class={`badge badge-${props.badge == "Created" ? "success" : "danger"} align-text-bottom ml-1`}>{props.badge}</span>
     <div className="text-muted small mt-1">{`${props.jurisdiction},`} {props.field} &nbsp;·&nbsp; <a href="javascript:void(0)" className="text-muted" data-abc="true">{props.creator}</a></div>
                 </div>
                 <div className="d-none d-md-block col-4">
