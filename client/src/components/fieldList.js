@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const fieldList = (props) => {
+const FieldList = (props) => {
     const handleOnChange = (e) => {
         props.setField(e.target.value);
     }
@@ -42,4 +42,4 @@ const fieldList = (props) => {
     )
 }
 
-export default fieldList;
+export default FieldList;
