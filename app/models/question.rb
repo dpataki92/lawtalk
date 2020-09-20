@@ -76,7 +76,11 @@ class Question < ApplicationRecord
         elsif (page_number-1)*6 < questions.size 
             questions[(page_number-1)*6..page_number*6-1]
         else
-            questions
+            []
         end
+    end
+
+    def self.sorted_questions(field, jurisdiction, search_word)
+        self.field(field).jurisdiction(jurisdiction).search_word(search_word)
     end
 end
