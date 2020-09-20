@@ -14,6 +14,7 @@ class Home extends React.Component {
         jurisdiction: "",
         searchWord: "",
         pageNumber: "",
+        order: "creation",
         jurisdictionCategory: ""
     }
 
@@ -36,9 +37,15 @@ class Home extends React.Component {
         this.props.getCurrentQuestions(this.state);
     }
 
-    handlePageChange = (e) => {
+    handlePageChangeOnEnter = (e) => {
         this.setState({
             pageNumber: e.target.innerHTML
+        })
+
+        }
+    handlePageChangeOnLeave = (e) => {
+        this.setState({
+            pageNumber: ""
         })
 
         }
@@ -64,6 +71,33 @@ class Home extends React.Component {
         })
     }
 
+    ordering = (e) => {
+        let orderingButton = e.target;
+        orderingButton.innerText === "Creation ↓" ? orderingButton.innerText = "Relevance ↓" : orderingButton.innerText = "Creation ↓";
+        this.props.getCurrentQuestions(this.state);
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        this.setState({
+            order: value
+        })
+    }
+
+    handleOrderOnEnter = (e) => {
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        console.log(this.state.order)
+        this.setState({
+            order: value
+        })
+    }
+
+    handleOrderOnLeave = (e) => {
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        let prevValue = (value === "creation" ? "relevance" : "creation");
+        console.log(this.state.order)
+        this.setState({
+            order: prevValue
+        })
+    }
+
     render() {
 
         return(
@@ -73,7 +107,7 @@ class Home extends React.Component {
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
         <div> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New question </button> </div>
-        <button onClick={this.handleLogout}>{`${"Creation ↓" }`}</button>
+        <button id="order" onMouseEnter={this.handleOrderOnEnter} onMouseLeave={this.handleOrderOnLeave} onClick={this.ordering}>{`${"Relevance ↓" }`}</button>
     </div>
     <div className="d-flex flex-wrap justify-content-between" style={{marginTop:"5px"}}>
     <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
@@ -101,9 +135,9 @@ class Home extends React.Component {
     <nav>
         <ul className="pagination mb-5">
             <li className="page-item disabled"><a className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
-            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>1</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>2</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>3</a></li>
+            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>1</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>2</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>3</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true">»</a></li>
         </ul>
     </nav>

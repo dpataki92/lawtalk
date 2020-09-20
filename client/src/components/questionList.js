@@ -4,7 +4,6 @@ import QuestionRow from './questionRow.js';
 class QuestionList extends Component {
 
         render() {
-            console.log(this.props.questions)
             const questions = this.props.questions.map((question, id)=> {
                 if (id < 1) {
                     return <QuestionRow
