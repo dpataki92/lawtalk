@@ -23,13 +23,6 @@ class Home extends React.Component {
         console.log(this.props)
     }
 
-   
-
-    handleLogout = (e) => {
-        e.preventDefault();
-        this.props.logout();
-    }
-
     handleOnChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -70,7 +63,7 @@ class Home extends React.Component {
 
         return(
             <React.Fragment>
-            <Navbar />
+            <Navbar logout={this.props.logout}/>
             <br></br>
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
@@ -82,7 +75,7 @@ class Home extends React.Component {
         <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
         <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
                  OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory}/>}</div>
-        <button onClick={this.handleLogout}>Logout</button>
+        <button >Search</button>
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">
