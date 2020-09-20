@@ -58,6 +58,12 @@ class Home extends React.Component {
         }
     }
 
+    setJurisdiction = (selected) => {
+        this.setState({
+            jurisdiction: selected
+        })
+    }
+
     render() {
 
         return(
@@ -73,7 +79,7 @@ class Home extends React.Component {
     <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
         <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
         <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
-                 OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory}/>}</div>
+                 OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory} setJurisdiction={this.setJurisdiction}/>}</div>
         <button >Search</button>
     </div>
     <div className="card mb-3">

@@ -8,8 +8,8 @@ class JursidictionList extends Component {
     render() {
         return(
             <React.Fragment>
-                {(this.props.category === "EU") ? <EUJurisdictionList /> : null}
-                {(this.props.category === "USA") ? <USAJurisdictionList /> : null}
+                {(this.props.category === "EU") ? <EUJurisdictionList setJurisdiction={this.props.setJurisdiction} /> : null}
+                {(this.props.category === "USA") ? <USAJurisdictionList setJurisdiction={this.props.setJurisdiction} /> : null}
             </React.Fragment>
         )
     }

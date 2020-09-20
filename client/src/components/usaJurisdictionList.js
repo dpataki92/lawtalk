@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-const USAJurisdictionList = () => {
+const USAJurisdictionList = (props) => {
+    const handleOnChange = (e) => {
+        console.log(props)
+        props.setJurisdiction(e.target.value);
+    }
     return(
-        <select id="USAcountries" name="jurisdiction">
+        <select id="USAcountries" name="jurisdiction" onChange={handleOnChange}>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
