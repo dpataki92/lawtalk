@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 const Navbar = props => {
-    
+
     const handleLogout = (e) => {
         e.preventDefault();
+        alert("Are you sure?");
         props.logout();
     }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const USAJurisdictionList = () => {
     return(
-        <select id="USAcountries">
+        <select id="USAcountries" name="jurisdiction">
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>

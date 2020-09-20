@@ -56,7 +56,6 @@ class Home extends React.Component {
                 jurisdictionCategory: "USA"
             })
         }
-        this.state.jurisdiction = e.target.id;
     }
 
     render() {
