@@ -21,6 +21,8 @@ class Home extends React.Component {
         console.log(this.props)
     }
 
+   
+
     handleLogout = (e) => {
         e.preventDefault();
         this.props.logout();
@@ -32,14 +34,19 @@ class Home extends React.Component {
         })
     }
 
-    handlePageChange = (e) => {
-        this.setState({
-            pageNumber: e.target.innerText
-        })
+    getQuestionsWithUpdatedState = (e) => {
+        console.log(this.state)
         document.querySelector("li.page-item.active").classList = "page-item";
         e.target.parentNode.classList = "page-item active";
-        this.props.getCurrentQuestions(this.state)
+        this.props.getCurrentQuestions(this.state);
     }
+
+    handlePageChange = (e) => {
+        this.setState({
+            pageNumber: e.target.innerHTML
+        })
+
+        }
 
     render() {
         return(
@@ -70,9 +77,9 @@ class Home extends React.Component {
     <nav>
         <ul className="pagination mb-5">
             <li className="page-item disabled"><a className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
-            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onClick={this.handlePageChange}>1</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onClick={this.handlePageChange}>2</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onClick={this.handlePageChange}>3</a></li>
+            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>1</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>2</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChange} onClick={this.getQuestionsWithUpdatedState}>3</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true">»</a></li>
         </ul>
     </nav>

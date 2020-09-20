@@ -19,7 +19,6 @@ export const getCurrentQuestions = (conditions) => {
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
             if (json.questions) {
                 dispatch(setCurrentQuestions(json.questions))
             } else {

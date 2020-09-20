@@ -17,7 +17,6 @@ class QuestionList extends Component {
                           lastRespondent= {question.lastRespondent} 
                           lastResponseDate= {question.lastResponseDate}
                           lastRespondentAvatar={question.lastRespondentAvatar}
-                          badge = {question.badge}
                         />
                 } else {
                     return (
