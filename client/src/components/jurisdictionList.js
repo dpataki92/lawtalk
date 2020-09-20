@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import EUJusrisdictionList from 'euJursidictionList.js';
-import USAJusrisdictionList from 'euJursidictionList.js';
+import EUJurisdictionList from 'euJursidictionList.js';
+import USAJurisdictionList from 'euJursidictionList.js';
 
 
 class JursidictionList extends Component {
@@ -11,9 +11,9 @@ class JursidictionList extends Component {
         let jurisdiction = jurisdictionDiv.id;
         jurisdictionDiv.innerHTML = "";
         if (jurisdiction === "EU") {
-            return EUJusrisdictionList
+            return EUJurisdictionList
         } else if (jurisdiction === "USA") {
-            return USAJusrisdictionList
+            return USAJurisdictionList
         }
     }   
 
