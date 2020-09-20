@@ -5,6 +5,7 @@ import { connect, ReactReduxContext } from "react-redux";
 import Navbar from "./navbar.js"
 import QuestionList from './questionList';
 import  { getCurrentQuestions } from "../actions/questions.js";
+import JursidictionList from './jurisdictionList.js';
 
 class Home extends React.Component {
 
@@ -12,7 +13,8 @@ class Home extends React.Component {
         field: "",
         jurisdiction: "",
         searchWord: "",
-        pageNumber: ""
+        pageNumber: "",
+        jurisdictionCategory: ""
     }
 
 
@@ -47,8 +49,25 @@ class Home extends React.Component {
         })
 
         }
+    
+    handleJurisdictionButton = (e) => {
+        e.preventDefault();
+        if (e.target.id === "EU") {
+            e.target.parentNode.innerHTML ="";
+            this.setState({
+                jurisdictionCategory: "EU"
+            })
+        } else if (e.target.id === "USA") {
+            e.target.parentNode.innerHTML ="";
+            this.setState({
+                jurisdictionCategory: "USA"
+            })
+        }
+        this.state.jurisdiction = e.target.id;
+    }
 
     render() {
+
         return(
             <React.Fragment>
             <Navbar />
@@ -61,16 +80,9 @@ class Home extends React.Component {
     <div className="d-flex flex-wrap justify-content-between" style={{marginTop:"5px"}}>
     <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
         <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
-        <div className="col-12 col-md-3 p-0 mb-3">     <input list="browsers" name="myBrowser" placeholder="dropdown" />  
- <datalist id="browsers">
-  <option value="Edge"/>
-  <option value="Firefox"/>
-  <option value="Chrome"/>
-  <option value="Opera"/>
-  <option value="Safari"/>
-</datalist> </div>
+        <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
+                 OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory}/>}</div>
         <button onClick={this.handleLogout}>Logout</button>
-
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">

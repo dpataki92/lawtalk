@@ -1,9 +1,8 @@
+import React, { Component } from 'react';
 
 const EUJurisdictionList = () => {
     return(
-        <React.Fragment>
-        <input list="USAcountries" name="USAcountries" id="USAcountries"/>
-        <datalist id="USAcountries">
+        <select id="USAcountries">
             <option value="Austria">Austria</option>
             <option value="Bulgaria">Bulgaria</option>
             <option value="Belgium">Belgium</option>
@@ -31,8 +30,8 @@ const EUJurisdictionList = () => {
             <option value="Slovenia">Slovenia</option>
             <option value="Spain">Spain</option>
             <option value="Sweden">Sweden</option>
-        </datalist>
-        </React.Fragment>    )
+        </select>
+        )
     }
 
 export default EUJurisdictionList;
