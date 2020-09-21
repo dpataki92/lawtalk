@@ -18,9 +18,8 @@ class Home extends React.Component {
         order: "creation",
         jurisdictionCategory: "",
         followed: "false",
-        username: this.state.currentUser.username
+        username: this.props.currentUser.username
     }
-
 
     componentDidMount() {
         this.props.getCurrentQuestions(this.state);
@@ -111,11 +110,23 @@ class Home extends React.Component {
         this.props.getCurrentQuestions(this.state)
     }
 
+    setFollowed = () => {
+        if (this.state.followed === "false") {
+            this.setState({
+                followed: "true"
+            })
+        } else if (this.state.followed === "true") {
+            this.setState({
+                followed: "false"
+            })
+        }
+    }
+
     render() {
 
         return(
             <React.Fragment>
-            <Navbar logout={this.props.logout}/>
+            <Navbar logout={this.props.logout} handleSearchClick={this.handleSearchClick} setFollowed={this.setFollowed}/>
             <br></br>
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">

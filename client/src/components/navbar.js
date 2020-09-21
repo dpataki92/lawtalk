@@ -15,7 +15,7 @@ const Navbar = props => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbar20">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"> <a class="nav-link" href="#">My questions</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="#" onMouseDown={props.setFollowed} onMouseUp={props.handleSearchClick}>My questions</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="#">All questions</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="#">Top users</a> </li>
                     </ul>
