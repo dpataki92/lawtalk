@@ -118,23 +118,27 @@ class Home extends React.Component {
 
     }
 
-    setFollowed = () => {
+    setFollowedToFalse = () => {
+        if (this.state.followed === "true") {
+            this.setState({
+                followed: "false"
+            })
+        } 
+    }
+
+    setFollowedToTrue = () => {
         if (this.state.followed === "false") {
             this.setState({
                 followed: "true"
             })
-        } else if (this.state.followed === "true") {
-            this.setState({
-                followed: "false"
-            })
-        }
+        } 
     }
 
     render() {
 
         return(
             <React.Fragment>
-            <Navbar logout={this.props.logout} handleSearchClick={this.handleSearchClick} setFollowed={this.setFollowed}/>
+            <Navbar logout={this.props.logout} handleSearchClick={this.handleSearchClick} setFollowedToTrue={this.setFollowedToTrue} setFollowedToFalse={this.setFollowedToFalse}/>
             <br></br>
             <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
