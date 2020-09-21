@@ -32,8 +32,7 @@ class Home extends React.Component {
         })
     }
 
-    getQuestionsWithUpdatedState = (e) => {
-        console.log(this.state)
+    getQuestionsBasedOnPageNumber = (e) => {
         document.querySelector("li.page-item.active").classList = "page-item";
         e.target.parentNode.classList = "page-item active";
         this.props.getCurrentQuestions(this.state);
@@ -110,6 +109,14 @@ class Home extends React.Component {
         this.props.getCurrentQuestions(this.state)
     }
 
+    setPageBackToOne = (e) => {
+        this.setState({
+            pageNumber: "1"
+        })
+        document.querySelector("li.page-item.active").classList = "page-item";
+        e.target.parentNode.classList = "page-item active";
+    }
+
     setFollowed = () => {
         if (this.state.followed === "false") {
             this.setState({
@@ -138,7 +145,7 @@ class Home extends React.Component {
         <div className="col-12 col-md-3 p-0 mb-3"> {<FieldList setField={this.setField}/>} </div>
         <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
                  OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory} setJurisdiction={this.setJurisdiction}/>}</div>
-        <button onClick={this.handleSearchClick}>Search</button>
+        <button onMouseDown={this.setPageBackToOne} onMouseUp={this.handleSearchClick}>Search</button>
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">
@@ -159,9 +166,9 @@ class Home extends React.Component {
     <nav>
         <ul className="pagination mb-5">
             <li className="page-item disabled"><a className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
-            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>1</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>2</a></li>
-            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsWithUpdatedState}>3</a></li>
+            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>1</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>2</a></li>
+            <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>3</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true">»</a></li>
         </ul>
     </nav>
