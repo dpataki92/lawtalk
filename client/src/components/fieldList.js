@@ -6,7 +6,8 @@ const FieldList = (props) => {
     }
     return(
 
-        <select id="legalFields" name="field" onChange={handleOnChange}>
+        <select id="legalFields" name="field" placeholder="Legal field.." onChange={handleOnChange}>
+            <option value="" disabled selected>Legal field...</option>
             <option value="Administrative Law">Administrative Law</option> 
             <option value="Animal Law">Animal Law</option>
             <option value="Banking Law">Banking Law</option>

@@ -105,6 +105,10 @@ class Home extends React.Component {
         })
     }
 
+    handleSearchClick = () => {
+        this.props.getCurrentQuestions(this.state)
+    }
+
     render() {
 
         return(
@@ -121,7 +125,7 @@ class Home extends React.Component {
         <div className="col-12 col-md-3 p-0 mb-3"> {<FieldList setField={this.setField}/>} </div>
         <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
                  OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory} setJurisdiction={this.setJurisdiction}/>}</div>
-        <button >Search</button>
+        <button onClick={this.handleSearchClick}>Search</button>
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">
