@@ -84,11 +84,15 @@ class Question < ApplicationRecord
         self.field(field).jurisdiction(jurisdiction).search_word(search_word)
     end
 
-    def self.ordered_questions(condition)
-        if condition === "creation"
+    def self.ordered_questions(order)
+        if order === "creation"
             self.recent
-        elsif condition === "relevance"
+        elsif order === "relevance"
             self.relevant
         end
+    end
+
+    def self.sorted_and_ordered(order, field, jurisdiction, search_word)
+        self.ordered_questions(order).sorted_questions(field, jurisdiction, search_word)
     end
 end

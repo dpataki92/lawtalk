@@ -3,15 +3,13 @@ class QuestionsController < ApplicationController
         questions = []
 
         if params[:followed] === "true"
-            followed_questions = User.find_by(username: params[:username]).followed_questions
-            created_questions = User.find_by(username: params[:username]).created_questions
-            questions = followed_questions + created_questions
+            followed = User.find_by(username: params[:username]).followed_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
+            created = User.find_by(username: params[:username]).created_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
+            questions = followed + created
         else
-            questions = Question.all
+            questions = Question.all.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
         end
-
-        sorted_and_ordered = questions.ordered_questions(params[:order]).sorted_questions(params[:field], params[:jurisdiction], params[:searchWord])
-        cut_questions = questions.page_cut(sorted_and_ordered, params[:pageNumber])
+        cut_questions = Question.page_cut(questions, params[:pageNumber])
         render json: {questions: Question.questions_data_for_list(cut_questions)} 
     end
 end
