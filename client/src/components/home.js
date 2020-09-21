@@ -16,7 +16,9 @@ class Home extends React.Component {
         searchWord: "",
         pageNumber: "",
         order: "creation",
-        jurisdictionCategory: ""
+        jurisdictionCategory: "",
+        followed: "false",
+        username: this.state.currentUser.username
     }
 
 
