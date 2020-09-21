@@ -99,6 +99,12 @@ class Home extends React.Component {
         })
     }
 
+    setField = (selected) => {
+        this.setState({
+            field: selected
+        })
+    }
+
     render() {
 
         return(
@@ -112,7 +118,7 @@ class Home extends React.Component {
     </div>
     <div className="d-flex flex-wrap justify-content-between" style={{marginTop:"5px"}}>
     <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" name="searchWord" className="form-control" placeholder="Search word..." onChange={this.handleOnChange} value={this.state.searchWord}/> </div>
-        <div className="col-12 col-md-3 p-0 mb-3"> {<fieldList />} </div>
+        <div className="col-12 col-md-3 p-0 mb-3"> {<FieldList setField={this.setField}/>} </div>
         <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> <button id="EU" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button>
                  OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory} setJurisdiction={this.setJurisdiction}/>}</div>
         <button >Search</button>
