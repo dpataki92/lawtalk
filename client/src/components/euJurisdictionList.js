@@ -6,6 +6,7 @@ const EUJurisdictionList = (props) => {
     }
     return(
         <select id="EUcountries" name="jurisdiction" onChange={handleOnChange}>
+            <option value="" disabled selected>Choose country...</option>
             <option value="Austria">Austria</option>
             <option value="Bulgaria">Bulgaria</option>
             <option value="Belgium">Belgium</option>

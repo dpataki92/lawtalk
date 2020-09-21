@@ -6,6 +6,7 @@ const USAJurisdictionList = (props) => {
     }
     return(
         <select id="USAstates" name="jurisdiction" onChange={handleOnChange}>
+            <option value="" disabled selected>Choose state...</option>
             <option value="Federal">Federal</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
