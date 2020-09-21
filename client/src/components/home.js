@@ -114,7 +114,8 @@ class Home extends React.Component {
             pageNumber: "1"
         })
         document.querySelector("li.page-item.active").classList = "page-item";
-        e.target.parentNode.classList = "page-item active";
+        document.getElementById("firstPage").classList = "page-item active";
+
     }
 
     setFollowed = () => {
@@ -166,7 +167,7 @@ class Home extends React.Component {
     <nav>
         <ul className="pagination mb-5">
             <li className="page-item disabled"><a className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
-            <li className="page-item active"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>1</a></li>
+            <li className="page-item active" id="firstPage"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>1</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>2</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true" onMouseEnter={this.handlePageChangeOnEnter} onMouseLeave={this.handlePageChangeOnLeave} onClick={this.getQuestionsBasedOnPageNumber}>3</a></li>
             <li className="page-item"><a className="page-link" href="javascript:void(0)" data-abc="true">»</a></li>
