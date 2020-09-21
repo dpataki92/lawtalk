@@ -8,6 +8,7 @@ import  { getCurrentQuestions } from "../actions/questions.js";
 import JursidictionList from './jurisdictionList.js';
 import FieldList from './fieldList.js';
 import Pagination from './pagination.js';
+import QuestionListHeader from './questionListHeader.js'
 
 class Home extends React.Component {
 
@@ -161,24 +162,9 @@ class Home extends React.Component {
                  OR <button id="USA" className="jurisdictionList" onClick={this.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>{<JursidictionList category={this.state.jurisdictionCategory} setJurisdiction={this.setJurisdiction}/>}</div>
         <button onMouseDown={this.setPageBackToOne} onMouseUp={this.handleSearchClick}>Search</button>
     </div>
-    <div className="card mb-3">
-        <div className="card-header pl-0 pr-0">
-            <div className="row no-gutters w-100 align-items-center">
-        <div className="col ml-3">Questions </div>
-                <div className="col-4 text-muted">
-                    <div className="row no-gutters align-items-center">
-                        <div className="col-4">Replies</div>
-                        <div className="col-8">Last update</div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-     
-    </div>
+    <QuestionListHeader />
     <QuestionList questions={this.props.questions}/>
     <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
-    
 </div>
 </React.Fragment>
         )
