@@ -113,6 +113,10 @@ class Home extends React.Component {
         this.setState({
             pageNumber: "1"
         })
+        document.querySelectorAll(".pageNum").forEach((el,i) => {
+            el.innerText = i+1
+            
+        })
         document.querySelector("li.page-item.active").classList = "page-item";
         document.getElementById("firstPage").classList = "page-item active";
 

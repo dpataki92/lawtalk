@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
     def index
         questions = []
+        byebug
         if params[:followed] === "true"
             followed = User.find_by(username: params[:username]).followed_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
             created = User.find_by(username: params[:username]).created_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
