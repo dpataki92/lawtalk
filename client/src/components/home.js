@@ -8,6 +8,7 @@ import  { getCurrentQuestions } from "../actions/questions.js";
 import Pagination from './pagination.js';
 import QuestionListHeader from './questionListHeader.js'
 import SearchBar from './searchbar';
+import QuestionForm from './questionForm.js'
 
 class Home extends React.Component {
 
@@ -123,24 +124,24 @@ class Home extends React.Component {
 
     }
 
-        // Pagination functions
-        getQuestionsBasedOnPageNumber = (e) => {
-            document.querySelector("li.page-item.active").classList = "page-item";
-            e.target.parentNode.classList = "page-item active";
-            this.props.getCurrentQuestions(this.state);
-        }
-    
-        handlePageChangeOnEnter = (e) => {
-            this.setState({
-                pageNumber: e.target.innerHTML
-            })
-        }
+    // Pagination functions
+    getQuestionsBasedOnPageNumber = (e) => {
+        document.querySelector("li.page-item.active").classList = "page-item";
+        e.target.parentNode.classList = "page-item active";
+        this.props.getCurrentQuestions(this.state);
+    }
 
-        handlePageChangeOnLeave = (e) => {
-            this.setState({
-                pageNumber: ""
-            })
-        }
+    handlePageChangeOnEnter = (e) => {
+        this.setState({
+            pageNumber: e.target.innerHTML
+        })
+    }
+
+    handlePageChangeOnLeave = (e) => {
+        this.setState({
+            pageNumber: ""
+        })
+    }
 
 
 
