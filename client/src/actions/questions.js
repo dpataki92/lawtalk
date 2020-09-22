@@ -9,7 +9,7 @@ export const setCurrentQuestions = questions => {
 // asynchronous action creators
 export const getCurrentQuestions = (conditions) => {
     return dispatch => {
-        return fetch("/api/questions", {
+        return fetch("/api/questions/list", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

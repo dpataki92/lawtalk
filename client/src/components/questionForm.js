@@ -49,6 +49,25 @@ class QuestionForm extends Component {
         })
     }
 
+    handleSubmit = () => {
+        console.log(this.state)
+        fetch("/api/questions", {
+            method: "POST",
+            headers: {"Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`},
+            body: JSON.stringify(this.state)
+          })
+          .then(resp => resp.json())
+          .then(function(json) {
+            console.log(json);
+            if (json.message === "success") {
+                window.location.reload(false)
+            } else {
+                alert("Invalid data. Please try again.")
+            }
+          })
+    }
+
     render() {
         return(
             <div class="container">
@@ -58,11 +77,11 @@ class QuestionForm extends Component {
                     
                     <h1>Create question</h1>
                     
-                    <form >
+                    <form onSubmit={this.handleSubmit}>
                         
                         <div class="form-group">
                             <label for="title">Title </label>
-                            <input type="text" class="form-control" name="question[title]" onChange={this.handleChange} value={this.state.title} required/>
+                            <input type="text" class="form-control" name="title" onChange={this.handleChange} value={this.state.title} required/>
                         </div>
 
                         {<FieldList setField={this.setField}/>}

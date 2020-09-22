@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-    def index
+    def questions_list
         questions = []
         if params[:followed] === "true"
             followed = User.find_by(username: params[:username]).followed_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
@@ -13,19 +13,14 @@ class QuestionsController < ApplicationController
     end
 
     def create
-        user = User.find_by(username: question_params[:username])
-        question = Question.create(title: question_params[:title], jurisdiction: question_params[:jurisdiction], field: question_params[:field], content: question_params[:content])
+        user = User.find_by(username: params[:username])
+        question = Question.create(title: params[:title], jurisdiction: params[:jurisdiction], field: params[:field], content: params[:content], creator: user)
         if question.valid?
             user.created_questions << question
             render json: {message: "success"}
         else
-            render json: {messgae: "failure"}
+            render json: {message: "failure"}
         end
     end
 
-    private
-  
-    def question_params
-      params.require(:question).permit(:title, :jurisdiction, :field, :content, :username)
-    end
 end

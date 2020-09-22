@@ -159,6 +159,7 @@ class Home extends React.Component {
                 <QuestionList questions={this.props.questions}/>
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
+            <QuestionForm />
             </React.Fragment>
             
             // <QuestionForm />
