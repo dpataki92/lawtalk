@@ -31,6 +31,24 @@ class QuestionForm extends Component {
         }
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    setField = (selected) => {
+        this.setState({
+            field: selected
+        })
+    }
+
+    setJurisdiction = (selected) => {
+        this.setState({
+            jurisdiction: selected
+        })
+    }
+
     render() {
         return(
             <div class="container">
@@ -44,16 +62,16 @@ class QuestionForm extends Component {
                         
                         <div class="form-group">
                             <label for="title">Title </label>
-                            <input type="text" class="form-control" name="title" required/>
+                            <input type="text" class="form-control" name="title" onChange={this.handleChange} value={this.state.title} required/>
                         </div>
 
-                        {<FieldList />}
-                        <button onClick={this.handleJurisdictionCategoryClick} style={{marginLeft: "10px"}}>EU</button> <div id="EUlist" style={{display: "none", marginRight: "10px"}}>{<EUJurisdictionList />}</div>
-                        <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none", marginRight: "5px"}}>{<USAJurisdictionList />}</div>
+                        {<FieldList setField={this.setField}/>}
+                        <button onClick={this.handleJurisdictionCategoryClick} style={{marginLeft: "10px"}}>EU</button> <div id="EUlist" style={{display: "none", marginRight: "10px"}}>{<EUJurisdictionList setJurisdiction={this.setJurisdiction}/>}</div>
+                        <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none", marginRight: "5px"}}>{<USAJurisdictionList setJurisdiction={this.setJurisdiction}/>}</div>
                         
                         <div class="form-group" style={{marginTop: "10px"}}>
                             <label for="description">Content </label>
-                            <textarea rows="5" class="form-control" name="description" ></textarea>
+                            <textarea rows="5" class="form-control" name="content" onChange={this.handleChange} value={this.state.content} ></textarea>
                         </div>
                         
                         <div class="form-group">
