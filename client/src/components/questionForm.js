@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
-import QuestionRow from './questionRow';
+import FieldList from './fieldList.js'
+import { connect } from "react-redux";
+import EUJurisdictionList from './euJurisdictionList.js';
+import USAJurisdictionList from './usaJurisdictionList.js';
+
 
 class QuestionForm extends Component {
+    state = {
+        title: "",
+        field: "",
+        jurisdiction: "",
+        content: "",
+        currentUser: this.props.currentUser
+    }
+
     render() {
         return(
             <div class="container">
@@ -9,23 +21,21 @@ class QuestionForm extends Component {
 	    
                 <div class="col-md-8 col-md-offset-2">
                     
-                    <h1>Create post</h1>
+                    <h1>Create question</h1>
                     
                     <form action="" method="POST">
-                        
-                        <div class="form-group has-error">
-                            <label for="slug">Slug <span class="require">*</span> <small>(This field use in url path.)</small></label>
-                            <input type="text" class="form-control" name="slug" />
-                            <span class="help-block">Field not entered!</span>
-                        </div>
                         
                         <div class="form-group">
                             <label for="title">Title <span class="require">*</span></label>
                             <input type="text" class="form-control" name="title" />
                         </div>
+
+                        {<FieldList />}<br/>
+                        <button>EU</button> <div style={{display: "inline", visibility:"hidden"}}>{<EUJurisdictionList />}</div>
+                        <button>USA</button> <div style={{display: "inline", visibility:"hidden"}}>{<USAJurisdictionList />}</div>
                         
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Content </label>
                             <textarea rows="5" class="form-control" name="description" ></textarea>
                         </div>
                         
@@ -49,4 +59,10 @@ class QuestionForm extends Component {
     }
 }
 
-export default QuestionForm;
+const mapStateToProps = ({currentUser}) => {
+    return {
+      currentUser    
+    }
+  }
+
+export default connect(mapStateToProps)(QuestionForm);

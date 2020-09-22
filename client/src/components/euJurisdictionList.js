@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 const EUJurisdictionList = (props) => {
-    const handleOnChange = (e) => {
-        props.setJurisdiction(e.target.value);
-    }
+
     return(
-        <select id="EUcountries" name="jurisdiction" onChange={handleOnChange}>
+        <select id="EUcountries" name="jurisdiction" onChange={e=>props.setJurisdiction(e.target.value)}>
             <option value="" disabled selected>Choose country...</option>
             <option value="Austria">Austria</option>
             <option value="Bulgaria">Bulgaria</option>

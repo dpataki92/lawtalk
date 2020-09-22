@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
 const FieldList = (props) => {
-    const handleOnChange = (e) => {
-        props.setField(e.target.value);
-    }
+
     return(
 
-        <select id="legalFields" name="field" placeholder="Legal field.." onChange={handleOnChange}>
+        <select id="legalFields" name="field" placeholder="Legal field.." onChange={e=> props.setField(e.target.value)}>
             <option value="" disabled selected>Legal field...</option>
             <option value="Administrative Law">Administrative Law</option> 
             <option value="Animal Law">Animal Law</option>
