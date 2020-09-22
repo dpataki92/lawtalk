@@ -13,6 +13,7 @@ const Navbar = props => {
     }
 
     return(
+        <React.Fragment>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid"> <button class="navbar-toggler navbar-toggler-right border-0 p-0" type="button" data-toggle="collapse" data-target="#navbar20">
                     <p class="navbar-brand text-white mb-0"> <i class="fa d-inline fa-lg fa-stop-circle"></i> LAWTALK </p>
@@ -32,6 +33,8 @@ const Navbar = props => {
                 </div>
             </div>
         </nav>
+        <br></br>
+        </React.Fragment>
     )
 }
 
