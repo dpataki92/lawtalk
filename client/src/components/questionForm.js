@@ -14,6 +14,23 @@ class QuestionForm extends Component {
         currentUser: this.props.currentUser
     }
 
+    handleJurisdictionCategoryClick = (e) => {
+        e.preventDefault();
+        const EUlist = document.getElementById("EUlist");
+        const USlist = document.getElementById("USlist");
+        if (e.target.innerText === "EU")  {
+            EUlist.style.display = "inline";
+            if (USlist.style.display === "inline") {
+                USlist.style.display = "none";
+            }
+        } else if (e.target.innerText === "USA") {
+            USlist.style.display = "inline";
+            if (EUlist.style.display === "inline") {
+                EUlist.style.display = "none";
+            }
+        }
+    }
+
     render() {
         return(
             <div class="container">
@@ -23,7 +40,7 @@ class QuestionForm extends Component {
                     
                     <h1>Create question</h1>
                     
-                    <form action="" method="POST">
+                    <form >
                         
                         <div class="form-group">
                             <label for="title">Title <span class="require">*</span></label>
@@ -31,8 +48,8 @@ class QuestionForm extends Component {
                         </div>
 
                         {<FieldList />}<br/>
-                        <button>EU</button> <div style={{display: "inline", visibility:"hidden"}}>{<EUJurisdictionList />}</div>
-                        <button>USA</button> <div style={{display: "inline", visibility:"hidden"}}>{<USAJurisdictionList />}</div>
+                        <button onClick={this.handleJurisdictionCategoryClick}>EU</button> <div id="EUlist" style={{display: "none"}}>{<EUJurisdictionList />}</div>
+                        <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none"}}>{<USAJurisdictionList />}</div>
                         
                         <div class="form-group">
                             <label for="description">Content </label>
