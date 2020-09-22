@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const USAJurisdictionList = (props) => {
 
     return(
-        <select id="USAstates" name="jurisdiction" onChange={e=>props.setJurisdiction(e.target.value)}>
+        <select id="USAstates" name="jurisdiction" onChange={e=>props.setJurisdiction(e.target.value)} >
             <option value="" disabled selected>Choose state...</option>
             <option value="Federal">Federal</option>
             <option value="Alabama">Alabama</option>

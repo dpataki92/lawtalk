@@ -43,29 +43,22 @@ class QuestionForm extends Component {
                     <form >
                         
                         <div class="form-group">
-                            <label for="title">Title <span class="require">*</span></label>
-                            <input type="text" class="form-control" name="title" />
+                            <label for="title">Title </label>
+                            <input type="text" class="form-control" name="title" required/>
                         </div>
 
-                        {<FieldList />}<br/>
-                        <button onClick={this.handleJurisdictionCategoryClick}>EU</button> <div id="EUlist" style={{display: "none"}}>{<EUJurisdictionList />}</div>
-                        <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none"}}>{<USAJurisdictionList />}</div>
+                        {<FieldList />}
+                        <button onClick={this.handleJurisdictionCategoryClick} style={{marginLeft: "10px"}}>EU</button> <div id="EUlist" style={{display: "none", marginRight: "10px"}}>{<EUJurisdictionList />}</div>
+                        <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none", marginRight: "5px"}}>{<USAJurisdictionList />}</div>
                         
-                        <div class="form-group">
+                        <div class="form-group" style={{marginTop: "10px"}}>
                             <label for="description">Content </label>
                             <textarea rows="5" class="form-control" name="description" ></textarea>
                         </div>
                         
                         <div class="form-group">
-                            <p><span class="require">*</span> - required fields</p>
-                        </div>
-                        
-                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Create
-                            </button>
-                            <button class="btn btn-default">
-                                Cancel
                             </button>
                         </div>  
                     </form>
