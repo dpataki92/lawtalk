@@ -11,7 +11,7 @@ class QuestionForm extends Component {
         field: "",
         jurisdiction: "",
         content: "",
-        currentUser: this.props.currentUser
+        username: this.props.currentUser.username
     }
 
     handleJurisdictionCategoryClick = (e) => {
@@ -62,7 +62,7 @@ class QuestionForm extends Component {
                         
                         <div class="form-group">
                             <label for="title">Title </label>
-                            <input type="text" class="form-control" name="title" onChange={this.handleChange} value={this.state.title} required/>
+                            <input type="text" class="form-control" name="question[title]" onChange={this.handleChange} value={this.state.title} required/>
                         </div>
 
                         {<FieldList setField={this.setField}/>}

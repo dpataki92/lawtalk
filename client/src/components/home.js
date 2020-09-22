@@ -147,7 +147,7 @@ class Home extends React.Component {
 
     render() {
         return(
-            /*
+            
             <React.Fragment>
             
             <Navbar logout={this.props.logout} handleSearchClick={this.handleSearchClick} setFollowedToTrue={this.setFollowedToTrue} setFollowedToFalse={this.setFollowedToFalse}/>
@@ -160,8 +160,8 @@ class Home extends React.Component {
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
             </React.Fragment>
-            */
-            <QuestionForm />
+            
+            // <QuestionForm />
         )
     }
 }

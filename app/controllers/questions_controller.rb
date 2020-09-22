@@ -11,4 +11,21 @@ class QuestionsController < ApplicationController
         cut_questions = Question.page_cut(questions, params[:pageNumber])
         render json: {questions: Question.questions_data_for_list(cut_questions)} 
     end
+
+    def create
+        user = User.find_by(username: question_params[:username])
+        question = Question.create(title: question_params[:title], jurisdiction: question_params[:jurisdiction], field: question_params[:field], content: question_params[:content])
+        if question.valid?
+            user.created_questions << question
+            render json: {message: "success"}
+        else
+            render json: {messgae: "failure"}
+        end
+    end
+
+    private
+  
+    def question_params
+      params.require(:question).permit(:title, :jurisdiction, :field, :content, :username)
+    end
 end
