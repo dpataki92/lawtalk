@@ -9,7 +9,7 @@ export const setTopUsers = topUsers => {
 // asynchronous action creators
 export const getTopUsers = () => {
     return dispatch => {
-        return fetch("/api/top_users", {
+        return fetch("/api/users/top", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -19,6 +19,7 @@ export const getTopUsers = () => {
         .then(resp => resp.json())
         .then(json => {
             if (json.topUsers) {
+                console.log(json.topUsers)
                 dispatch(setTopUsers(json.topUsers))
             } else {
                 dispatch(setTopUsers([]))

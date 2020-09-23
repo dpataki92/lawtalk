@@ -20,8 +20,8 @@ class UsersController < ApplicationController
   end
 
   def top_users
-    users = User.rank_top_15
-    render json: { topUsers: UserSerializer.new(users) }, status: :accepted
+    user = User.rank_top_15[0]
+    render json: { topUsers: [UserSerializer.new(user)] }, status: :accepted
   end
     
   private

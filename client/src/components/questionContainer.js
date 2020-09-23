@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { connect, ReactReduxContext } from "react-redux";
+import { connect } from "react-redux";
 import QuestionList from './questionList';
 import Pagination from './pagination.js';
 import SearchBar from './searchbar';
 import QuestionListHeader from './questionListHeader.js'
 import  { getCurrentQuestions } from "../actions/questions.js";
-import {BrowserRouter as Router, Switch, Route, withRouter, Redirect} from 'react-router-dom';
-
 
 class QuestionContainer extends Component {
     state = {
@@ -22,7 +20,6 @@ class QuestionContainer extends Component {
 
     componentDidMount() {
         this.props.getCurrentQuestions(this.state);
-        console.log(this.props)
     }
 
 

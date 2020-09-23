@@ -4,8 +4,9 @@ import  { logout } from "../actions/currentUser.js";
 import { connect } from "react-redux";
 import Navbar from "./navbar.js"
 import QuestionForm from './questionForm.js';
-import {BrowserRouter as Router, Switch, Route, withRouter, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import QuestionContainer from './questionContainer.js';
+import TopUsers from './topUsers.js';
 
 
 class Home extends React.Component {
@@ -19,7 +20,8 @@ class Home extends React.Component {
             <Route exact path="/" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
             <Route key="all" exact path="/questions/all" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
             <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
-            <Route exact path="/create" render={() => <QuestionForm />} />
+            <Route exact path="/questions/new" render={() => <QuestionForm />} />
+            <Route exact path="/users/top" render={() => <TopUsers />} />
             </Switch>
             </div>
             </Router>

@@ -9,7 +9,8 @@ const reducer = combineReducers({
     users: usersReducer,
     currentUser: currentUserReducer,
     loginForm: loginFormReducer,
-    questions: questionsReducer
+    questions: questionsReducer,
+    topUsers: usersReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
