@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import JursidictionList from './jurisdictionList.js';
 import FieldList from './fieldList.js';
+import {Link, withRouter, Route} from 'react-router-dom';
+import QuestionForm from './questionForm.js'
+
+
 
 class SearchBar extends Component {
+    
+
+
     render() {
         return(
             <React.Fragment>
             <div style={{marginLeft: "12px", marginRight:"12px"}}>
             <div className="d-flex flex-wrap justify-content-between">
-                <div> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New question </button> </div>
+                <div> <Link to="/create"> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New question </button> </Link> </div>
                 <button id="order" onMouseEnter={this.props.handleOrderOnEnter} onMouseLeave={this.props.handleOrderOnLeave} onClick={this.props.ordering}>{`${"Relevance ↓" }`}</button>
             </div>
             <div className="d-flex flex-wrap justify-content-between" style={{marginTop:"5px"}}>

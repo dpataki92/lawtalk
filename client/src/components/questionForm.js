@@ -3,6 +3,8 @@ import FieldList from './fieldList.js'
 import { connect } from "react-redux";
 import EUJurisdictionList from './euJurisdictionList.js';
 import USAJurisdictionList from './usaJurisdictionList.js';
+import { withRouter } from 'react-router-dom';
+
 
 
 class QuestionForm extends Component {
