@@ -23,8 +23,6 @@ class Home extends React.Component {
             </Switch>
             </div>
             </Router>
-            
-            // <QuestionForm />
         )
     }
 }

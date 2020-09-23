@@ -18,6 +18,10 @@ class UsersController < ApplicationController
       render json: { error: 'failed to create user' }, status: :not_acceptable
     end
   end
+
+  def top_users
+    users = User.rank_top_15
+  end
     
   private
   

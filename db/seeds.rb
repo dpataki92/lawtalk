@@ -168,18 +168,18 @@ u36.followed_questions << q12
 u36.followed_questions << q13
 
 
-# Creating random user reactions to answers and comments (50% - ignore, 40% - upvote 10% - downvote)
+# Creating random user reactions to answers and comments (30% - ignore, 40% - upvote 30% - downvote)
 User.all.each do |u|
     10.times {
         answer = Answer.all[rand(0..Answer.all.size-1)]
         if answer.user != u
             num = rand(1..10)
-            if num > 5 && num < 10
+            if num > 3 && num <= 7
                 answer.upvotes += 1
                 answer.user.upvotes += 1
                 answer.user.save
                 answer.save
-            elsif num === 10
+            elsif num > 7 && num <= 10
                 answer.downvotes += 1
                 answer.user.downvotes += 1
                 answer.user

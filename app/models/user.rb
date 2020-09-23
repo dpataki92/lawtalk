@@ -8,4 +8,13 @@ class User < ApplicationRecord
     has_many :comments
 
     validates :username, uniqueness: { case_sensitive: false }
+
+    def vote_diff
+        self.upvotes - self.downvotes   
+    end
+
+    def self.rank_top_15
+        sorted = User.all.sort {|a,b| b.vote_diff <=> a.vote_diff}
+        sorted[0..14]
+    end
 end
