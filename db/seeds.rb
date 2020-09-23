@@ -167,6 +167,15 @@ u23.followed_questions << q14
 u36.followed_questions << q12
 u36.followed_questions << q13
 
+# Adding fake bio to random users
+bio = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+User.all.each do |u|
+    add_bio = [true, false][rand(0..1)]
+    if add_bio
+    u.bio = bio
+    u.save
+    end
+end
 
 # Creating random user reactions to answers and comments (30% - ignore, 40% - upvote 30% - downvote)
 User.all.each do |u|

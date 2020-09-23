@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :location
       t.string :fields
       t.string :avatar
+      t.string :bio
       t.integer :upvotes, default: 0
       t.integer :downvotes, default: 0
 

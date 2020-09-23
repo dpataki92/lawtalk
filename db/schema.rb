@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_193039) do
     t.string "location"
     t.string "fields"
     t.string "avatar"
+    t.string "bio"
     t.integer "upvotes", default: 0
     t.integer "downvotes", default: 0
     t.datetime "created_at", precision: 6, null: false
