@@ -4,7 +4,6 @@ import Login from "./components/login"
 import Home from './components/home';
 import { connect } from 'react-redux';
 import  {getCurrentUser } from "./actions/currentUser.js";
-import { Route } from 'react-router-dom';
 
 class App extends React.Component {
 

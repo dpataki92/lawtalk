@@ -8,7 +8,9 @@ import  { getCurrentQuestions } from "../actions/questions.js";
 import Pagination from './pagination.js';
 import QuestionListHeader from './questionListHeader.js'
 import SearchBar from './searchbar';
-import QuestionForm from './questionForm.js'
+import QuestionForm from './questionForm.js';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 
 class Home extends React.Component {
 
@@ -149,7 +151,9 @@ class Home extends React.Component {
         return(
             <React.Fragment>
             <Navbar logout={this.props.logout} handleSearchClick={this.handleSearchClick} setFollowedToTrue={this.setFollowedToTrue} setFollowedToFalse={this.setFollowedToFalse}/>
-            <SearchBar handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
+            <Route exact path="/" render={() => 
+            <div>
+                <SearchBar handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
             handleOrderOnEnter={this.handleOrderOnEnter} handleOrderOnLeave={this.handleOrderOnLeave} setField={this.setField} setPageBackToOne={this.setPageBackToOne} 
             searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick}/>
             <div className="container-fluid mt-100">
@@ -157,6 +161,8 @@ class Home extends React.Component {
                 <QuestionList questions={this.props.questions}/>
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
+            </div>}/>
+            <Route exact path ="/questions/create" component={QuestionForm}/>
             </React.Fragment>
             
             // <QuestionForm />
