@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = props => {
 
@@ -20,8 +21,8 @@ const Navbar = props => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbar20">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"> <a class="nav-link" href="#" onMouseDown={props.setFollowedToFalse} onMouseUp={props.handleSearchClick}>All questions</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="#" onMouseDown={props.setFollowedToTrue} onMouseUp={props.handleSearchClick}>My questions</a> </li>
+                        <li class="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
+                        <li class="nav-item"> <NavLink className="nav-link" to="/questions/followed">My questions</NavLink> </li>
                         <li class="nav-item"> <a class="nav-link" href="#">Top users</a> </li>
                     </ul>
                     <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b onClick={handleReload}> LAWTALK</b> </p>
