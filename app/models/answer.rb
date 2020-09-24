@@ -9,4 +9,13 @@ class Answer < ApplicationRecord
         self.created_at.strftime("%B %d, %Y")
     end
 
+    def vote_ratio
+        total = self.upvotes + self.downvotes
+        if self.upvotes === 0 && self.downvotes === 0
+            0
+        else
+            ((self.upvotes.to_f / total.to_f) * 100).to_i
+        end
+    end
+
 end
