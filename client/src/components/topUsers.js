@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import  { getTopUsers } from "../actions/users.js";
-import UserRow from "./userRow.js"
+import UserRow from "./userRow.js";
+import '../TopUsers.css';
+
 
 class TopUsers extends Component {
 
