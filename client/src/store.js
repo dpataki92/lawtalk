@@ -6,7 +6,6 @@ import loginFormReducer from './reducers/loginForm.js';
 import questionsReducer from './reducers/questions.js';
 
 const reducer = combineReducers({
-    users: usersReducer,
     currentUser: currentUserReducer,
     loginForm: loginFormReducer,
     questions: questionsReducer,

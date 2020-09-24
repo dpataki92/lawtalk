@@ -23,7 +23,7 @@ const Navbar = props => {
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
                         <li class="nav-item"> <NavLink className="nav-link" to="/questions/followed">My questions</NavLink> </li>
-                        <li class="nav-item"> <a class="nav-link" href="#">Top users</a> </li>
+                        <li class="nav-item"> <NavLink className="nav-link" to="/users/top">Top users</NavLink> </li>
                     </ul>
                     <p class="d-none d-md-block lead mb-0 text-white"> <i class="fa d-inline fa-lg fa-stop-circle"></i> <b onClick={handleReload}> LAWTALK</b> </p>
                     <ul class="navbar-nav ml-auto">
