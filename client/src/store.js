@@ -4,12 +4,14 @@ import usersReducer from './reducers/users.js';
 import currentUserReducer from './reducers/currentUser.js';
 import loginFormReducer from './reducers/loginForm.js';
 import questionsReducer from './reducers/questions.js';
+import currentProfileReducer from './reducers/currentProfile.js';
 
 const reducer = combineReducers({
     currentUser: currentUserReducer,
     loginForm: loginFormReducer,
     questions: questionsReducer,
-    topUsers: usersReducer
+    topUsers: usersReducer,
+    currentProfile: currentProfileReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
