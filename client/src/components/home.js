@@ -7,6 +7,7 @@ import QuestionForm from './questionForm.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import QuestionContainer from './questionContainer.js';
 import TopUsers from './topUsers.js';
+import ProfilePage from './profilePage.js';
 
 
 
@@ -23,6 +24,7 @@ class Home extends React.Component {
             <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
             <Route exact path="/questions/new" render={() => <QuestionForm />} />
             <Route exact path="/users/top" render={() => <TopUsers />} />
+            <Route exact path="/users/1" render={() => <ProfilePage />} />
             </Switch>
             </div>
             </Router>

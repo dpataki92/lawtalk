@@ -9,7 +9,6 @@ class TopUsers extends Component {
 
     componentDidMount() {
         this.props.getTopUsers()
-        console.log(this.props.topUsers)
     }
 
     render() { 
