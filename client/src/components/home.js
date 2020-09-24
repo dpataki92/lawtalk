@@ -24,7 +24,7 @@ class Home extends React.Component {
             <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
             <Route exact path="/questions/new" render={() => <QuestionForm />} />
             <Route exact path="/users/top" render={() => <TopUsers />} />
-            <Route exact path="/users/1" render={() => <ProfilePage />} />
+            <Route exact path="/users/:id" render={() => <ProfilePage />} />
             </Switch>
             </div>
             </Router>

@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getCurrentProfile } from '../actions/currentProfile.js'
+
 
 class ProfilePage extends Component {
+    
+    componentDidMount() {
+        let { id } = useParams();
+        this.getCurrentProfile(id);
+    }
+
     render() {
         return(
             <div className="container emp-profile" style={{marginTop:"-15px"}}>
@@ -142,4 +151,11 @@ class ProfilePage extends Component {
     }
 }
 
-export default ProfilePage;
+const mapStateToProps = ({currentProfile}) => {
+    return {
+      currentProfile
+    }
+}
+  
+
+export default connect(mapStateToProps, {getCurrentProfile})(ProfilePage)

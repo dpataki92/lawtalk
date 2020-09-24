@@ -40,11 +40,12 @@ class User < ApplicationRecord
         end
     end
 
-    def profile_data
+    def profile_hash
         {
             basic: self.as_json,
             voteRatio: self.vote_ratio,
-            topRatedAnwers: self.top_rated_anwers
+            topRatedAnwers: self.top_rated_answers,
+            memberSince: self.creation_date_in_words
         }
     end
     
