@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ProfilePage extends Component {
     render() {
         return(
-            <div className="container emp-profile">
+            <div className="container emp-profile" style={{marginTop:"-15px"}}>
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">
