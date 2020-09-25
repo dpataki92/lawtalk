@@ -115,5 +115,19 @@ class Question < ApplicationRecord
     end
 
     def question_answer_serializer
+        ranked_answers = Answer.ranked(self.answers)
+        result = []
+        ranked_answers.each do |a|
+            answer_hash = {
+                content: a.content,
+                answerCreator: a.user.username,
+                answerCreatorId: a.user.id,
+                creation: a.creation_date_in_words,
+                upvotes: a.upvotes,
+                downvotes: a.downvotes
+            }
+            result << answer_hash
+        end
+        result
     end
 end

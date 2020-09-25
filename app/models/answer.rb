@@ -18,4 +18,8 @@ class Answer < ApplicationRecord
         end
     end
 
+    def self.ranked(answers)
+        answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}
+    end
+
 end

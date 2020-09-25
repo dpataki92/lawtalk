@@ -8,7 +8,7 @@ const MainPost = props => {
             <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp; + Follow thread</button>
             <h4 style={{marginBottom: "5px"}}>{props.title}</h4>
                 <div className="card mb-4">
-                    <div className="card-header" style={{backgroundColor:"#d8ecf3"}}>
+                    <div className="card-header" style={{backgroundColor:""}}>
                         <div className="media flex-wrap w-100 align-items-center"> <div style={{height: "80px", overflow: "hidden"}}><img src={`/${props.creatorAvatar}`} className="d-block ui-w-40 rounded-circle" style={{height: "80px", objectFit: "cover"}} alt=""/></div>
                             <div className="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{props.creator}</a>
                                 <div className="text-muted small">{props.creation}</div>
