@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     post '/questions/list', to: 'questions#questions_list'
     get '/questions/:id/replies', to: 'questions#replies'
 
-    get '/answers/:id/vote', to: 'answers#vote'
+    post '/answers/:id/vote', to: 'answers#vote'
   end
 end

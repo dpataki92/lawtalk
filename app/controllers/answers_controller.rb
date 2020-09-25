@@ -7,8 +7,8 @@ class AnswersController < ApplicationController
             answer.save
             answer.user.save
         elsif params[:vote] === "downvote"
-            answer.upvotes += 1
-            answer.user.upvotes += 1
+            answer.downvotes += 1
+            answer.user.downvotes += 1
             answer.save
             answer.user.save
         end
