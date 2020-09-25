@@ -9,6 +9,21 @@ class ProfilePage extends Component {
         props.getCurrentProfile(props.match.params.id);
     }
 
+    handleClick = (e) => {
+        if (e.target.id === "bio-tab" && !e.target.classList.contains("active")) {
+            e.target.classList = "nav-link active";
+            document.getElementById("about-tab").classList = "nav-link";
+            document.getElementById("about").classList = "tab-pane fade";
+            document.getElementById("bio").classList = "tab-pane fade show active";
+        } else if (e.target.id === "about-tab" && !e.target.classList.contains("active")) {
+            e.target.classList = "nav-link active";
+            document.getElementById("bio-tab").classList = "nav-link";
+            document.getElementById("bio").classList = "tab-pane fade";
+            document.getElementById("about").classList = "tab-pane fade show active";
+
+        }
+    }
+
     render() {
         const {currentProfile} = this.props
         return(
@@ -31,10 +46,10 @@ class ProfilePage extends Component {
                                     <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a className="nav-link active" onClick={this.handleClick} id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
+                                    <a className="nav-link" onClick={this.handleClick} id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
                                 </li>
                             </ul>
                         </div>
@@ -52,7 +67,7 @@ class ProfilePage extends Component {
                     </div>
                     <div className="col-md-8">
                         <div className="tab-content profile-tab" id="myTabContent">
-                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style={{marginTop: "-80px"}}>
+                            <div className="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab" style={{marginTop: "-80px"}}>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label>Email</label>
@@ -94,53 +109,8 @@ class ProfilePage extends Component {
                                             </div>
                                         </div>
                             </div>
-                            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
-                                        <div className="row" >
-                                            <div className="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
+                            <div className="tab-pane fade" id="bio" aria-labelledby="profile-tab" >
+                                    <p style={{marginTop:"-70px", fontWeight:"normal"}}>{currentProfile.bio ? currentProfile.bio : "No bio has been provided by the user"}</p>
                             </div>
                             </div>
                     </div>

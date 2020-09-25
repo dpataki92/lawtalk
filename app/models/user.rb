@@ -47,6 +47,7 @@ class User < ApplicationRecord
             location: self.location,
             email: self.email,
             fields: self.fields,
+            bio: self.bio,
             upvotes: self.upvotes,
             downvotes: self.downvotes,
             voteRatio: self.vote_ratio,
