@@ -86,18 +86,18 @@ class ProfilePage extends Component {
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <label>Upvotes</label>
+                                                <label>Created questions</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p>{currentProfile.upvotes}</p>
+                                                <p>{currentProfile.createdQuestions}</p>
                                             </div>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <label>Downvotes</label>
+                                                <label>Answers</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p>{currentProfile.downvotes}</p>
+                                                <p>{currentProfile.answers}</p>
                                             </div>
                                         </div>
                                         <div className="row">

@@ -34,7 +34,7 @@ class User < ApplicationRecord
     def top_rated_answers
         sorted = self.answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}[0..2].select {|a| a.upvotes > a.downvotes}
         if !sorted[0] || sorted[0].vote_ratio === 0
-            ["No answers were rated from this user","", ""]
+            ["This user has no rated answers","", ""]
         else
             sorted.collect {|a| a.question.title}
         end
@@ -48,8 +48,8 @@ class User < ApplicationRecord
             email: self.email,
             fields: self.fields,
             bio: self.bio,
-            upvotes: self.upvotes,
-            downvotes: self.downvotes,
+            answers: self.answers.size,
+            createdQuestions: self.created_questions.size,
             voteRatio: self.vote_ratio,
             answer1: self.top_rated_answers[0],
             answer2: self.top_rated_answers[1],
