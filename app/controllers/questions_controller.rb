@@ -26,8 +26,9 @@ class QuestionsController < ApplicationController
     end
 
     def show
-        question = Question.all.first
-        render json: {questionData: QuestionSerializer.new(question).to_serialized_json}
+        question = Question.find_by(id: params[:id])
+        answers = question.answers
+        render json: {questionData: QuestionSerializer.new(question).to_serialized_json, answerData: AnswerSerializer.new(answers).to_serialized_json}
     end
 
 end
