@@ -3,6 +3,8 @@ import UserRow from "./userRow.js";
 import '../TopUsers.css';
 import { connect } from "react-redux";
 import  { getTopUsers } from "../actions/users.js";
+import { Link } from 'react-router-dom';
+
 
 
 class TopUsers extends Component {
@@ -15,7 +17,7 @@ class TopUsers extends Component {
 
         const renderTopUsers = this.props.topUsers.map((u, id)=> {
             console.log(this.props.topUsers)
-            return <UserRow key={id} username={u.username} avatar={u.avatar} location={u.location} fields={u.fields} upvotes={u.upvotes}/>
+            return <Link to={`/users/${u.id}`}><UserRow key={id} username={u.username} avatar={u.avatar} location={u.location} fields={u.fields} upvotes={u.upvotes}/></Link> 
         })
 
         return (<React.Fragment>

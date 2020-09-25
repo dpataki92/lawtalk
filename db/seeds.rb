@@ -177,7 +177,7 @@ User.all.each do |u|
     end
 end
 
-# Creating random user reactions to answers and comments (30% - ignore, 40% - upvote 30% - downvote)
+# Creating random user reactions to answers and comments (40% - ignore, 40% - upvote 20% - downvote)
 User.all.each do |u|
     10.times {
         answer = Answer.all[rand(0..Answer.all.size-1)]
@@ -188,10 +188,10 @@ User.all.each do |u|
                 answer.user.upvotes += 1
                 answer.user.save
                 answer.save
-            elsif num > 7 && num <= 10
+            elsif num > 8 && num <= 10
                 answer.downvotes += 1
                 answer.user.downvotes += 1
-                answer.user
+                answer.user.save
                 answer.save
             end
         end

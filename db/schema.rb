@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_18_193039) do
     t.string "email"
     t.string "password_digest"
     t.string "location"
-    t.string "fields"
+    t.string "fields", default: "-"
     t.string "avatar"
     t.string "bio"
     t.integer "upvotes", default: 0
