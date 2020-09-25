@@ -119,6 +119,7 @@ class Question < ApplicationRecord
         result = []
         ranked_answers.each do |a|
             answer_hash = {
+                answerId: a.id,
                 content: a.content,
                 answerCreator: a.user.username,
                 answerCreatorId: a.user.id,

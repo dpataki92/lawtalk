@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
     get '/profile', to: 'users#profile'
     post '/login', to: 'auth#create'
+
     resources :questions, only: [:create, :edit, :update, :new, :show]
     post '/questions/list', to: 'questions#questions_list'
     get '/questions/:id/replies', to: 'questions#replies'
+
+    get '/answers/:id/vote', to: 'answers#vote'
   end
 end

@@ -17,12 +17,11 @@ const Reply = (props) => {
                             <p> {props.content}
                             </p>
                         </div>
-                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
-                            <div className="px-4 pt-3"> <a href="javascript:void(0)" className="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> 
-                            <i className="fa fa-heart text-danger"></i>&nbsp; <span className="align-middle">{props.upvotes}</span> </a> <span className="text-muted d-inline-flex align-items-center align-middle ml-4"> 
-                            <i className="fa fa-eye text-muted fsize-3"></i>&nbsp; <span className="align-middle">{props.downvotes}</span> 
-                            <i className="fa fa-comments-o text-muted fsize-3"></i>&nbsp; <span className="align-middle">{}</span> 
-                            </span> </div>
+                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId}>
+                            <div className="px-4 pt-3"> 
+                            <a href="javascript:void(0)" className="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> <i className="fa fa-arrow-up text-success"></i>&nbsp; <span className="align-middle">{props.upvotes}</span> </a> 
+                            <a href="javascript:void(0)" className="text-muted d-inline-flex align-items-center align-middle" data-abc="true"> <i className="fa fa-arrow-down text-danger"></i>&nbsp; <span className="align-middle">{props.downvotes}</span> </a> 
+                            </div>
                             <div className="px-4 pt-3"> <button type="button" className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
                         </div>
                     </div>

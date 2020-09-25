@@ -4,15 +4,14 @@ const MainPost = props => {
     console.log(props)
     return(
         <div className="container-fluid mt-100" style={{width: "80%"}}>
-            <p>{}</p>
         <div className="row">
             <div className="col-md-12">
             <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp; + Follow thread</button>
             <h4 style={{marginBottom: "5px"}}>{props.title}</h4>
                 <div className="card mb-4">
-                    <div className="card-header" style={{backgroundColor:""}}>
+                    <div className="card-header">
                         <div className="media flex-wrap w-100 align-items-center"> <div style={{height: "100px", overflow: "hidden"}}><img src={`/${props.creatorAvatar}`} className="d-block ui-w-40 rounded-circle" style={{height: "100px", objectFit: "cover"}} alt=""/></div>
-                            <div className="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{props.creator}</a>
+                            <div className="media-body ml-3"> <a href="javascript:void(0)" data-abc="true" style={{fontWeight:"bold"}}>{props.creator}</a>
                                 <div className="text-muted small">{props.creation}</div>
                             </div>
                             <div className="text-muted small ml-3">
