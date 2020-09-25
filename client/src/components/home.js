@@ -8,12 +8,14 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import QuestionContainer from './questionContainer.js';
 import TopUsers from './topUsers.js';
 import ProfilePage from './profilePage.js';
+import Thread from './thread.js';
 
 
 
 class Home extends Component {
 
     render() {
+
         return(
             <Router>
             <div>
@@ -23,6 +25,7 @@ class Home extends Component {
             <Route key="all" exact path="/questions/all" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
             <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
             <Route exact path="/questions/new" render={() => <QuestionForm />} />
+            <Route key="thread" path="/questions/:id" component={Thread} />
             <Route key="top" path="/users/top" render={() => <TopUsers />} />
             <Route key="profile" path="/users/:id" component={ProfilePage} />
             </Switch>

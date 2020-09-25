@@ -98,4 +98,21 @@ class Question < ApplicationRecord
     def self.sorted_and_ordered(order, field, jurisdiction, search_word)
         self.ordered_questions(order).sorted_questions(field, jurisdiction, search_word)
     end
+
+    def question_serializer
+        question_data_hash = {
+            title: self.title, 
+            content: self.content,
+            jurisdiction: self.jurisdiction,
+            field: self.field,
+            creatorAvatar: self.creator.avatar,
+            creator: self.creator.username,
+            creatorId: self.creator.id,
+            creation: self.created_at.to_s[0..-14],
+            replies: self.answers.size,
+        }
+    end
+
+    def question_answer_serializer
+    end
 end

@@ -19,9 +19,9 @@ export const getCurrentThread = (id) => {
         })
         .then(resp => resp.json())
         .then(json => {
-            if (json.questionData && json.answerData) {
-                console.log(json.questionData, json.answerData)
-                dispatch(setCurrentThread(json))
+            console.log(json)
+            if (json.questionData) {
+                dispatch(setCurrentThread(json.questionData))
             } else {
                 dispatch(setCurrentThread({}))
             }           

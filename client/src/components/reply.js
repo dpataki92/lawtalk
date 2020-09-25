@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reply = () => {
+const Reply = (props) => {
     return(
         <div className="container-fluid mt-100">
             <div className="row">
