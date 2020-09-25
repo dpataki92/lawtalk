@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getCurrentProfile } from '../actions/currentProfile.js'
-
+import { getCurrentProfile } from '../actions/currentProfile.js';
 
 class ProfilePage extends Component {
-    
-    componentDidMount() {
-        let { id } = useParams();
-        this.getCurrentProfile(id);
+
+    constructor(props) {
+        super(props);
+        props.getCurrentProfile(props.match.params.id);
     }
 
     render() {
+        const {currentProfile} = this.props
         return(
             <div className="container emp-profile" style={{marginTop:"-15px"}}>
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">
                         <div className="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src={`/${currentProfile.avatar}`} alt="profile picture"/>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="profile-head">
                                     <h5>
-                                        Kshiti Ghelani
+                                        {currentProfile.username}
                                     </h5>
                                     <h6 style={{marginBottom:"15px"}}>
-                                        Web Developer and Designer
+                                        {currentProfile.location}
                                     </h6>
-                                    <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>95%</span></p>
+                                    <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
                                     <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -45,9 +45,9 @@ class ProfilePage extends Component {
                     <div className="col-md-4">
                         <div className="profile-work">
                             <p>TOP RATED ANSWERS</p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
+                            <a href="">{currentProfile.answer1}</a><br/>
+                            <a href="">{currentProfile.answer2}</a><br/>
+                            <a href="">{currentProfile.answer3}</a>
                         </div>
                     </div>
                     <div className="col-md-8">
@@ -58,7 +58,7 @@ class ProfilePage extends Component {
                                                 <label>Email</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{currentProfile.email}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -66,7 +66,7 @@ class ProfilePage extends Component {
                                                 <label>Fields</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{currentProfile.fields}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -74,7 +74,7 @@ class ProfilePage extends Component {
                                                 <label>Upvotes</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{currentProfile.upvotes}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -82,7 +82,7 @@ class ProfilePage extends Component {
                                                 <label>Downvotes</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{currentProfile.downvotes}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -90,7 +90,7 @@ class ProfilePage extends Component {
                                                 <label>Member since</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{currentProfile.memberSince}</p>
                                             </div>
                                         </div>
                             </div>
@@ -151,11 +151,8 @@ class ProfilePage extends Component {
     }
 }
 
-const mapStateToProps = ({currentProfile}) => {
-    return {
-      currentProfile
-    }
-}
+const mapStateToProps = state => {
+    return ({ currentProfile: state.currentProfile })
+  }
   
-
-export default connect(mapStateToProps, {getCurrentProfile})(ProfilePage)
+export default connect(mapStateToProps, { getCurrentProfile })(ProfilePage);

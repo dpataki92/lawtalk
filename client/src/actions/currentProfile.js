@@ -8,6 +8,7 @@ export const setCurrentProfile = currentProfile => {
 
 // asynchronous action creators
 export const getCurrentProfile = (id) => {
+    console.log(id)
     return dispatch => {
         return fetch(`/api/users/${id}`, {
             method: "GET",
@@ -22,7 +23,7 @@ export const getCurrentProfile = (id) => {
                 console.log(json.currentProfile)
                 dispatch(setCurrentProfile(json.currentProfile))
             } else {
-                dispatch(setCurrentProfile([]))
+                dispatch(setCurrentProfile({}))
             }           
         })
     }

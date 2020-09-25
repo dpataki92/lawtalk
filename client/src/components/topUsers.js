@@ -1,4 +1,4 @@
-import React, { Component, PropTypes  } from 'react';
+import React, { Component  } from 'react';
 import UserRow from "./userRow.js";
 import '../TopUsers.css';
 import { connect } from "react-redux";

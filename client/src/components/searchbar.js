@@ -1,15 +1,9 @@
 import React, { Component, useState } from 'react';
 import JursidictionList from './jurisdictionList.js';
 import FieldList from './fieldList.js';
-import {Link, withRouter, Route} from 'react-router-dom';
-import QuestionForm from './questionForm.js'
-
-
+import {Link} from 'react-router-dom';
 
 class SearchBar extends Component {
-    
-
-
     render() {
         return(
             <React.Fragment>

@@ -34,17 +34,25 @@ class User < ApplicationRecord
     def top_rated_answers
         sorted = self.answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}[0..2].select {|a| a.upvotes > a.downvotes}
         if !sorted[0] || sorted[0].vote_ratio === 0
-            "No answers were rated from this user"
+            ["No answers were rated from this user","", ""]
         else
-            sorted
+            sorted.collect {|a| a.question.title}
         end
     end
 
     def profile_hash
         {
-            basic: self.as_json,
+            avatar: self.avatar,
+            username: self.username,
+            location: self.location,
+            email: self.email,
+            fields: self.fields,
+            upvotes: self.upvotes,
+            downvotes: self.downvotes,
             voteRatio: self.vote_ratio,
-            topRatedAnwers: self.top_rated_answers,
+            answer1: self.top_rated_answers[0],
+            answer2: self.top_rated_answers[1],
+            answer3: self.top_rated_answers[2],
             memberSince: self.creation_date_in_words
         }
     end

@@ -19,14 +19,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    user = User.find_by(id: params[:id])
-    render json: {currentProfile: user.profile_hash}, status: :accepted
-  end
-
   def top_users
     users = User.rank_top_15
     render json: { topUsers: users }, status: :accepted
+  end
+
+  def show
+    user = User.find_by(id: params[:id])
+    render json: {currentProfile: user.profile_hash}, status: :accepted
   end
     
   private

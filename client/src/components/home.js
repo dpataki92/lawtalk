@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import '../App.css';
 import  { logout } from "../actions/currentUser.js";
 import { connect } from "react-redux";
@@ -11,7 +11,7 @@ import ProfilePage from './profilePage.js';
 
 
 
-class Home extends React.Component {
+class Home extends Component {
 
     render() {
         return(
@@ -23,13 +23,15 @@ class Home extends React.Component {
             <Route key="all" exact path="/questions/all" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
             <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
             <Route exact path="/questions/new" render={() => <QuestionForm />} />
-            <Route exact path="/users/top" render={() => <TopUsers />} />
-            <Route exact path="/users/:id" render={() => <ProfilePage />} />
+            <Route key="top" path="/users/top" render={() => <TopUsers />} />
+            <Route key="profile" path="/users/:id" component={ProfilePage} />
             </Switch>
             </div>
             </Router>
         )
     }
 }
-
-export default connect(null, { logout })(Home);
+const mapStateToProps = state => {
+    return ({ currentProfile: state.currentProfile })
+  }
+export default connect(mapStateToProps, { logout })(Home);
