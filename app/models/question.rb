@@ -122,6 +122,7 @@ class Question < ApplicationRecord
                 content: a.content,
                 answerCreator: a.user.username,
                 answerCreatorId: a.user.id,
+                answerCreatorAvatar: a.user.avatar,
                 creation: a.creation_date_in_words,
                 upvotes: a.upvotes,
                 downvotes: a.downvotes

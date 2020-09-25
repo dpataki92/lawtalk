@@ -1,6 +1,4 @@
 class QuestionsController < ApplicationController
-    skip_before_action :authorized, only: [:show]
-
     def questions_list
         questions = []
         if params[:followed] === "true"
@@ -27,8 +25,12 @@ class QuestionsController < ApplicationController
 
     def show
         question = Question.find_by(id: params[:id])
-        answers = question.answers
         render json: {questionData: question.question_serializer}
+    end
+
+    def replies
+        question = Question.find_by(id: params[:id])
+        render json: {answerData: question.question_answer_serializer}
     end
 
 end

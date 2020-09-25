@@ -1,13 +1,13 @@
 // synchronous action creators
-export const setCurrentThread = currentThread => {
+export const setCurrentQuestion = currentQuestion => {
     return {
-        type: "SET_CURRENT_THREAD",
-        currentThread: currentThread 
+        type: "SET_CURRENT_QUESTION",
+        currentQuestion: currentQuestion 
     }
 }
 
 // asynchronous action creators
-export const getCurrentThread = (id) => {
+export const getCurrentQuestion = (id) => {
     console.log(id)
     return dispatch => {
         return fetch(`/api/questions/${id}`, {
@@ -21,9 +21,9 @@ export const getCurrentThread = (id) => {
         .then(json => {
             console.log(json)
             if (json.questionData) {
-                dispatch(setCurrentThread(json.questionData))
+                dispatch(setCurrentQuestion(json.questionData))
             } else {
-                dispatch(setCurrentThread({}))
+                dispatch(setCurrentQuestion({}))
             }           
         })
     }

@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import MainPost from './mainPost.js';
 import Replies from './replies.js';
 import { connect } from 'react-redux';
-import { getCurrentThread } from '../actions/currentThread';
+import { getCurrentQuestion } from '../actions/currentQuestion.js';
+import { getCurrentAnswers} from '../actions/currentAnswers.js';
 
 class Thread extends Component {
     constructor(props) {
         super(props);
-        props.getCurrentThread(props.match.params.id);
+        props.getCurrentQuestion(props.match.params.id);
+        props.getCurrentAnswers(props.match.params.id);
     }
 
     render(){
 
-        const questionData  = this.props.currentThread
-        const {answerData} = this.props.currentThread
+        const questionData  = this.props.currentQuestion
+        const answerData  = this.props.currentAnswers
 
         return(
             <React.Fragment>
-                <MainPost title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies} followers={questionData.followers}/>
+                <MainPost check={answerData} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies} followers={questionData.followers}/>
+                <Replies replies={answerData}/>
             </React.Fragment>
         )
     }
@@ -27,7 +30,7 @@ class Thread extends Component {
  //   <Replies replies={answerData}/>
 
 const mapStateToProps = state => {
-    return ({ currentThread: state.currentThread })
+    return ({ currentQuestion: state.currentQuestion, currentAnswers: state.currentAnswers })
   }
 
-export default connect(mapStateToProps, { getCurrentThread })(Thread);
+export default connect(mapStateToProps, { getCurrentQuestion, getCurrentAnswers})(Thread);
