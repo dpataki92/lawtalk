@@ -19,7 +19,8 @@ class Question < ApplicationRecord
             last_response_creation_date = last_response.creation_date_in_words
             last_response_user = last_response.user.username
             last_response_user_avatar = last_response.user.avatar
-            [last_response_creation_date, last_response_user, last_response_user_avatar]
+            last_response_user_id = last_response.user.id
+            [last_response_creation_date, last_response_user, last_response_user_avatar, last_response_user_id]
         else
             ["No reply yet", "-", "default.jpg"]
         end
@@ -34,9 +35,11 @@ class Question < ApplicationRecord
                 field: q.field,
                 replies: q.answers.size,
                 creator: q.creator.username,
+                creatorId: q.creator.id,
                 lastResponseDate: q.last_response_data[0],
                 lastRespondent: q.last_response_data[1],
-                lastRespondentAvatar: q.last_response_data[2]
+                lastRespondentAvatar: q.last_response_data[2],
+                lastRespondentId: q.last_response_data[3]
             }
            questions_data_array << question_data_hash
         end

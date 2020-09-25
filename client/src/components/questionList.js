@@ -8,6 +8,7 @@ class QuestionList extends Component {
                 if (id < 1) {
                     return <QuestionRow
                           key={id} 
+                          id={question.creatorId}
                           title={question.title}
                           jurisdiction={question.jurisdiction}
                           field={question.field}
@@ -16,13 +17,15 @@ class QuestionList extends Component {
                           lastRespondent= {question.lastRespondent} 
                           lastResponseDate= {question.lastResponseDate}
                           lastRespondentAvatar={question.lastRespondentAvatar}
+                          lastRespondentId={question.lastRespondentId}
                         />
                 } else {
                     return (
                         <React.Fragment>
                             <hr className="m-0"/>
                             <QuestionRow
-                          key={id} 
+                          key={id}
+                          id={question.creatorId}
                           title={question.title}
                           jurisdiction={question.jurisdiction}
                           field={question.field}
@@ -31,6 +34,7 @@ class QuestionList extends Component {
                           lastRespondent= {question.lastRespondent} 
                           lastResponseDate= {question.lastResponseDate}
                           lastRespondentAvatar={question.lastRespondentAvatar}
+                          lastRespondentId={question.lastRespondentId}
                             />
                         </React.Fragment>
                     )
