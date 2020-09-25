@@ -17,7 +17,7 @@ class Thread extends Component {
 
         return(
             <React.Fragment>
-                <MainPost title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies}/>
+                <MainPost title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies} followers={questionData.followers}/>
             </React.Fragment>
         )
     }
