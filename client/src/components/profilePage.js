@@ -16,8 +16,8 @@ class ProfilePage extends Component {
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">
-                        <div className="profile-img">
-                            <img src={`/${currentProfile.avatar}`} alt="profile picture"/>
+                        <div className="profile-img" style={{height: "250", width: "300px", overflow: "hidden"}}>
+                            <img style={{height: "250px", objectFit: "cover"}} src={`/${currentProfile.avatar}`} alt="profile picture"/>
                         </div>
                     </div>
                     <div className="col-md-6">
@@ -52,7 +52,7 @@ class ProfilePage extends Component {
                     </div>
                     <div className="col-md-8">
                         <div className="tab-content profile-tab" id="myTabContent">
-                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style={{marginTop: "-80px"}}>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label>Email</label>
