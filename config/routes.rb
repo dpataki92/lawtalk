@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users#show'
     get '/profile', to: 'users#profile'
     post '/login', to: 'auth#create'
-    resources :questions, only: [:create, :edit, :update, :new]
+    resources :questions, only: [:create, :edit, :update, :new, :show]
     post '/questions/list', to: 'questions#questions_list'
   end
 end

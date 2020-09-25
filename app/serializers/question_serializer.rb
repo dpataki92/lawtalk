@@ -5,10 +5,7 @@ class QuestionSerializer < ActiveModel::Serializer
       
       def to_serialized_json
         @question.to_json(:include => {
-          :answers,
-          :comments,
-          :followers,
-          :creator
+          :creator => {:only => [:username, :avatar]}
         })
       end
 end

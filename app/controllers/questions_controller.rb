@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+    skip_before_action :authorized, only: [:show]
+
     def questions_list
         questions = []
         if params[:followed] === "true"
@@ -21,6 +23,11 @@ class QuestionsController < ApplicationController
         else
             render json: {message: "failure"}
         end
+    end
+
+    def show
+        question = Question.all.first
+        render json: {questionData: QuestionSerializer.new(question).to_serialized_json}
     end
 
 end
