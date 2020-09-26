@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     post '/questions/list', to: 'questions#questions_list'
     get '/questions/:id/replies', to: 'questions#replies'
 
+    resources :answers, only: [:create, :edit, :update]
     post '/answers/:id/vote', to: 'answers#vote'
     get '/answers/:id/comments', to: 'answers#comments'
+
+    resources :comments, only: [:create, :edit, :update]
+    post '/comments/:id/vote', to: 'comments#vote'
   end
 end

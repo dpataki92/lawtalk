@@ -52,7 +52,6 @@ class QuestionForm extends Component {
     }
 
     handleSubmit = () => {
-        console.log(this.state)
         fetch("/api/questions", {
             method: "POST",
             headers: {"Content-Type": "application/json",

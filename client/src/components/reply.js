@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Comments from './comments.js';
 import { connect } from 'react-redux';
 import { getCurrentComments } from '../actions/currentComments.js';
+import ReplyForm from './replyForm.js';
 
 
 class Reply extends Component {
@@ -54,6 +55,15 @@ class Reply extends Component {
         }
     }
 
+    handleReplyForm = (e) => {
+        let replyFormDiv = e.target.parentNode.parentNode.parentNode.querySelector(".reply-form")
+        if (replyFormDiv.style.display === "none") {
+            replyFormDiv.style.display = "block";
+        } else {
+            replyFormDiv.style.display = "none"
+        }
+    }
+
     render() {
     const props = this.props
     return(
@@ -73,14 +83,17 @@ class Reply extends Component {
                             <p> {props.content}
                             </p>
                         </div>
-                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId} ref={this.myRef}>
+                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId} >
                             <div className="px-4 pt-3"> 
                             <a style={{cursor: "pointer"}} id="upvote" onClick={this.handleVoting}> <i className="fa fa-arrow-up text-success" style={{fontSize: "1.3em"}}></i> </a>  <span id="upvoteNum" style={{opacity: "0.5", marginRight:"5px"}} >{props.upvotes} upvotes</span> 
                             <a style={{cursor: "pointer"}} id="downvote" onClick={this.handleVoting}> <i className="fa fa-arrow-down text-danger" style={{fontSize: "1.3em"}}></i> </a>  <span id="downvoteNum" style={{opacity: "0.5", marginRight:"5px"}}>{props.downvotes} downvotes</span> 
                             <i className="fa fa-comments-o text-muted" style={{fontSize: "1.3em"}}></i> <a data-abc="true" style={{cursor: "pointer"}} id="downvote" onClick={this.handleComments}> <span id="comments" style={{opacity: "0.5"}}>Show comments ({props.commentsNum})</span>  </a>  
 
                             </div>
-                            <div className="px-4 pt-3"> <button type="button" className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
+                            <div className="px-4 pt-3"> <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
+                        </div>
+                        <div className="card-body reply-form" style={{display: "none"}}>
+                            {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser}/>}
                         </div>
                         <div className="card-body comments-div" style={{display: "none"}}>
                             {<Comments comments={this.props.comments}/>}

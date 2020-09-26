@@ -30,6 +30,7 @@ class Question < ApplicationRecord
         questions_data_array = []
         questions.each do |q|
             question_data_hash = {
+                id: q.id,
                 title: q.title, 
                 jurisdiction: q.jurisdiction,
                 field: q.field,
@@ -103,6 +104,7 @@ class Question < ApplicationRecord
 
     def question_serializer
         question_data_hash = {
+            id: self.id,
             title: self.title, 
             content: self.content,
             jurisdiction: self.jurisdiction,

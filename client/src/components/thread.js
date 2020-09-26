@@ -19,18 +19,16 @@ class Thread extends Component {
 
         return(
             <React.Fragment>
-                <MainPost title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies} followers={questionData.followers}/>
-                <Replies replies={answerData}/>
+                <MainPost postId={`${questionData.id}`} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} replies={questionData.replies} followers={questionData.followers} currentUser={this.props.currentUser.username}/>
+                <Replies replies={answerData} currentUser={this.props.currentUser.username}/>
             </React.Fragment>
         )
     }
 
 }
 
- //   <Replies replies={answerData}/>
-
 const mapStateToProps = state => {
-    return ({ currentQuestion: state.currentQuestion, currentAnswers: state.currentAnswers })
+    return ({ currentQuestion: state.currentQuestion, currentAnswers: state.currentAnswers, currentUser: state.currentUser })
   }
 
 export default connect(mapStateToProps, { getCurrentQuestion, getCurrentAnswers})(Thread);

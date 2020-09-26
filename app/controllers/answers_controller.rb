@@ -1,4 +1,16 @@
 class AnswersController < ApplicationController
+    def create
+        question = Question.find_by(id: params[:postId])
+        answer = Answer.create(content: params[:content], user: User.find_by(username: params[:currentUser]), question: question)
+        byebug
+        if answer.valid?
+            question.answers << answer
+            render json: {message: "success"}
+        else 
+            render json: {message: "failure"}
+        end
+    end
+
     def vote
         answer = Answer.find_by(id: params[:id])
         if params[:vote] === "upvote"
