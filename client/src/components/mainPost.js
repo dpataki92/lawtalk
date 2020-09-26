@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReplyForm from './replyForm.js';
+import EditButton from './editButton.js'; 
+import DeleteButton from './deleteButton.js'; 
 
 const MainPost = props => {
     const handleReplyForm = (e) => {
@@ -34,7 +36,11 @@ const MainPost = props => {
                     </div>
                     <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                         <div class="px-4 pt-3"> <i class="fa fa-reply text-primary"></i>&nbsp; <span class="align-middle text-muted">{props.replies} replies</span> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-users text-primary fsize-3"></i>&nbsp; <span class="align-middle">{props.followers} followers</span> </span> </div>
+                        <div style={{display: "flex", justifyContent: "space-around"}}>
+                        <div className="px-4 pt-3">{props.currentUser === props.creator ? <EditButton/> : ""}</div>
+                        <div className="px-4 pt-3">{props.currentUser === props.creator ? <DeleteButton/> : ""}</div>
                         <div className="px-4 pt-3"> <button type="button" onClick={handleReplyForm} className="btn btn-primary"><i class="ion ion-md-create"></i>&nbsp; Reply</button> </div>
+                        </div>
                     </div>
                     <div className="card-body reply-form" style={{display: "none"}}>
                         <div> {<ReplyForm type={"answer"} postId={props.postId} currentUser={props.currentUser}/>}</div>

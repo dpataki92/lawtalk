@@ -28,6 +28,7 @@ class QuestionList extends Component {
                             <hr className="m-0"/>
                             <QuestionRow
                           key={id}
+                          questionId={question.id}
                           id={question.creatorId}
                           title={question.title}
                           jurisdiction={question.jurisdiction}
