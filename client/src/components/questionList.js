@@ -18,6 +18,8 @@ class QuestionList extends Component {
                           lastResponseDate= {question.lastResponseDate}
                           lastRespondentAvatar={question.lastRespondentAvatar}
                           lastRespondentId={question.lastRespondentId}
+                          currentUser={this.props.currentUser}
+                          followersNames={question.followersNames}
                         />
                 } else {
                     return (
@@ -35,6 +37,8 @@ class QuestionList extends Component {
                           lastResponseDate= {question.lastResponseDate}
                           lastRespondentAvatar={question.lastRespondentAvatar}
                           lastRespondentId={question.lastRespondentId}
+                          currentUser={this.props.currentUser}
+                          followersNames={question.followersNames}
                             />
                         </React.Fragment>
                     )

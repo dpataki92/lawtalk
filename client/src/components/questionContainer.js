@@ -129,7 +129,7 @@ class QuestionContainer extends Component {
             searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick}/>
             <div className="container-fluid mt-100">
                 <QuestionListHeader />
-                <QuestionList questions={this.props.questions}/>
+                <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username}/>
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
             </div>

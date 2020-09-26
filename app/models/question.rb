@@ -39,7 +39,9 @@ class Question < ApplicationRecord
                 lastResponseDate: q.last_response_data[0],
                 lastRespondent: q.last_response_data[1],
                 lastRespondentAvatar: q.last_response_data[2],
-                lastRespondentId: q.last_response_data[3]
+                lastRespondentId: q.last_response_data[3],
+                followers: q.followers.size,
+                followersNames: q.followers.collect{ |f| f.username}.join(", ")
             }
            questions_data_array << question_data_hash
         end
@@ -109,8 +111,7 @@ class Question < ApplicationRecord
             creator: self.creator.username,
             creatorId: self.creator.id,
             creation: self.created_at.to_s[0..-14],
-            replies: self.answers.size,
-            followers: self.followers.size
+            replies: self.answers.size
         }
     end
 
