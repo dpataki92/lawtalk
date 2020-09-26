@@ -149,7 +149,7 @@ iframe {
   font-family: Poppins-Regular;
   font-size: 15px;
   line-height: 1.4;
-  color: #00ad5f;
+  color: #007bff;
   text-transform: uppercase;
 }
 
@@ -356,7 +356,7 @@ input.input100 {
   width: 100%;
   height: 50px;
   border-radius: 3px;
-  background: #00ad5f;
+  background: #007bff;
 
   font-family: Montserrat-Bold;
   font-size: 12px;
@@ -2037,7 +2037,38 @@ input.input100 {
   color: #0062cc;
 }
 
+/* Googlr */
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
 
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+/* Style all font awesome icons */
+.fa-google, .fa-twitter {
+  display: unset;
+  padding: 15px;
+  font-size: 12px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.fa-google {
+  margin-right: 5px;
+}
+
+/* Add a hover effect if you want */
+.fa-facebook:hover, .fa-twitter:hover {
+  opacity: 0.7;
+}
 
 
 

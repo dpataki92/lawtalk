@@ -47,8 +47,9 @@ const Login = ({loginForm, updateLoginForm, login}) => {
 					<div className="w-full text-center p-t-27 p-b-239">
 						<span className="txt1">
 							or login with social media account
-						</span>
-
+						</span><br/><br/>
+						<a  href="#" class="fa fa-google"></a>
+						<a  href="#" class="fa fa-twitter"></a>
 					</div>
 
 					<div className="w-full text-center">
