@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const MainPost = props => {
-    console.log(props)
     return(
         <div className="container-fluid mt-100" style={{width: "80%"}}>
         <div className="row">

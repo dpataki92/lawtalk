@@ -14,4 +14,13 @@ class AnswersController < ApplicationController
         end
         render json: {answerUpvotes: answer.upvotes.size, answerDownvotes: answer.downvotes.size, message: "You have #{params[:vote]}d this answer." }
     end
+
+    def comments
+            answer = Answer.find_by(id: params[:id])
+            if answer.comments.size === 0
+                render json: {empty: true}
+            else
+                render json: {comments: answer.answer_comments_serializer}
+            end
+    end
 end

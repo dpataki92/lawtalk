@@ -22,4 +22,21 @@ class Answer < ApplicationRecord
         answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}
     end
 
+    def answer_comments_serializer
+        ranked_comments = Comment.ranked(self.comments)
+        result = []
+        ranked_comments.each do |c|
+            comment_hash = {
+                content: c.content,
+                commentCreator: c.user.username,
+                commentCreatorId: c.user.id,
+                creation: c.creation_date_in_words,
+                upvotes: c.upvotes,
+                downvotes: c.downvotes
+            }
+            result << comment_hash
+        end
+        result
+    end
+
 end

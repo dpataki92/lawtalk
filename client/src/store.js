@@ -7,6 +7,7 @@ import questionsReducer from './reducers/questions.js';
 import currentProfileReducer from './reducers/currentProfile.js';
 import currentQuestionReducer from './reducers/currentQuestion.js';
 import currentAnswersReducer from './reducers/currentAnswers.js';
+import currentCommentsReducer from './reducers/currentComments.js';
 
 const reducer = combineReducers({
     currentUser: currentUserReducer,
@@ -15,7 +16,8 @@ const reducer = combineReducers({
     topUsers: usersReducer,
     currentProfile: currentProfileReducer,
     currentQuestion: currentQuestionReducer,
-    currentAnswers: currentAnswersReducer
+    currentAnswers: currentAnswersReducer,
+    currentComments: currentCommentsReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

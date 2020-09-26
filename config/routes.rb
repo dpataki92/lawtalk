@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     get '/questions/:id/replies', to: 'questions#replies'
 
     post '/answers/:id/vote', to: 'answers#vote'
+    get '/answers/:id/comments', to: 'answers#comments'
   end
 end
