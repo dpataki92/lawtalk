@@ -3,7 +3,9 @@ import FieldList from './fieldList.js'
 import { connect } from "react-redux";
 import EUJurisdictionList from './euJurisdictionList.js';
 import USAJurisdictionList from './usaJurisdictionList.js';
-import { Redirect } from 'react-router-dom';
+import { createBrowserHistory } from './history';
+import history from './history';
+
 
 
 
@@ -62,7 +64,8 @@ class QuestionForm extends Component {
           .then(function(json) {
             console.log(json);
             if (json.message === "success") {
-                alert(`Successful question creation`);
+                alert("You have created a question");
+                history.push('/questions/all')
             } else {
                 alert("Invalid data. Please try again.")
             }
