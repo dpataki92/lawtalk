@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
             answer.save
             answer.user.save
         end
-        render json: {answerUpvotes: answer.upvotes.size, answerDownvotes: answer.downvotes.size, message: "You have #{params[:vote]}d this answer." }
+        render json: {answerUpvotes: answer.upvotes, answerDownvotes: answer.downvotes, message: "You have #{params[:vote]}d this answer." }
     end
 
     def comments

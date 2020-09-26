@@ -4,8 +4,8 @@ import Reply from "./reply.js";
 class Replies extends Component {
 
     render() {
-        const handleReplies = this.props.replies.map((r) => {
-            return <Reply answerId={r.answerId} creation={r.creation} answerCreator={r.answerCreator} content={r.content} upvotes={r.upvotes} downvotes={r.downvotes} commentsNum={r.commentsNum}/>
+        const handleReplies = this.props.replies.map((r,id) => {
+            return <Reply key={id} answerId={r.answerId} creation={r.creation} answerCreator={r.answerCreator} content={r.content} upvotes={r.upvotes} downvotes={r.downvotes} commentsNum={r.commentsNum}/>
         })
         return(
             <div>

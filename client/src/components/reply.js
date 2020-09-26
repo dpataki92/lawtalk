@@ -28,7 +28,9 @@ class Reply extends Component {
         .then(resp => resp.json())
         .then(function(json) {
             alert(json.message);
+            console.log(json)
             let answerFooter = document.getElementById(id);
+            console.log(answerFooter)
             answerFooter.querySelector("#upvote").style.visibility = "hidden";
             answerFooter.querySelector("#downvote").style.visibility = "hidden";
             answerFooter.querySelector("#upvoteNum").innerText = `${json.answerUpvotes} upvotes`
