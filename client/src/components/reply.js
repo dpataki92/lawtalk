@@ -9,7 +9,6 @@ class Reply extends Component {
 
     constructor(props) {
         super(props)
-        props.getCurrentComments(props.answerId)
 
     }
 
@@ -29,21 +28,25 @@ class Reply extends Component {
         .then(resp => resp.json())
         .then(function(json) {
             alert(json.message);
-            const answerFooter = this.myRef.current;
-            answerFooter.getElementById("upvote").style.visibility = "hidden";
-            answerFooter.getElementById("downvote").style.visibility = "hidden";
-            answerFooter.getElementById("upvoteNum").innerText = `${json.answerUpvotes} upvotes`
-            answerFooter.getElementById("downvoteNum").innerText = `${json.answerDownvotes} downvotes`
+            let answerFooter = document.getElementById(id);
+            answerFooter.querySelector("#upvote").style.visibility = "hidden";
+            answerFooter.querySelector("#downvote").style.visibility = "hidden";
+            answerFooter.querySelector("#upvoteNum").innerText = `${json.answerUpvotes} upvotes`
+            answerFooter.querySelector("#downvoteNum").innerText = `${json.answerDownvotes} downvotes`
         })   
     }
 
     handleComments = (e) => {
         let commentDiv = e.target.parentNode.parentNode.parentNode.parentNode.querySelector(".comments-div")
         if (commentDiv.style.display === "none") {
-            e.target.innerText = "Hide comments";
-            commentDiv.style.display = "block";
+            this.props.getCurrentComments(this.props.answerId)
+            if (!(this.props.commentsNum === 0)) {
+                e.target.innerText = "Hide comments";
+                commentDiv.style.display = "block";
+            }
+
         } else {
-            e.target.innerText = "Show comments";
+            e.target.innerText = `Show comments (${this.props.commentsNum})`;
             commentDiv.style.innerHTML = "";
             commentDiv.style.display = "none"
         }

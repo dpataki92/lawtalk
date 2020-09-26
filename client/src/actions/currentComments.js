@@ -21,7 +21,6 @@ export const getCurrentComments = (id) => {
             if (json.comments) {
                 dispatch(setCurrentComments(json.comments))
             } else {
-                dispatch(setCurrentComments([]))
                 alert("No comments have been provided")
             }           
         })
