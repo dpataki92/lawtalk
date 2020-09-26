@@ -3,7 +3,7 @@ import FieldList from './fieldList.js'
 import { connect } from "react-redux";
 import EUJurisdictionList from './euJurisdictionList.js';
 import USAJurisdictionList from './usaJurisdictionList.js';
-import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -62,7 +62,7 @@ class QuestionForm extends Component {
           .then(function(json) {
             console.log(json);
             if (json.message === "success") {
-                window.location.reload(false)
+                alert(`Successful question creation`);
             } else {
                 alert("Invalid data. Please try again.")
             }

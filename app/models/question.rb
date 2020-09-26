@@ -113,7 +113,8 @@ class Question < ApplicationRecord
             creator: self.creator.username,
             creatorId: self.creator.id,
             creation: self.created_at.to_s[0..-14],
-            replies: self.answers.size
+            replies: self.answers.size,
+            followers: self.followers.size
         }
     end
 

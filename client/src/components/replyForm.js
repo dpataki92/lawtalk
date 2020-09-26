@@ -42,7 +42,7 @@ class ReplyForm extends React.Component {
             <div class="form-group" style={{marginTop: "10px"}}>
                 <label for="description">Response </label>
                 <textarea rows="5" class="form-control" name="content" onChange={this.handleChange} value={this.state.content} ></textarea>
-                <div className="px-4 pt-3"> <button onClick={this.handleSubmit} type="button" className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Send</button> </div>
+               <button style={{marginTop: "5px"}} onClick={this.handleSubmit} type="button" className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Send</button>
             </div>
         )
     }

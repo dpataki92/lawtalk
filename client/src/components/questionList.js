@@ -7,7 +7,8 @@ class QuestionList extends Component {
             const questions = this.props.questions.map((question, id)=> {
                 if (id < 1) {
                     return <QuestionRow
-                          key={id} 
+                          key={id}
+                          questionId={question.id}
                           id={question.creatorId}
                           title={question.title}
                           jurisdiction={question.jurisdiction}
