@@ -39,6 +39,7 @@ class EditQuestionForm extends Component {
     }
 
     handleEdit = (e) => {
+        let props = this.props
         e.preventDefault();
         fetch(`/api/questions/${this.state.id}`, {
             method: "PATCH",
@@ -51,11 +52,11 @@ class EditQuestionForm extends Component {
             console.log(json);
             if (json.message === "success") {
                 alert("You have updated the question");
+                props.history.push('/questions/all');
             } else {
                 alert("Invalid data. Please try again.")
             }
           })
-          this.props.history.push('/questions/all');
     }
 
     setField = (selected) => {

@@ -51,6 +51,7 @@ class QuestionForm extends Component {
     }
 
     handleSubmit = (e) => {
+        let props = this.props
         e.preventDefault();
         fetch("/api/questions", {
             method: "POST",
@@ -63,11 +64,11 @@ class QuestionForm extends Component {
             console.log(json);
             if (json.message === "success") {
                 alert("You have created a question");
+                props.history.push('/questions/all');
             } else {
                 alert("Invalid data. Please try again.")
             }
           })
-          this.props.history.push('/questions/all');
     }
 
     render() {

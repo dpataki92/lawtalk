@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
 
     def create
         user = User.find_by(username: params[:username])
-        byebug
         question = Question.create(title: params[:title], jurisdiction: params[:jurisdiction], field: params[:field], content: params[:content], creator: user)
         if question.valid?
             user.created_questions << question
@@ -33,7 +32,6 @@ class QuestionsController < ApplicationController
         question = Question.find_by(id: params[:id])
         user = User.find_by(username: params[:username])
         question.update(title: params[:title], jurisdiction: params[:jurisdiction], field: params[:field], content: params[:content], creator: user)
-        byebug
         if question
             render json: {message: "success"}
         else
@@ -44,12 +42,6 @@ class QuestionsController < ApplicationController
     def replies
         question = Question.find_by(id: params[:id])
         render json: {answerData: question.question_answer_serializer}
-    end
-
-    private
-
-    def question_params
-        params.require(:question).permit(:title, :content, :jurisdiction, :field, :creator)
     end
 
 end

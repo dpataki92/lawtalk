@@ -3,7 +3,7 @@ import React from 'react';
 const EUJurisdictionList = (props) => {
 
     return(
-        <select id="EUcountries" name="jurisdiction" onChange={e=>props.setJurisdiction(e.target.value)}>
+        <select id="EUcountries" name="jurisdiction" onChange={e=>props.setJurisdiction(e.target.value)} required>
             <option value="" disabled selected>Choose country...</option>
             <option value="Austria">Austria</option>
             <option value="Bulgaria">Bulgaria</option>

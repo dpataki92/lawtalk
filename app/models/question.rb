@@ -8,6 +8,10 @@ class Question < ApplicationRecord
     scope :recent, -> { order(created_at: :desc) }
     scope :relevant, -> { order('followings_count DESC') }
 
+    validates :title, presence: true
+    validates :jurisdiction, presence: true
+    validates :field, presence: true
+
 
     def creation_date_in_words
         self.created_at.strftime("%B %d, %Y")
