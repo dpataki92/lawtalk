@@ -40,8 +40,7 @@ class MainPost extends Component {
                         <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                             <div class="px-4 pt-3"> <i class="fa fa-reply text-primary"></i>&nbsp; <span class="align-middle text-muted">{this.props.replies} replies</span> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-users text-primary fsize-3"></i>&nbsp; <span class="align-middle">{this.props.followers} followers</span> </span> </div>
                             <div style={{display: "flex", justifyContent: "space-around"}}>
-                            <div className="px-4 pt-3">{this.props.currentUser === this.props.creator ? <EditButton postId={this.props.postId}/> : ""}</div>
-                            <div className="px-4 pt-3"> <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i class="ion ion-md-create"></i>&nbsp; Reply</button> </div>
+                            <div className="px-4 pt-3"> {this.props.currentUser === this.props.creator ? <EditButton postId={this.props.postId}/> : ""} <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i class="ion ion-md-create"></i>&nbsp; Reply</button> </div>
                             </div>
                         </div>
                         <div className="card-body reply-form" style={{display: "none"}}>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const deleteButton = props => {
+const DeleteButton = props => {
     const handleDelete = (e) => {
         e.preventDefault();
-        fetch(`/api/questions/${props.postId}`, {
+        fetch(`/api/${props.type}s/${props.postId}`, {
             method: "DELETE",
             headers: {"Content-Type": "application/json",
             "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`}
@@ -12,7 +12,7 @@ const deleteButton = props => {
           .then(function(json) {
             console.log(json);
             if (json.message === "success") {
-                alert("You have deleted the question");
+                alert("You have deleted the post");
             } else {
                 alert("Invalid data. Please try again.")
             }
@@ -23,4 +23,4 @@ const deleteButton = props => {
     )
 }
 
-export default deleteButton;
+export default DeleteButton;

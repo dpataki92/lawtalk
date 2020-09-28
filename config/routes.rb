@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope "/api" do
-    resources :users, only: [:create, :edit, :update, :delete]
+    resources :users, only: [:create, :edit, :update, :destroy]
     get '/users/top', to: 'users#top_users'
     get '/users/:id', to: 'users#show'
     get '/profile', to: 'users#profile'

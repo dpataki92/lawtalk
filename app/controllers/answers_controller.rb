@@ -28,11 +28,20 @@ class AnswersController < ApplicationController
     end
 
     def comments
-            answer = Answer.find_by(id: params[:id])
-            if answer.comments.size === 0
-                render json: {empty: true}
-            else
-                render json: {comments: answer.answer_comments_serializer}
-            end
+        answer = Answer.find_by(id: params[:id])
+        if answer.comments.size === 0
+            render json: {empty: true}
+        else
+            render json: {comments: answer.answer_comments_serializer}
+        end
+    end
+
+    def destroy
+        answer = Answer.find_by(id: params[:id])
+        if answer.destroy
+            render json: {message: "success"}
+        else
+            render json: {message: "failure"}
+        end
     end
 end

@@ -100,7 +100,7 @@ class EditQuestionForm extends Component {
                             <button onClick={this.handleEdit} type="submit" class="btn btn-primary">
                                 Update
                             </button>
-                            < DeleteButton postId={this.state.id}/>
+                            < DeleteButton postId={this.state.id} type={"question"}/>
                         </div>  
                     </form>
                 </div>	

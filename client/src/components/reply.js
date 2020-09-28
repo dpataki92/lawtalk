@@ -4,6 +4,7 @@ import Comments from './comments.js';
 import { connect } from 'react-redux';
 import { getCurrentComments } from '../actions/currentComments.js';
 import ReplyForm from './replyForm.js';
+import DeleteButton from './deleteButton.js';
 
 
 class Reply extends Component {
@@ -90,7 +91,7 @@ class Reply extends Component {
                             <i className="fa fa-comments-o text-muted" style={{fontSize: "1.3em"}}></i> <a data-abc="true" style={{cursor: "pointer"}} id="downvote" onClick={this.handleComments}> <span id="comments" style={{opacity: "0.5"}}>Show comments ({props.commentsNum})</span>  </a>  
 
                             </div>
-                            <div className="px-4 pt-3"> <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
+                            <div className="px-4 pt-3"> {props.answerCreator === props.currentUser ? <DeleteButton postId={props.answerId} type={"answer"}/> : ""} <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
                         </div>
                         <div className="card-body reply-form" style={{display: "none"}}>
                             {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser}/>}
