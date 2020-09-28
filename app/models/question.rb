@@ -127,8 +127,7 @@ class Question < ApplicationRecord
             creation: self.creation_date_in_words,
             update: self.update_date_in_words,
             replies: self.answers.size,
-            followers: self.followers.size,
-            followersNames: self.followers.collect{ |f| f.username}.join(", ")
+            followers: self.followers.size
         }
     end
 

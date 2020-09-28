@@ -19,7 +19,8 @@ class MainPost extends Component {
             <div className="container-fluid mt-100" style={{width: "80%"}}>
             <div className="row">
                 <div className="col-md-12">
-                <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp; + Follow thread</button>
+                <p>{this.props.followersNames}</p>
+                <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp;{this.props.followed}</button>
                 <h4 style={{marginBottom: "5px"}}>{this.props.title}</h4>
                     <div className="card mb-4">
                         <div className="card-header">

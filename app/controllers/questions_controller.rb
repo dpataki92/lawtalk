@@ -25,7 +25,13 @@ class QuestionsController < ApplicationController
 
     def show
         question = Question.find_by(id: params[:id])
-        render json: {questionData: question.question_serializer}
+        question_hash = question.question_serializer
+        if current_user.followed_questions.include?(question) || current_user.created_questions.include?(question)
+            question_hash["followed"] = "true"
+        else
+            question_hash["followed"] = "false"
+        end
+        render json: {questionData: question_hash}
     end
 
     def update

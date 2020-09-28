@@ -12,6 +12,10 @@ class Thread extends Component {
         props.getCurrentAnswers(props.match.params.id);
     }
 
+    checkIfFollowed = () => {
+        return this.props.currentQuestion.followed === "true" ? "Followed" : " + Follow Thread"
+    }
+
     render(){
 
         const questionData  = this.props.currentQuestion
@@ -19,7 +23,7 @@ class Thread extends Component {
 
         return(
             <React.Fragment>
-                <MainPost postId={this.props.match.params.id} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} update={questionData.update} replies={questionData.replies} followers={questionData.followers} currentUser={this.props.currentUser.username} followersNames={questionData.followersNames}/>
+                <MainPost postId={this.props.match.params.id} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} update={questionData.update} replies={questionData.replies} followers={questionData.followers} currentUser={this.props.currentUser.username} followed={this.checkIfFollowed()}/>
                 <Replies replies={answerData} currentUser={this.props.currentUser.username}/>
             </React.Fragment>
         )
