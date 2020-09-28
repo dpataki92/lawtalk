@@ -7,16 +7,66 @@ import USAJurisdictionList from './usaJurisdictionList.js';
 
 class EditQuestionForm extends Component {
     state = {
+        id: this.props.match.params.id,
         title: this.props.currentQuestion.title,
-        field: "",
-        jurisdiction: "",
+        field: this.props.currentQuestion.field,
+        jurisdiction: this.props.currentQuestion.jurisdiction,
         content: this.props.currentQuestion.content,
         username: this.props.currentUser.username
+    }
+
+    handleJurisdictionCategoryClick = (e) => {
+        e.preventDefault();
+        const EUlist = document.getElementById("EUlist");
+        const USlist = document.getElementById("USlist");
+        if (e.target.innerText === "EU")  {
+            EUlist.style.display = "inline";
+            if (USlist.style.display === "inline") {
+                USlist.style.display = "none";
+            }
+        } else if (e.target.innerText === "USA") {
+            USlist.style.display = "inline";
+            if (EUlist.style.display === "inline") {
+                EUlist.style.display = "none";
+            }
+        }
     }
 
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+
+    handleEdit = (e) => {
+        e.preventDefault();
+        fetch(`/api/questions/${this.state.id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`},
+            body: JSON.stringify(this.state)
+          })
+          .then(resp => resp.json())
+          .then(function(json) {
+            console.log(json);
+            if (json.message === "success") {
+                alert("You have updated the question");
+            } else {
+                alert("Invalid data. Please try again.")
+            }
+          })
+          this.props.history.push('/questions/all');
+    }
+
+    setField = (selected) => {
+        this.setState({
+            field: selected
+        })
+    }
+
+    setJurisdiction = (selected) => {
+        this.setState({
+            jurisdiction: selected
         })
     }
 
@@ -46,7 +96,7 @@ class EditQuestionForm extends Component {
                         </div>
                         
                         <div class="form-group">
-                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">
+                            <button onClick={this.handleEdit} type="submit" class="btn btn-primary">
                                 Update
                             </button>
                             < DeleteButton/>
