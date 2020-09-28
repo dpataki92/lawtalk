@@ -39,6 +39,15 @@ class QuestionsController < ApplicationController
         end
     end
 
+    def destroy
+        question = Question.find_by(id: params[:id])
+        if question.destroy
+            render json: {message: "success"}
+        else
+            render json: {message: "failure"}
+        end
+    end
+
     def replies
         question = Question.find_by(id: params[:id])
         render json: {answerData: question.question_answer_serializer}
