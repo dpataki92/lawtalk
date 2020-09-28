@@ -35,6 +35,7 @@ class MainPost extends Component {
                         </div>
                         <div className="card-body">
                             <p> {this.props.content}</p>
+                            <p id="update" style={{marginTop: "5px", color: "red", opacity:"0.5"}}>{this.props.creation != this.props.update ? `This question was updated on ${this.props.update}` : ""}</p>
                         </div>
                         <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3">
                             <div class="px-4 pt-3"> <i class="fa fa-reply text-primary"></i>&nbsp; <span class="align-middle text-muted">{this.props.replies} replies</span> <span class="text-muted d-inline-flex align-items-center align-middle ml-4"> <i class="fa fa-users text-primary fsize-3"></i>&nbsp; <span class="align-middle">{this.props.followers} followers</span> </span> </div>

@@ -13,6 +13,14 @@ class Question < ApplicationRecord
         self.created_at.strftime("%B %d, %Y")
     end
 
+    def update_date_in_words
+        if self.created_at === self.updated_at
+            self.updated_at.strftime("%B %d, %Y")
+        else
+            self.updated_at.strftime("%B %d, %Y, at %I:%M %p")
+        end
+    end
+
     def last_response_data
         last_response = self.answers.recent.first
         if last_response
@@ -112,7 +120,8 @@ class Question < ApplicationRecord
             creatorAvatar: self.creator.avatar,
             creator: self.creator.username,
             creatorId: self.creator.id,
-            creation: self.created_at.to_s[0..-14],
+            creation: self.creation_date_in_words,
+            update: self.update_date_in_words,
             replies: self.answers.size,
             followers: self.followers.size,
             followersNames: self.followers.collect{ |f| f.username}.join(", ")
