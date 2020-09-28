@@ -3,10 +3,7 @@ import FieldList from './fieldList.js'
 import { connect } from "react-redux";
 import EUJurisdictionList from './euJurisdictionList.js';
 import USAJurisdictionList from './usaJurisdictionList.js';
-import { createBrowserHistory } from './history';
-import history from './history';
-
-
+import { withRouter } from 'react-router';
 
 
 class QuestionForm extends Component {
@@ -53,7 +50,8 @@ class QuestionForm extends Component {
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         fetch("/api/questions", {
             method: "POST",
             headers: {"Content-Type": "application/json",
@@ -65,11 +63,11 @@ class QuestionForm extends Component {
             console.log(json);
             if (json.message === "success") {
                 alert("You have created a question");
-                history.push('/questions/all')
             } else {
                 alert("Invalid data. Please try again.")
             }
           })
+          this.props.history.push('/questions/all');
     }
 
     render() {
@@ -81,7 +79,7 @@ class QuestionForm extends Component {
                     
                     <h1>Create question</h1>
                     
-                    <form onSubmit={this.handleSubmit}>
+                    <form >
                         
                         <div class="form-group">
                             <label for="title">Title </label>
@@ -98,7 +96,7 @@ class QuestionForm extends Component {
                         </div>
                         
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
+                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">
                                 Create
                             </button>
                         </div>  
@@ -116,4 +114,4 @@ const mapStateToProps = ({currentUser}) => {
     }
   }
 
-export default connect(mapStateToProps)(QuestionForm);
+export default withRouter(connect(mapStateToProps)(QuestionForm));
