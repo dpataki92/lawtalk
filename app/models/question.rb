@@ -69,7 +69,7 @@ class Question < ApplicationRecord
         if (word.empty?)
             where('title != ""')
         else
-            Question.all.select {|q| q.title.include?(word.strip.downcase)}
+            Question.all.select {|q| q.title.downcase.include?(word.strip.downcase)}
         end 
     end
 

@@ -10,6 +10,8 @@ The app uses React and Redux on the front-end and Rails on the back-end as an AP
 
 * Cd into lawtalk folder
 
+* Run rails db:migrate & rails db:seed
+
 * Run servers with 'rake start'
 
 # Contributing
