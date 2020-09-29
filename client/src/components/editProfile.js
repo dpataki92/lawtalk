@@ -4,6 +4,7 @@ import  { getCurrentUser } from "../actions/currentUser.js";
 
 class EditProfile extends Component {
     state = {
+        id: this.props.match.params.id,
         username: this.props.currentUser.username,
         fields: this.props.currentUser.fields,
         location: this.props.currentUser.location,
@@ -36,13 +37,29 @@ class EditProfile extends Component {
         }
     }
 
+    handleUpdate = (e) => {
+        e.preventDefault();
+        fetch(`/api/users/${this.state.id}`, {
+            method: "PATCH",
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`},
+            body: JSON.stringify(this.state)
+        })
+        .then(resp => resp.json())
+        .then(json => {
+            alert(json.message);
+            window.location.reload();
+        })
+    }
+
     render() {
         const { currentUser } = this.props;
         return(
             <div className="container rounded bg-white mt-5">
                 <div className="row">
                     <div className="col-md-4 border-right">
-                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90"/><span className="font-weight-bold">{currentUser.username}</span><span>{currentUser.location}</span></div>
+                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90" alt="profile picture"/><span className="font-weight-bold">{currentUser.username}</span><span>{currentUser.location}</span></div>
                     </div>
                     <div className="col-md-8">
                         <div className="p-3 py-5">
@@ -55,20 +72,20 @@ class EditProfile extends Component {
                                 </div>
                             </div>
                             <div id="bio-text" className="row mt-3" style={{display: "none"}}>
-                                <textarea className="form-control" value={this.state.bio} rows="12" cols="4"/>
+                                <textarea className="form-control" onChange={this.handleChange} name="bio" value={this.state.bio} rows="12" cols="4"/>
                             </div>
                             <div className="row mt-2 data-row">
-                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.username}/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.location}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" name="username" onChange={this.handleChange} value={this.state.username}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" name="location" onChange={this.handleChange} value={this.state.location}/></div>
                             </div>
                             <div className="row mt-3 data-row">
-                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.email}/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.password} placeholder="Password..."/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" name="email" onChange={this.handleChange} value={this.state.email}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password..."/></div>
                             </div>
                             <div className="row mt-3 data-row">
-                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.fields}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" name="fields" onChange={this.handleChange} value={this.state.fields}/></div>
                             </div>
-                            <div className="mt-5 text-right"><button className="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                            <div className="mt-5 text-right"><button onClick={this.handleUpdate} className="btn btn-primary profile-button" type="button">Save Profile</button></div>
                         </div>
                     </div>
                 </div>
