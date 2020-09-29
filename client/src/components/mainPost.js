@@ -14,13 +14,35 @@ class MainPost extends Component {
         }
     }
 
+    checkIfFollowed = () => {
+        return this.props.followed === "true" ? "Unfollow Thread" : " + Follow Thread"
+    }
+
+    followFetch = (path) => {
+        fetch(`/api/questions/${this.props.postId}/${path}`)
+        .then(resp => resp.json())
+        .then(json => {
+            alert(json.message);
+            window.location.reload();
+        })
+    }
+
+    handleFollowButton = (e) => {
+        if (e.target.innerText === "Unfollow Thread") {
+            this.followFetch("unfollow");
+            e.target.innerText = " + Follow Thread"
+        } else if (e.target.innerText === " + Follow Thread") {
+            this.followFetch("follow");
+            e.target.innerText = "Unfollow Thread"
+        }
+    }
+
     render() {
         return(
             <div className="container-fluid mt-100" style={{width: "80%"}}>
             <div className="row">
                 <div className="col-md-12">
-                <p>{this.props.followersNames}</p>
-                <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp;{this.props.followed}</button>
+                <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp;{this.checkIfFollowed()}</button>
                 <h4 style={{marginBottom: "5px"}}>{this.props.title}</h4>
                     <div className="card mb-4">
                         <div className="card-header">

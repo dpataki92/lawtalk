@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :questions, only: [:create, :edit, :update, :new, :show, :destroy]
     post '/questions/list', to: 'questions#questions_list'
     get '/questions/:id/replies', to: 'questions#replies'
+    get '/questions/:id/follow', to: 'questions#follow_thread'
+    get '/questions/:id/unfollow', to: 'questions#unfollow_thread'
 
     resources :answers, only: [:create, :edit, :update, :destroy]
     post '/answers/:id/vote', to: 'answers#vote'

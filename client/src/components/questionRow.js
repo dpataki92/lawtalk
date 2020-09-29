@@ -6,7 +6,8 @@ const QuestionRow = props => {
     const userConnection = () => {
         if (props.creator === props.currentUser) {
             return ["created", "success"]
-        } else if (props.followersNames.includes(props.currentUser)) {
+        } else if (props.followersNames.includes(`${props.currentUser}, `) || props.followersNames.slice(-6) === "user01") {
+            console.log(props.questionId, props.followersNames)
             return ["followed", "danger"]
         } else {
             return ["",""]
