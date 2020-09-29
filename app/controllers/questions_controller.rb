@@ -28,10 +28,8 @@ class QuestionsController < ApplicationController
         question_hash = question.question_serializer
         if current_user.followed_questions.include?(question) || current_user.created_questions.include?(question)
             question_hash["followed"] = "true"
-            byebug
         else
             question_hash["followed"] = "false"
-            byebug
         end
         render json: {questionData: question_hash}
     end
@@ -59,12 +57,15 @@ class QuestionsController < ApplicationController
     def follow_thread
         question = Question.find_by(id: params[:id])
         current_user.followed_questions << question
-        render json: {message: "You are now following this thread! You can find it under the 'My questions' tab"}
+        current_user.save
+        byebug
+        render json: {message: "You are now following this thread. You will find it under the 'My questions' tab."}
     end
 
     def unfollow_thread
         question = Question.find_by(id: params[:id])
         current_user.followed_questions.delete(question)
+        current_user.save
         render json: {message: "You unfollowed this thread"}
     end
 

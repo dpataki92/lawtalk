@@ -19,19 +19,24 @@ class MainPost extends Component {
     }
 
     followFetch = (path) => {
-        fetch(`/api/questions/${this.props.postId}/${path}`)
+        fetch(`/api/questions/${this.props.postId}/${path}`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`}})
         .then(resp => resp.json())
         .then(json => {
             alert(json.message);
-            window.location.reload();
         })
     }
 
     handleFollowButton = (e) => {
+        console.log(e.target)
+        e.preventDefault();
         if (e.target.innerText === "Unfollow Thread") {
             this.followFetch("unfollow");
-            e.target.innerText = " + Follow Thread"
-        } else if (e.target.innerText === " + Follow Thread") {
+            e.target.innerText = "+ Follow Thread"
+        } else if (e.target.innerText === "+ Follow Thread") {
             this.followFetch("follow");
             e.target.innerText = "Unfollow Thread"
         }
@@ -42,7 +47,7 @@ class MainPost extends Component {
             <div className="container-fluid mt-100" style={{width: "80%"}}>
             <div className="row">
                 <div className="col-md-12">
-                <button type="button" style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>&nbsp;{this.checkIfFollowed()}</button>
+                <button type="button" onClick={this.handleFollowButton} style={{marginBottom: "5px"}} className="btn btn-success"><i class="ion ion-md-create"></i>{this.checkIfFollowed()}</button>
                 <h4 style={{marginBottom: "5px"}}>{this.props.title}</h4>
                     <div className="card mb-4">
                         <div className="card-header">
