@@ -84,7 +84,7 @@ class Reply extends Component {
                             <p> {props.content}
                             </p>
                         </div>
-                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId} >
+                        <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId} style={{borderBottom:"1px solid #0062cc"}}>
                             <div className="px-4 pt-3"> 
                             <a style={{cursor: "pointer"}} id="upvote" onClick={this.handleVoting}> <i className="fa fa-arrow-up text-success" style={{fontSize: "1.3em"}}></i> </a>  <span id="upvoteNum" style={{opacity: "0.5", marginRight:"5px"}} >{props.upvotes} upvotes</span> 
                             <a style={{cursor: "pointer"}} id="downvote" onClick={this.handleVoting}> <i className="fa fa-arrow-down text-danger" style={{fontSize: "1.3em"}}></i> </a>  <span id="downvoteNum" style={{opacity: "0.5", marginRight:"5px"}}>{props.downvotes} downvotes</span> 
@@ -93,10 +93,10 @@ class Reply extends Component {
                             </div>
                             <div className="px-4 pt-3"> {props.answerCreator === props.currentUser ? <DeleteButton postId={props.answerId} type={"answer"}/> : ""} <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Reply</button> </div>
                         </div>
-                        <div className="card-body reply-form" style={{display: "none"}}>
+                        <div className="card-body reply-form" style={{display: "none", borderBottom:"1px solid #0062cc"}}>
                             {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser}/>}
                         </div>
-                        <div className="card-body comments-div" style={{display: "none"}}>
+                        <div className="card-body comments-div" style={{display: "none", borderBottom:"1px solid #0062cc"}}>
                             {<Comments comments={this.props.comments}/>}
                         </div>
                     </div>
