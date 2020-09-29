@@ -27,8 +27,8 @@ const Navbar = props => {
                     </ul>
                     <p className="d-none d-md-block lead mb-0 text-white"> <b onClick={handleReload}> LAWTALK</b> </p>
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item mx-1"> <a className="nav-link" href="#" > <i className="fa fa-edit fa-fw fa-lg"></i> </a> </li>
-                        <li className="nav-item mx-1"> <a className="nav-link" href="#" onClick={handleLogout}> <i className="fa fa-sign-out fa-fw fa-lg"></i> </a> </li>
+                        <li className="nav-item mx-1"> <NavLink className="nav-link" to={`/users/${props.id}/edit`}><i className="fa fa-edit fa-fw fa-lg"></i> </NavLink> </li>
+                        <li className="nav-item mx-1"> <a className="nav-link" onClick={handleLogout}> <i className="fa fa-sign-out fa-fw fa-lg"></i> </a> </li>
 
                     </ul>
                 </div>

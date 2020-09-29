@@ -20,7 +20,7 @@ class Home extends Component {
         return(
             <Router>
             <div>
-            <Navbar logout={this.props.logout} />
+            <Navbar logout={this.props.logout} id={this.props.currentUser.id} />
             <Switch>
             <Route exact path="/" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
             <Route key="all" exact path="/questions/all" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
@@ -38,6 +38,6 @@ class Home extends Component {
     }
 }
 const mapStateToProps = state => {
-    return ({ currentProfile: state.currentProfile })
+    return ({ currentProfile: state.currentProfile, currentUser: state.currentUser })
   }
 export default connect(mapStateToProps, { logout })(Home);
