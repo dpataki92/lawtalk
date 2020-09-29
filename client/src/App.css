@@ -2083,6 +2083,9 @@ input.input100 {
   border-radius: 10%;
 }
 
-
+.edit-page:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
 
 

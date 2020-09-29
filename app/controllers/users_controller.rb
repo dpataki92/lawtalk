@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       render json: {message: "You have edited your profile."}
     else
-      {render json: {message: "Invalid data. Please try again."}}
+      render json: {message: "Invalid data. Please try again."}
+    end
   end
     
   private

@@ -8,39 +8,65 @@ class EditProfile extends Component {
         fields: this.props.currentUser.fields,
         location: this.props.currentUser.location,
         email: this.props.currentUser.email,
+        password: "",
         bio: this.props.currentUser.bio
     }
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handlePageChange = (e) => {
+        if (e.target.innerText === "Personal data") {
+            e.target.style.display = "none";
+            e.target.parentNode.parentNode.querySelector("#bio-link").style.display = "inline";
+            document.getElementById("bio-text").style.display = "none";
+            document.querySelectorAll(".data-row").forEach((el) => {
+                el.style.display = ""
+            })
+        } else if (e.target.innerText === "Bio") {
+            e.target.style.display = "none";
+            e.target.parentNode.parentNode.querySelector("#data-link").style.display = "inline";
+            document.getElementById("bio-text").style.display = "";
+            document.querySelectorAll(".data-row").forEach((el) => {
+                el.style.display = "none"
+            })
+        }
+    }
+
     render() {
+        const { currentUser } = this.props;
         return(
             <div className="container rounded bg-white mt-5">
                 <div className="row">
                     <div className="col-md-4 border-right">
-                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src="https://i.imgur.com/0eg0aG0.jpg" width="90"/><span className="font-weight-bold">John Doe</span><span className="text-black-50">john_doe12@bbb.com</span><span>United States</span></div>
+                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90"/><span className="font-weight-bold">{currentUser.username}</span><span>{currentUser.location}</span></div>
                     </div>
                     <div className="col-md-8">
                         <div className="p-3 py-5">
                             <div className="d-flex justify-content-between align-items-center mb-3">
-                                <div className="d-flex flex-row align-items-center back"><i className="fa fa-long-arrow-left mr-1 mb-1"/>
-                                    <h6>Back to home</h6>
+                                <div className="d-flex flex-row align-items-left back">
+                                    <h6 id="data-link" className="edit-page" style={{display: "none"}} onClick={this.handlePageChange}><i className="fa fa-long-arrow-left mr-1 mb-1"/>Personal data</h6>
                                 </div>
-                                <h6 className="text-right">Edit Profile</h6>
+                                <div className="d-flex flex-row align-items-left back">
+                                    <h6 id="bio-link" className="edit-page text-right" style={{display: "inline", marginRight: "3px"}} onClick={this.handlePageChange}><i className="fa fa-long-arrow-right mr-1 mb-1"/>Bio</h6>
+                                </div>
                             </div>
-                            <div className="row mt-2">
-                                <div className="col-md-6"><input type="text" className="form-control" placeholder="first name" value="John"/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value="Doe" placeholder="Doe"/></div>
+                            <div id="bio-text" className="row mt-3" style={{display: "none"}}>
+                                <textarea className="form-control" value={this.state.bio} rows="12" cols="4"/>
                             </div>
-                            <div className="row mt-3">
-                                <div className="col-md-6"><input type="text" className="form-control" placeholder="Email" value="john_doe12@bbb.com"/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value="+19685969668" placeholder="Phone number"/></div>
+                            <div className="row mt-2 data-row">
+                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.username}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.location}/></div>
                             </div>
-                            <div className="row mt-3">
-                                <div className="col-md-6"><input type="text" className="form-control" placeholder="address" value="D-113, right avenue block, CA,USA"/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value="USA" placeholder="Country"/></div>
+                            <div className="row mt-3 data-row">
+                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.email}/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.password} placeholder="Password..."/></div>
                             </div>
-                            <div className="row mt-3">
-                                <div className="col-md-6"><input type="text" className="form-control" placeholder="Bank Name" value="Bank of America"/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" value="043958409584095" placeholder="Account Number"/></div>
+                            <div className="row mt-3 data-row">
+                                <div className="col-md-6"><input type="text" className="form-control" value={this.state.fields}/></div>
                             </div>
                             <div className="mt-5 text-right"><button className="btn btn-primary profile-button" type="button">Save Profile</button></div>
                         </div>
