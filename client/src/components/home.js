@@ -10,6 +10,7 @@ import TopUsers from './topUsers.js';
 import ProfilePage from './profilePage.js';
 import Thread from './thread.js';
 import EditQuestionForm from './editQuestionForm.js';
+import EditProfile from './editProfile.js';
 
 
 class Home extends Component {
@@ -28,6 +29,7 @@ class Home extends Component {
             <Route key="edit question" path="/questions/:id/edit" component={EditQuestionForm} />
             <Route key="thread" path="/questions/:id" component={Thread} />
             <Route key="top" path="/users/top" render={() => <TopUsers />} />
+            <Route key="edit profile" path="/users/:id/edit" component={EditProfile} />
             <Route key="profile" path="/users/:id" component={ProfilePage} />
             </Switch>
             </div>

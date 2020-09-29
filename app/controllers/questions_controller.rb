@@ -37,8 +37,7 @@ class QuestionsController < ApplicationController
     def update
         question = Question.find_by(id: params[:id])
         user = User.find_by(username: params[:username])
-        question.update(title: params[:title], jurisdiction: params[:jurisdiction], field: params[:field], content: params[:content], creator: user)
-        if question
+        if question.update(title: params[:title], jurisdiction: params[:jurisdiction], field: params[:field], content: params[:content], creator: user)
             render json: {message: "success"}
         else
             render json: {message: "failure"}
