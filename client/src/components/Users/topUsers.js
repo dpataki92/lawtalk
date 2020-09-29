@@ -1,8 +1,8 @@
 import React, { Component  } from 'react';
 import UserRow from "./userRow.js";
-import '../TopUsers.css';
+import '../../TopUsers.css';
 import { connect } from "react-redux";
-import  { getTopUsers } from "../actions/users.js";
+import  { getTopUsers } from "../../actions/users.js";
 import { Link } from 'react-router-dom';
 
 

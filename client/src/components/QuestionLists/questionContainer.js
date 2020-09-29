@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import QuestionList from './questionList';
+import QuestionList from './questionList.js';
 import Pagination from './pagination.js';
 import SearchBar from './searchbar';
 import QuestionListHeader from './questionListHeader.js'
-import  { getCurrentQuestions } from "../actions/questions.js";
+import  { getCurrentQuestions } from "../../actions/questions.js";
 
 class QuestionContainer extends Component {
     state = {

@@ -1,8 +1,8 @@
 import React from 'react';
-import '../App.css'; 
+import '../../App.css'; 
 import { connect } from 'react-redux';
-import { updateLoginForm } from '../actions/loginForm.js';
-import { login } from '../actions/currentUser.js';
+import { updateLoginForm } from '../../actions/loginForm.js';
+import { login } from '../../actions/currentUser.js';
 
 const Login = ({loginForm, updateLoginForm, login}) => {
 

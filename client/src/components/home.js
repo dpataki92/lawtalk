@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import '../App.css';
 import  { logout } from "../actions/currentUser.js";
 import { connect } from "react-redux";
-import Navbar from "./navbar.js"
-import QuestionForm from './questionForm.js';
+import Navbar from "./Account/navbar.js"
+import QuestionForm from './Threads/questionForm.js';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import QuestionContainer from './questionContainer.js';
-import TopUsers from './topUsers.js';
-import ProfilePage from './profilePage.js';
-import Thread from './thread.js';
-import EditQuestionForm from './editQuestionForm.js';
-import EditProfile from './editProfile.js';
+import QuestionContainer from './QuestionLists/questionContainer.js';
+import TopUsers from './Users/topUsers.js';
+import ProfilePage from './Users/profilePage.js';
+import Thread from './Threads/thread.js';
+import EditQuestionForm from './Threads/editQuestionForm.js';
+import EditProfile from './Users/editProfile.js';
 
 
 class Home extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { getCurrentProfile } from '../actions/currentProfile.js';
+import { getCurrentProfile } from '../../actions/currentProfile.js';
 
 class ProfilePage extends Component {
 

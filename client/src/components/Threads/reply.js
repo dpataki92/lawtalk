@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import Comments from './comments.js';
 import { connect } from 'react-redux';
-import { getCurrentComments } from '../actions/currentComments.js';
+import { getCurrentComments } from '../../actions/currentComments.js';
 import ReplyForm from './replyForm.js';
 import DeleteButton from './deleteButton.js';
 

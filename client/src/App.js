@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Login from "./components/login"
+import Login from "./components/Account/login"
 import Home from './components/home';
 import { connect } from 'react-redux';
 import  {getCurrentUser } from "./actions/currentUser.js";

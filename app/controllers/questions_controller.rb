@@ -57,7 +57,6 @@ class QuestionsController < ApplicationController
         question = Question.find_by(id: params[:id])
         current_user.followed_questions << question
         current_user.save
-        byebug
         render json: {message: "You are now following this thread. You will find it under the 'My questions' tab."}
     end
 

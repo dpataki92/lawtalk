@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import  { getCurrentUser } from "../actions/currentUser.js";
+import  { getCurrentUser } from "../../actions/currentUser.js";
 
 class EditProfile extends Component {
     state = {

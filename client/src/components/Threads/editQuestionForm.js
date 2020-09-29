@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import FieldList from './fieldList.js'
 import { connect } from "react-redux";
-import EUJurisdictionList from './euJurisdictionList.js';
-import USAJurisdictionList from './usaJurisdictionList.js';
-import { withRouter } from 'react-router';
+import DeleteButton from "./deleteButton.js";
+import FieldList from '../QuestionLists/fieldList.js'
+import EUJurisdictionList from '../QuestionLists/euJurisdictionList.js';
+import USAJurisdictionList from '../QuestionLists/usaJurisdictionList.js';
 
-
-class QuestionForm extends Component {
+class EditQuestionForm extends Component {
     state = {
-        title: "",
-        field: "",
-        jurisdiction: "",
-        content: "",
+        id: this.props.match.params.id,
+        title: this.props.currentQuestion.title,
+        field: this.props.currentQuestion.field,
+        jurisdiction: this.props.currentQuestion.jurisdiction,
+        content: this.props.currentQuestion.content,
         username: this.props.currentUser.username
     }
 
@@ -38,6 +38,27 @@ class QuestionForm extends Component {
         })
     }
 
+    handleEdit = (e) => {
+        let props = this.props
+        e.preventDefault();
+        fetch(`/api/questions/${this.state.id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`},
+            body: JSON.stringify(this.state)
+          })
+          .then(resp => resp.json())
+          .then(function(json) {
+            console.log(json);
+            if (json.message === "success") {
+                alert("You have updated the question");
+                props.history.push('/questions/all');
+            } else {
+                alert("Invalid data. Please try again.")
+            }
+          })
+    }
+
     setField = (selected) => {
         this.setState({
             field: selected
@@ -50,27 +71,6 @@ class QuestionForm extends Component {
         })
     }
 
-    handleSubmit = (e) => {
-        let props = this.props
-        e.preventDefault();
-        fetch("/api/questions", {
-            method: "POST",
-            headers: {"Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`},
-            body: JSON.stringify(this.state)
-          })
-          .then(resp => resp.json())
-          .then(function(json) {
-            console.log(json);
-            if (json.message === "success") {
-                alert("You have created a question");
-                props.history.push('/questions/all');
-            } else {
-                alert("Invalid data. Please try again.")
-            }
-          })
-    }
-
     render() {
         return(
             <div class="container">
@@ -78,7 +78,7 @@ class QuestionForm extends Component {
 	    
                 <div class="col-md-8 col-md-offset-2">
                     
-                    <h1>Create question</h1>
+                    <h1>Edit question</h1>
                     
                     <form >
                         
@@ -97,9 +97,10 @@ class QuestionForm extends Component {
                         </div>
                         
                         <div class="form-group">
-                            <button onClick={this.handleSubmit} type="submit" class="btn btn-primary">
-                                Create
+                            <button onClick={this.handleEdit} type="submit" class="btn btn-primary">
+                                Update
                             </button>
+                            < DeleteButton postId={this.state.id} type={"question"}/>
                         </div>  
                     </form>
                 </div>	
@@ -109,10 +110,11 @@ class QuestionForm extends Component {
     }
 }
 
-const mapStateToProps = ({currentUser}) => {
+const mapStateToProps = ({currentUser, currentQuestion}) => {
     return {
-      currentUser    
+      currentUser,
+      currentQuestion   
     }
   }
 
-export default withRouter(connect(mapStateToProps)(QuestionForm));
+export default connect(mapStateToProps)(EditQuestionForm);

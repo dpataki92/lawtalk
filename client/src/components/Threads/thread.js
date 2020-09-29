@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import MainPost from './mainPost.js';
 import Replies from './replies.js';
 import { connect } from 'react-redux';
-import { getCurrentQuestion } from '../actions/currentQuestion.js';
-import { getCurrentAnswers} from '../actions/currentAnswers.js';
+import { getCurrentQuestion } from '../../actions/currentQuestion.js';
+import { getCurrentAnswers} from '../../actions/currentAnswers.js';
 
 class Thread extends Component {
     constructor(props) {
