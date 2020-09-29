@@ -6,10 +6,9 @@ import { getCurrentQuestion } from '../../actions/currentQuestion.js';
 import { getCurrentAnswers} from '../../actions/currentAnswers.js';
 
 class Thread extends Component {
-    constructor(props) {
-        super(props);
-        props.getCurrentQuestion(props.match.params.id);
-        props.getCurrentAnswers(props.match.params.id);
+    componentDidMount() {
+        this.props.getCurrentQuestion(this.props.match.params.id);
+        this.props.getCurrentAnswers(this.props.match.params.id);
     }
 
     render(){

@@ -4,9 +4,8 @@ import { getCurrentProfile } from '../../actions/currentProfile.js';
 
 class ProfilePage extends Component {
 
-    constructor(props) {
-        super(props);
-        props.getCurrentProfile(props.match.params.id);
+    componentDidMount() {
+        this.props.getCurrentProfile(this.props.match.params.id);
     }
 
     handleClick = (e) => {
