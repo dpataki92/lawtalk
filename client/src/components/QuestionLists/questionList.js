@@ -5,27 +5,9 @@ class QuestionList extends Component {
 
         render() {
             const questions = this.props.questions.map((question, id)=> {
-                if (id < 1) {
-                    return <QuestionRow
-                          key={id}
-                          questionId={question.id}
-                          id={question.creatorId}
-                          title={question.title}
-                          jurisdiction={question.jurisdiction}
-                          field={question.field}
-                          creator={question.creator}
-                          replies={question.replies} 
-                          lastRespondent= {question.lastRespondent} 
-                          lastResponseDate= {question.lastResponseDate}
-                          lastRespondentAvatar={question.lastRespondentAvatar}
-                          lastRespondentId={question.lastRespondentId}
-                          currentUser={this.props.currentUser}
-                          followersNames={question.followersNames}
-                        />
-                } else {
                     return (
                         <React.Fragment>
-                            <hr className="m-0"/>
+                            {id > 1 ? <hr className="m-0"/> : null}
                             <QuestionRow
                           key={id}
                           questionId={question.id}
@@ -44,7 +26,6 @@ class QuestionList extends Component {
                             />
                         </React.Fragment>
                     )
-                }
             })
 
         return(<React.Fragment>
