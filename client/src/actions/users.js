@@ -19,7 +19,6 @@ export const getTopUsers = () => {
         .then(resp => resp.json())
         .then(json => {
             if (json.topUsers) {
-                console.log(json.topUsers)
                 dispatch(setTopUsers(json.topUsers))
             } else {
                 dispatch(setTopUsers([]))

@@ -23,102 +23,102 @@ class QuestionContainer extends Component {
     }
 
 
-        // Searchbar functions
+    // Searchbar functions
 
-        handleSearchClick = () => {
-            this.props.getCurrentQuestions(this.state)
-        }
+    handleSearchClick = () => {
+        this.props.getCurrentQuestions(this.state)
+    }
 
-        handleOnChange = (e) => {
+    handleOnChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleJurisdictionButton = (e) => {
+        e.preventDefault();
+        if (e.target.id === "EU") {
+            e.target.parentNode.innerHTML ="";
             this.setState({
-                [e.target.name]: e.target.value
+                jurisdictionCategory: "EU"
             })
-        }
-    
-        handleJurisdictionButton = (e) => {
-            e.preventDefault();
-            if (e.target.id === "EU") {
-                e.target.parentNode.innerHTML ="";
-                this.setState({
-                    jurisdictionCategory: "EU"
-                })
-            } else if (e.target.id === "USA") {
-                e.target.parentNode.innerHTML ="";
-                this.setState({
-                    jurisdictionCategory: "USA"
-                })
-            }
-        }
-    
-        setJurisdiction = (selected) => {
+        } else if (e.target.id === "USA") {
+            e.target.parentNode.innerHTML ="";
             this.setState({
-                jurisdiction: selected
+                jurisdictionCategory: "USA"
             })
         }
-    
-        ordering = (e) => {
-            let orderingButton = e.target;
-            orderingButton.innerText === "Creation ↓" ? orderingButton.innerText = "Relevance ↓" : orderingButton.innerText = "Creation ↓";
-            this.props.getCurrentQuestions(this.state);
-            let value = e.target.innerText.slice(0,-2).toLowerCase();
-            this.setState({
-                order: value
-            })
-        }
-    
-        handleOrderOnEnter = (e) => {
-            let value = e.target.innerText.slice(0,-2).toLowerCase();
-            console.log(this.state.order)
-            this.setState({
-                order: value
-            })
-        }
-    
-        handleOrderOnLeave = (e) => {
-            let value = e.target.innerText.slice(0,-2).toLowerCase();
-            let prevValue = (value === "creation" ? "relevance" : "creation");
-            console.log(this.state.order)
-            this.setState({
-                order: prevValue
-            })
-        }
-    
-        setField = (selected) => {
-            this.setState({
-                field: selected
-            })
-        }
-    
-        setPageBackToOne = (e) => {
-            this.setState({
-                pageNumber: "1"
-            })
-            document.querySelectorAll(".pageNum").forEach((el,i) => {
-                el.innerText = i+1
-                
-            })
-            document.querySelector("li.page-item.active").classList = "page-item";
-            document.getElementById("firstPage").classList = "page-item active";
-    
-        }
-    
-        // Pagination functions
-        getQuestionsBasedOnPageNumber = (e) => {
-            document.querySelector("li.page-item.active").classList = "page-item";
-            e.target.parentNode.classList = "page-item active";
-            this.props.getCurrentQuestions(this.state);
-        }
-    
-        handlePageChangeOnEnter = (e) => {
-            this.setState({
-                pageNumber: e.target.innerHTML
-            })
-        }
-    
-        handlePageChangeOnLeave = (e) => {
-            this.setState({
-                pageNumber: ""
-            })
+    }
+
+    setJurisdiction = (selected) => {
+        this.setState({
+            jurisdiction: selected
+        })
+    }
+
+    ordering = (e) => {
+        let orderingButton = e.target;
+        orderingButton.innerText === "Creation ↓" ? orderingButton.innerText = "Relevance ↓" : orderingButton.innerText = "Creation ↓";
+        this.props.getCurrentQuestions(this.state);
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        this.setState({
+            order: value
+        })
+    }
+
+    handleOrderOnEnter = (e) => {
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        console.log(this.state.order)
+        this.setState({
+            order: value
+        })
+    }
+
+    handleOrderOnLeave = (e) => {
+        let value = e.target.innerText.slice(0,-2).toLowerCase();
+        let prevValue = (value === "creation" ? "relevance" : "creation");
+        console.log(this.state.order)
+        this.setState({
+            order: prevValue
+        })
+    }
+
+    setField = (selected) => {
+        this.setState({
+            field: selected
+        })
+    }
+
+    setPageBackToOne = (e) => {
+        this.setState({
+            pageNumber: "1"
+        })
+        document.querySelectorAll(".pageNum").forEach((el,i) => {
+            el.innerText = i+1
+            
+        })
+        document.querySelector("li.page-item.active").classList = "page-item";
+        document.getElementById("firstPage").classList = "page-item active";
+
+    }
+
+    // Pagination functions
+    getQuestionsBasedOnPageNumber = (e) => {
+        document.querySelector("li.page-item.active").classList = "page-item";
+        e.target.parentNode.classList = "page-item active";
+        this.props.getCurrentQuestions(this.state);
+    }
+
+    handlePageChangeOnEnter = (e) => {
+        this.setState({
+            pageNumber: e.target.innerHTML
+        })
+    }
+
+    handlePageChangeOnLeave = (e) => {
+        this.setState({
+            pageNumber: ""
+        })
         }
 
     render() {

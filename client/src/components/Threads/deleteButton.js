@@ -10,7 +10,6 @@ const DeleteButton = props => {
           })
           .then(resp => resp.json())
           .then(function(json) {
-            console.log(json);
             if (json.message === "success") {
                 alert("You have deleted the post");
             } else {

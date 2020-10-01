@@ -58,7 +58,6 @@ const Login = ({loginForm, updateLoginForm, login}) => {
 						</a>
 					</div>
 				</form>
-
 				<div className="login100-more" style={{backgroundImage: `url("/login_background/1.jpg")`}}></div>
 			</div>
 		</div>

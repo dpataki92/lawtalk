@@ -9,11 +9,6 @@ import DeleteButton from './deleteButton.js';
 
 class Reply extends Component {
 
-    constructor(props) {
-        super(props)
-
-    }
-
     handleVoting = (e) => {
         let id = this.props.answerId
         fetch(`/api/answers/${id}/vote`, {
@@ -30,9 +25,7 @@ class Reply extends Component {
         .then(resp => resp.json())
         .then(function(json) {
             alert(json.message);
-            console.log(json)
             let answerFooter = document.getElementById(id);
-            console.log(answerFooter)
             answerFooter.querySelector("#upvote").style.visibility = "hidden";
             answerFooter.querySelector("#downvote").style.visibility = "hidden";
             answerFooter.querySelector("#upvoteNum").innerText = `${json.answerUpvotes} upvotes`

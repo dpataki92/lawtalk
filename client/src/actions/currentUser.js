@@ -6,6 +6,7 @@ export const setCurrentUser = user => {
     }
 }
 
+// asynchronous action creators
 export const logout = () => {
     return dispatch => {
       localStorage.clear();
@@ -15,9 +16,7 @@ export const logout = () => {
     }
   }
 
-// asynchronous action creators
 export const login = credentials => {
-    console.log("credentials are:", credentials)
     return dispatch => {
         return fetch("/api/login", {
             method: "POST",
@@ -26,7 +25,6 @@ export const login = credentials => {
           })
           .then(resp => resp.json())
           .then(function(json) {
-            console.log(json);
             if (json.message) {
                 alert(json.message)
             } else {
@@ -48,7 +46,6 @@ export const getCurrentUser = () => {
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
             if (json.user) {
                 dispatch(setCurrentUser(json.user))
             } else {

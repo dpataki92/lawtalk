@@ -31,7 +31,6 @@ class MainPost extends Component {
     }
 
     handleFollowButton = (e) => {
-        console.log(e.target)
         e.preventDefault();
         if (e.target.innerText === "Unfollow Thread") {
             this.followFetch("unfollow");

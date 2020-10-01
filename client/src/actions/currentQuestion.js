@@ -8,7 +8,6 @@ export const setCurrentQuestion = currentQuestion => {
 
 // asynchronous action creators
 export const getCurrentQuestion = (id) => {
-    console.log(id)
     return dispatch => {
         return fetch(`/api/questions/${id}`, {
             method: "GET",
