@@ -3,6 +3,17 @@ import QuestionRow from './questionRow.js';
 
 class QuestionList extends Component {
 
+        handleVote = (e) => {
+            e.preventDefault();
+            let text = e.target.innerText;
+            if (text === "0") {
+                e.target.innerText = "1"
+            } else {
+                e.target.innerText = "0"
+            }
+
+        }
+
         render() {
             const questions = this.props.questions.map((question, id)=> {
                     return (
@@ -23,6 +34,7 @@ class QuestionList extends Component {
                           lastRespondentId={question.lastRespondentId}
                           currentUser={this.props.currentUser}
                           followersNames={question.followersNames}
+                          handleVote={this.handleVote}
                             />
                         </React.Fragment>
                     )
