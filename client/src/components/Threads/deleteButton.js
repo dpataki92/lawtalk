@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+
 
 const DeleteButton = props => {
     const handleDelete = (e) => {
@@ -12,14 +14,15 @@ const DeleteButton = props => {
           .then(function(json) {
             if (json.message === "success") {
                 alert("You have deleted the post");
+                props.history.push('/questions/all');
             } else {
-                alert("Invalid data. Please try again.")
+                alert("Invalid data. Please try again.");
             }
           })
     }
     return(
-        <button type="button" onClick={handleDelete} className="btn btn-danger"><i class="ion ion-md-create"></i>&nbsp; Delete</button>
+        <button type="button" onClick={handleDelete} className="btn btn-danger"><i class="ion ion-md-create"></i> Delete</button>
     )
 }
 
-export default DeleteButton;
+export default withRouter(DeleteButton);
