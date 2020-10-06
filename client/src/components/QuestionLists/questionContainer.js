@@ -68,7 +68,6 @@ class QuestionContainer extends Component {
 
     handleOrderOnEnter = (e) => {
         let value = e.target.innerText.slice(0,-2).toLowerCase();
-        console.log(this.state.order)
         this.setState({
             order: value
         })
@@ -77,7 +76,6 @@ class QuestionContainer extends Component {
     handleOrderOnLeave = (e) => {
         let value = e.target.innerText.slice(0,-2).toLowerCase();
         let prevValue = (value === "creation" ? "relevance" : "creation");
-        console.log(this.state.order)
         this.setState({
             order: prevValue
         })
