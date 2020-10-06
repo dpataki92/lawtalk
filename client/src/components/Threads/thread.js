@@ -11,6 +11,11 @@ class Thread extends Component {
         this.props.getCurrentAnswers(this.props.match.params.id);
     }
 
+    renderOnUpdate = () => {
+        this.props.getCurrentQuestion(this.props.match.params.id);
+        this.props.getCurrentAnswers(this.props.match.params.id);
+    }
+
     render(){
 
         const questionData  = this.props.currentQuestion
@@ -18,8 +23,11 @@ class Thread extends Component {
 
         return(
             <React.Fragment>
-                <MainPost postId={this.props.match.params.id} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} creation={questionData.creation} update={questionData.update} replies={questionData.replies} followers={questionData.followers} currentUser={this.props.currentUser.username} followed={questionData.followed}/>
-                <Replies replies={answerData} currentUser={this.props.currentUser.username}/>
+                <MainPost postId={this.props.match.params.id} title={questionData.title} content={questionData.content} jurisdiction={questionData.jurisdiction} 
+                field={questionData.field} creatorAvatar={questionData.creatorAvatar} creator={questionData.creator} creatorId={questionData.creatorId} 
+                creation={questionData.creation} update={questionData.update} replies={questionData.replies} followers={questionData.followers} 
+                currentUser={this.props.currentUser.username} followed={questionData.followed} renderOnUpdate={this.renderOnUpdate}/>
+                <Replies replies={answerData} currentUser={this.props.currentUser.username} renderOnUpdate={this.renderOnUpdate}/>
             </React.Fragment>
         )
     }

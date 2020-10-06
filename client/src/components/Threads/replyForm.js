@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+
 
 class ReplyForm extends React.Component {
     state = {
@@ -16,11 +18,10 @@ class ReplyForm extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
+        let props = this.props;
         let path; 
         if (this.state.type === "answer") {path = "answers"}
         else if (this.state.type === "comment") {path = "comments"}
-        console.log(this.state)
         fetch(`/api/${path}`, {
             method: "POST",
             headers: {"Content-Type": "application/json",
@@ -30,7 +31,7 @@ class ReplyForm extends React.Component {
           .then(resp => resp.json())
           .then(function(json) {
             if (json.message === "success") {
-                window.location.reload(false)
+                props.renderOnUpdate();
             } else {
                 alert("Invalid data. Please try again.")
             }
@@ -42,11 +43,11 @@ class ReplyForm extends React.Component {
             <div class="form-group" style={{marginTop: "10px"}}>
                 <label for="description">Response </label>
                 <textarea rows="5" class="form-control" name="content" onChange={this.handleChange} value={this.state.content} ></textarea>
-               <button style={{marginTop: "5px"}} onClick={this.handleSubmit} type="button" className="btn btn-primary"><i className="ion ion-md-create"></i>&nbsp; Send</button>
+               <button style={{marginTop: "5px"}} onClick={this.handleSubmit} type="button" className="btn btn-primary"><i className="ion ion-md-create"></i> Send</button>
             </div>
         )
     }
 
 }
 
-export default ReplyForm;
+export default withRouter(ReplyForm);
