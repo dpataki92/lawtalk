@@ -3,8 +3,10 @@ import '../../App.css';
 import { connect } from 'react-redux';
 import { updateLoginForm } from '../../actions/loginForm.js';
 import { login } from '../../actions/currentUser.js';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Signup from './signup.js';
 
-const Login = ({loginForm, updateLoginForm, login}) => {
+const Login = ({loginForm, updateLoginForm, login, changeState}) => {
 
 	const handleInputChange = e => {
 		const {name, value} = e.target
@@ -21,6 +23,7 @@ const Login = ({loginForm, updateLoginForm, login}) => {
 	}
 		
     return (
+		<div>
         <div className="limiter" id="login-form">
 		<div className="container-login100">
 			<div className="wrap-login100">
@@ -53,7 +56,7 @@ const Login = ({loginForm, updateLoginForm, login}) => {
 					</div>
 
 					<div className="w-full text-center">
-						<a href="#" className="txt3">
+						<a className="txt3" href="#" onClick={changeState}>
 							Sign Up
 						</a>
 					</div>
@@ -61,6 +64,7 @@ const Login = ({loginForm, updateLoginForm, login}) => {
 				<div className="login100-more" style={{backgroundImage: `url("/login_background/1.jpg")`}}></div>
 			</div>
 		</div>
+	</div>
 	</div>
     )}
 
