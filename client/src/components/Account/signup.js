@@ -32,19 +32,23 @@ const Signup = ({loginForm, updateLoginForm, login, changeState}) => {
 					</span>
 					
 					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={handleInputChange} value={loginForm.username}/>
+						<input id="username" className="input100" type="text" name="username" placeholder="Username*" required onChange={handleInputChange} value={loginForm.username}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={handleInputChange} value={loginForm.password}/>
+						<input id="password" className="input100" type="password" name="password" placeholder="Password*" required onChange={handleInputChange} value={loginForm.password}/>
 						<span className="focus-input100"></span>
 					</div>
-                    <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="username" className="input100" type="text" name="username" placeholder="Username" required onChange={handleInputChange} value={loginForm.username}/>
+                    <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type email">
+						<input id="email" className="input100" type="text" name="email" placeholder="Email" onChange={handleInputChange} value={loginForm.username}/>
 						<span className="focus-input100"></span>
 					</div>
-					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input id="password" className="input100" type="password" name="password" placeholder="Password" required onChange={handleInputChange} value={loginForm.password}/>
+					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type location">
+						<input id="password" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={loginForm.password}/>
+						<span className="focus-input100"></span>
+					</div>
+                    <div className="wrap-input100 wrap-input100 validate-input m-b-20" data-validate="Type fields">
+						<input id="password" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={loginForm.password}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -54,7 +58,7 @@ const Signup = ({loginForm, updateLoginForm, login, changeState}) => {
 						</button>
 					</div>
 
-					<div className="w-full text-center">
+					<div className="w-full text-center" style={{marginTop: "100px"}}>
 						<a className="txt3" href="#" onClick={changeState}>
 							Back to Login
 						</a>
