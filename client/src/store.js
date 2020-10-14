@@ -8,6 +8,8 @@ import currentProfileReducer from './reducers/currentProfile.js';
 import currentQuestionReducer from './reducers/currentQuestion.js';
 import currentAnswersReducer from './reducers/currentAnswers.js';
 import currentCommentsReducer from './reducers/currentComments.js';
+import signupFormReducer from './reducers/signupForm.js';
+
 
 const reducer = combineReducers({
     currentUser: currentUserReducer,
@@ -17,7 +19,8 @@ const reducer = combineReducers({
     currentProfile: currentProfileReducer,
     currentQuestion: currentQuestionReducer,
     currentAnswers: currentAnswersReducer,
-    currentComments: currentCommentsReducer
+    currentComments: currentCommentsReducer,
+    signupForm: signupFormReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -37,7 +37,7 @@ export const login = credentials => {
 
 export const signup = credentials => {
     return dispatch => {
-        return fetch("/api/signup", {
+        return fetch("/api/users", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(credentials)

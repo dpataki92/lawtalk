@@ -43,11 +43,11 @@ const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type location">
-						<input id="password" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={signupForm.location}/>
+						<input id="location" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={signupForm.location}/>
 						<span className="focus-input100"></span>
 					</div>
                     <div className="wrap-input100 wrap-input100 validate-input m-b-20" data-validate="Type fields">
-						<input id="password" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={signupForm.fields}/>
+						<input id="fields" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={signupForm.fields}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -72,9 +72,9 @@ const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
 
 const mapStateToProps = state => {
 	return {
-		loginForm: state.signupForm
+		signupForm: state.signupForm
 	}
 }
 
 
-export default connect(mapStateToProps, { updateLoginForm, login } )(Signup);
+export default connect(mapStateToProps, { updateSignupForm, signup } )(Signup);
