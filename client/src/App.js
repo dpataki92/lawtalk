@@ -26,8 +26,8 @@ class App extends React.Component {
     let component;
 
     if (this.props.currentUser) {component = <Home />}
-    else if (this.state.signup === false) {component = <Login changeState={this.changeState}/>}
-    else if (this.state.signup === true) {component = <Signup changeState={this.changeState}/>}
+    else if (!this.state.signup) {component = <Login changeState={this.changeState}/>}
+    else if (this.state.signup) {component = <Signup changeState={this.changeState}/>}
 
     return (
         component
