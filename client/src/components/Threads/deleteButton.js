@@ -13,8 +13,14 @@ const DeleteButton = props => {
           .then(resp => resp.json())
           .then(function(json) {
             if (json.message === "success") {
+                console.log(props.match.url);
                 alert("You have deleted the post");
-                props.history.push('/questions/all');
+                if (props.match.url.contains('edit')) {
+                    props.history.push('/questions/all');
+                } else {
+                    debugger;
+                    props.history.push(`${window.location.href}`);
+                }
             } else {
                 alert("Invalid data. Please try again.");
             }
