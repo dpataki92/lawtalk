@@ -1,24 +1,23 @@
 import React from 'react';
 import '../../App.css'; 
 import { connect } from 'react-redux';
-import { updateLoginForm } from '../../actions/loginForm.js';
-import { login } from '../../actions/currentUser.js';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { updateSignupForm } from '../../actions/signupForm.js';
+import { signup } from '../../actions/currentUser.js';
 
-const Signup = ({loginForm, updateLoginForm, login, changeState}) => {
+const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
 
 	const handleInputChange = e => {
 		const {name, value} = e.target
 		const updatedFormInfo = {
-			...loginForm,
+			...signupForm,
 			[name]: value
 		}
-		updateLoginForm(updatedFormInfo)
+		updateSignupForm(updatedFormInfo)
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		login(loginForm)
+		signup(signupForm)
 	}
 		
     return (
@@ -32,23 +31,23 @@ const Signup = ({loginForm, updateLoginForm, login, changeState}) => {
 					</span>
 					
 					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-						<input id="username" className="input100" type="text" name="username" placeholder="Username*" required onChange={handleInputChange} value={loginForm.username}/>
+						<input id="username" className="input100" type="text" name="username" placeholder="Username*" required onChange={handleInputChange} value={signupForm.username}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-						<input id="password" className="input100" type="password" name="password" placeholder="Password*" required onChange={handleInputChange} value={loginForm.password}/>
+						<input id="password" className="input100" type="password" name="password" placeholder="Password*" required onChange={handleInputChange} value={signupForm.password}/>
 						<span className="focus-input100"></span>
 					</div>
                     <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type email">
-						<input id="email" className="input100" type="text" name="email" placeholder="Email" onChange={handleInputChange} value={loginForm.username}/>
+						<input id="email" className="input100" type="text" name="email" placeholder="Email" onChange={handleInputChange} value={signupForm.email}/>
 						<span className="focus-input100"></span>
 					</div>
 					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type location">
-						<input id="password" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={loginForm.password}/>
+						<input id="password" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={signupForm.location}/>
 						<span className="focus-input100"></span>
 					</div>
                     <div className="wrap-input100 wrap-input100 validate-input m-b-20" data-validate="Type fields">
-						<input id="password" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={loginForm.password}/>
+						<input id="password" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={signupForm.fields}/>
 						<span className="focus-input100"></span>
 					</div>
 					
@@ -73,7 +72,7 @@ const Signup = ({loginForm, updateLoginForm, login, changeState}) => {
 
 const mapStateToProps = state => {
 	return {
-		loginForm: state.loginForm
+		loginForm: state.signupForm
 	}
 }
 

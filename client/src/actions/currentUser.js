@@ -35,6 +35,25 @@ export const login = credentials => {
     }
 }
 
+export const signup = credentials => {
+    return dispatch => {
+        return fetch("/api/signup", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(credentials)
+          })
+          .then(resp => resp.json())
+          .then(function(json) {
+            if (json.message) {
+                alert(json.message)
+            } else {
+                localStorage.setItem('jwt_token', json.jwt);
+                dispatch((setCurrentUser(json.user)));
+            }
+          })
+    }
+}
+
 export const getCurrentUser = () => {
     return dispatch => {
         return fetch("/api/profile", {
