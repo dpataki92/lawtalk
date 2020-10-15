@@ -22,6 +22,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_with_omniauth
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+    end
+ 
+    if @user.valid?
+      @token = encode_token(user_id: @user.id)
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+    else
+      render json: { message: 'failed to create user' }, status: :not_acceptable
+    end
+  end
+
   def top_users
     users = User.rank_top_15
     render json: { topUsers: users }, status: :accepted
