@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get '/users/top', to: 'users#top_users'
     get '/users/:id', to: 'users#show'
     get '/profile', to: 'users#profile'
+    get '/auth/:provider/callback', to: 'users#create_with_omniauth'
+    
     post '/login', to: 'auth#create'
 
     resources :questions, only: [:create, :update, :new, :show, :destroy]
