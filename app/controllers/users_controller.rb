@@ -29,10 +29,13 @@ class UsersController < ApplicationController
       u.avatar = auth['info']['image']
       u.password = SecureRandom.urlsafe_base64(n=6)
     end
+
+    byebug
  
     if @user.valid?
+      
       @token = encode_token(user_id: @user.id)
-      render json: { user: @user, jwt: @token }, status: :created
+      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
       render json: { message: 'failed to create user' }, status: :not_acceptable
     end

@@ -5,6 +5,7 @@ import { updateLoginForm } from '../../actions/loginForm.js';
 import { login } from '../../actions/currentUser.js';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import Signup from './signup.js';
+import SocialMediaContainer from './socialMediaContainer.js';
 
 const Login = ({loginForm, updateLoginForm, login, changeState}) => {
 
@@ -47,13 +48,7 @@ const Login = ({loginForm, updateLoginForm, login, changeState}) => {
 						</button>
 					</div>
 
-					<div className="w-full text-center p-t-27 p-b-239">
-						<span className="txt1">
-							or login with social media account
-						</span><br/><br/>
-						<a  href="#" class="fa fa-google"></a>
-						<a  href="#" class="fa fa-twitter"></a>
-					</div>
+					<SocialMediaContainer />
 
 					<div className="w-full text-center">
 						<a className="txt3" href="#" onClick={changeState}>

@@ -43,6 +43,7 @@ export const loginSocialMedia = provider => {
           })
           .then(resp => resp.json())
           .then(function(json) {
+              console.log(json)
             if (json.message) {
                 alert(json.message)
             } else {
