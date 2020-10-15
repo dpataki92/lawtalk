@@ -35,6 +35,24 @@ export const login = credentials => {
     }
 }
 
+export const loginSocialMedia = provider => {
+    return dispatch => {
+        return fetch(`/api/auth/${provider}/callback`, {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+          })
+          .then(resp => resp.json())
+          .then(function(json) {
+            if (json.message) {
+                alert(json.message)
+            } else {
+                localStorage.setItem('jwt_token', json.jwt);
+                dispatch((setCurrentUser(json.user)));
+            }
+          })
+    }
+}
+
 export const signup = credentials => {
     return dispatch => {
         return fetch("/api/users", {

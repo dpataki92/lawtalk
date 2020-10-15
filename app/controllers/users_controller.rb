@@ -26,12 +26,13 @@ class UsersController < ApplicationController
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.email = auth['info']['email']
-      u.image = auth['info']['image']
+      u.avatar = auth['info']['image']
+      u.password = SecureRandom.urlsafe_base64(n=6)
     end
  
     if @user.valid?
       @token = encode_token(user_id: @user.id)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+      render json: { user: @user, jwt: @token }, status: :created
     else
       render json: { message: 'failed to create user' }, status: :not_acceptable
     end
@@ -56,6 +57,10 @@ class UsersController < ApplicationController
   end
     
   private
+     
+  def auth
+      request.env['omniauth.auth']
+  end
   
   def user_params
     params.require(:user).permit(:username, :email, :password, :location, :fields, :avatar, :upvotes, :downvotes)

@@ -1,6 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import SocialMediaLink from './socialMediaLink.js';
+import { connect } from 'react-redux';
+import { loginSocialMedia } from '../../actions/currentUser.js';
+
 
 class SocialMediaContainer extends React.Component {
     render() {
@@ -22,4 +25,4 @@ class SocialMediaContainer extends React.Component {
     }
 }
 
-export default SocialMediaContainer;
+export default connect(null, { loginSocialMedia })(SocialMediaContainer);
