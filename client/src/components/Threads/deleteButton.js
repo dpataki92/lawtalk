@@ -3,7 +3,9 @@ import { withRouter } from 'react-router';
 
 
 const DeleteButton = props => {
+    
     const handleDelete = (e) => {
+        let myProps = props;
         e.preventDefault();
         fetch(`/api/${props.type}s/${props.postId}`, {
             method: "DELETE",
@@ -13,13 +15,12 @@ const DeleteButton = props => {
           .then(resp => resp.json())
           .then(function(json) {
             if (json.message === "success") {
-                console.log(props.match.url);
                 alert("You have deleted the post");
-                if (props.match.url.contains('edit')) {
-                    props.history.push('/questions/all');
+                if (myProps.match.url.includes('edit')) {
+                    myProps.history.push('/questions/all');
                 } else {
-                    debugger;
-                    props.history.push(`${window.location.href}`);
+                    myProps.forceUpdate();
+                    myProps.history.push(`${myProps.location.pathname}`);
                 }
             } else {
                 alert("Invalid data. Please try again.");
