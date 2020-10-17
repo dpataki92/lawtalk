@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-
 const DeleteButton = props => {
+
+    console.log(props)
     
     const handleDelete = (e) => {
         let myProps = props;
@@ -19,8 +20,8 @@ const DeleteButton = props => {
                 if (myProps.match.url.includes('edit')) {
                     myProps.history.push('/questions/all');
                 } else {
-                    myProps.forceUpdate();
-                    myProps.history.push(`${myProps.location.pathname}`);
+                    props.history.push("/temp");
+                    props.history.goBack();
                 }
             } else {
                 alert("Invalid data. Please try again.");
