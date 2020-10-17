@@ -2,8 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 const DeleteButton = props => {
-
-    console.log(props)
     
     const handleDelete = (e) => {
         let myProps = props;

@@ -62,10 +62,10 @@ class Reply extends Component {
         const props = this.props
         return(
             
-            <div className="container-fluid mt-100" style={{width: "80%"}}>
+            <div className="container-fluid mt-100" style={{width: "80%"}} >
                 <div className="row">
                     <div className="col-md-12">
-                        <div className="card mb-4">
+                        <div className="card mb-4" style={{border:"1px solid #0062cc"}}>
                             <div className="card-header">
                                 <div className="media flex-wrap w-100 align-items-center">
                                     <div className="media-body ml-3"> <Link to={`/users/${props.answerCreatorId}`} data-abc="true">{props.answerCreator}</Link>
@@ -77,7 +77,7 @@ class Reply extends Component {
                                 <p> {props.content}
                                 </p>
                             </div>
-                            <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId} style={{borderBottom:"1px solid #0062cc"}}>
+                            <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId}>
                                 <div className="px-4 pt-3"> 
                                 <Link to=" " style={{cursor: "pointer"}} id="upvote" onClick={this.handleVoting}> <i className="fa fa-arrow-up text-success" style={{fontSize: "1.3em"}}></i> </Link>  <span id="upvoteNum" style={{opacity: "0.5", marginRight:"5px"}} >{props.upvotes} upvotes</span> 
                                 <Link to=" " style={{cursor: "pointer"}} id="downvote" onClick={this.handleVoting}> <i className="fa fa-arrow-down text-danger" style={{fontSize: "1.3em"}}></i> </Link>  <span id="downvoteNum" style={{opacity: "0.5", marginRight:"5px"}}>{props.downvotes} downvotes</span> 

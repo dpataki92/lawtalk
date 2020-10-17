@@ -18,7 +18,6 @@ export const getCurrentQuestion = (id) => {
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log(json)
             if (json.questionData) {
                 dispatch(setCurrentQuestion(json.questionData))
             } else {
