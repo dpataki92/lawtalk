@@ -125,6 +125,9 @@ GEM
       jwt (>= 2.0)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.6)
+    omniauth-jwt (0.0.2)
+      jwt
+      omniauth (~> 1.1)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
@@ -210,6 +213,7 @@ DEPENDENCIES
   listen (~> 3.2)
   omniauth
   omniauth-google-oauth2
+  omniauth-jwt
   omniauth-oauth2
   omniauth-twitter
   pry

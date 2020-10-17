@@ -18,6 +18,7 @@ export const logout = () => {
 
 export const login = credentials => {
     return dispatch => {
+        console.log(credentials)
         return fetch("/api/login", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -25,6 +26,7 @@ export const login = credentials => {
           })
           .then(resp => resp.json())
           .then(function(json) {
+              console.log(json)
             if (json.message) {
                 alert(json.message)
             } else {
