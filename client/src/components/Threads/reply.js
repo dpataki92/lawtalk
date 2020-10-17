@@ -58,6 +58,10 @@ class Reply extends Component {
         }
     }
 
+    updateComments = () => {
+        this.props.getCurrentComments(this.props.answerId);
+    }
+
     render() {
         const props = this.props
         return(
@@ -87,7 +91,7 @@ class Reply extends Component {
                                 <div className="px-4 pt-3"> {props.answerCreator === props.currentUser ? <DeleteButton postId={props.answerId} type={"answer"}/> : ""} <button type="button" onClick={this.handleReplyForm} className="btn btn-primary"><i className="ion ion-md-create"></i> Reply</button> </div>
                             </div>
                             <div className="card-body reply-form" style={{display: "none", borderBottom:"1px solid #0062cc"}}>
-                                {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser} renderOnUpdate={props.renderOnUpdate}/>}
+                                {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser} renderOnUpdate={props.renderOnUpdate} updateComments={this.updateComments}/>}
                             </div>
                             <div className="card-body comments-div" style={{display: "none", borderBottom:"1px solid #0062cc"}}>
                                 {<Comments comments={this.props.comments}/>}

@@ -4,6 +4,7 @@ import Replies from './replies.js';
 import { connect } from 'react-redux';
 import { getCurrentQuestion } from '../../actions/currentQuestion.js';
 import { getCurrentAnswers} from '../../actions/currentAnswers.js';
+import { getCurrentComments} from '../../actions/currentComments.js';
 
 class Thread extends Component {
     componentDidMount() {
@@ -38,4 +39,4 @@ const mapStateToProps = state => {
     return ({ currentQuestion: state.currentQuestion, currentAnswers: state.currentAnswers, currentUser: state.currentUser })
   }
 
-export default connect(mapStateToProps, { getCurrentQuestion, getCurrentAnswers})(Thread);
+export default connect(mapStateToProps, { getCurrentQuestion, getCurrentAnswers, getCurrentComments})(Thread);

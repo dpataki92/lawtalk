@@ -32,6 +32,9 @@ class ReplyForm extends React.Component {
           .then(function(json) {
             if (json.message === "success") {
                 props.renderOnUpdate();
+                if (props.type === "comment") {
+                    props.updateComments();
+                }
             } else {
                 alert("Invalid data. Please try again.")
             }
