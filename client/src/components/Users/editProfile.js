@@ -49,7 +49,7 @@ class EditProfile extends Component {
         .then(resp => resp.json())
         .then(json => {
             alert(json.message);
-            window.location.reload();
+            this.props.history.push(`/users/${this.state.id}/edit`);
         })
     }
 
