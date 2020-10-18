@@ -104,6 +104,7 @@ class QuestionContainer extends Component {
     getQuestionsBasedOnPageNumber = (e) => {
         document.querySelector("li.page-item.active").classList = "page-item";
         e.target.parentNode.classList = "page-item active";
+        console.log(this.state)
         this.props.getCurrentQuestions(this.state);
     }
 

@@ -27,7 +27,7 @@ class Home extends Component {
                 <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
                 <Route key="new" exact path="/questions/new" render={() => <QuestionForm />} />
                 <Route key="edit question" exact path="/questions/:id/edit" component={EditQuestionForm} />
-                <Route key="thread" eaxact path="/questions/:id" component={Thread} />
+                <Route key="thread" exact path="/questions/:id" component={Thread} />
                 <Route key="top" exact path="/users/top" render={() => <TopUsers />} />
                 <Route key="edit profile" path="/users/:id/edit" component={EditProfile} />
                 <Route key="profile" exact path="/users/:id" component={ProfilePage} />

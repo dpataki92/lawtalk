@@ -8,6 +8,7 @@ export const setCurrentQuestions = questions => {
 
 // asynchronous action creators
 export const getCurrentQuestions = (conditions) => {
+    console.log(conditions)
     return dispatch => {
         return fetch("/api/questions/list", {
             method: "POST",
@@ -20,6 +21,7 @@ export const getCurrentQuestions = (conditions) => {
         .then(resp => resp.json())
         .then(json => {
             if (json.questions) {
+                console.log(json.questions)
                 dispatch(setCurrentQuestions(json.questions))
             } else {
                 dispatch(setCurrentQuestions([]))

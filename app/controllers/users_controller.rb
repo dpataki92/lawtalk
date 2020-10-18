@@ -22,24 +22,27 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_with_omniauth
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      u.name = auth['info']['name']
-      u.email = auth['info']['email']
-      u.avatar = auth['info']['image']
-      u.password = SecureRandom.urlsafe_base64(n=6)
-    end
+=begin
 
-    byebug
- 
-    if @user.valid?
-      
-      @token = encode_token(user_id: @user.id)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
-    else
-      render json: { message: 'failed to create user' }, status: :not_acceptable
+    def create_with_omniauth
+      @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        u.name = auth['info']['name']
+        u.email = auth['info']['email']
+        u.avatar = auth['info']['image']
+        u.password = SecureRandom.urlsafe_base64(n=6)
+      end
+
+      byebug
+  
+      if @user.valid?
+        
+        @token = encode_token(user_id: @user.id)
+        render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+      else
+        render json: { message: 'failed to create user' }, status: :not_acceptable
+      end
     end
-  end
+=end
 
   def top_users
     users = User.rank_top_15
@@ -60,10 +63,12 @@ class UsersController < ApplicationController
   end
     
   private
-     
+
+=begin
   def auth
       request.env['omniauth.auth']
   end
+=end
   
   def user_params
     params.require(:user).permit(:username, :email, :password, :location, :fields, :avatar, :upvotes, :downvotes)

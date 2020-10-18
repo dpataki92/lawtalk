@@ -24,11 +24,11 @@ const Pagination = props => {
     return(
         <nav>
             <ul className="pagination mb-5">
-                <li className="page-item disabled" ><a onClick={handleScroll} id="scrollLeft" className="page-link" href="javascript:void(0)" data-abc="true">«</a></li>
-                <li className="page-item active" id="firstPage"><a className="page-link pageNum" href="javascript:void(0)" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>1</a></li>
-                <li className="page-item"><Link className="page-link pageNum" to=" " data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>2</Link></li>
-                <li className="page-item"><Link className="page-link pageNum" to=" " data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>3</Link></li>
-                <li className="page-item" ><Link onClick={handleScroll} id="scrollRight" className="page-link" to=" " data-abc="true">»</Link></li>
+                <li className="page-item disabled" ><Link onClick={handleScroll} id="scrollLeft" className="page-link" to="#" data-abc="true">«</Link></li>
+                <li className="page-item active" id="firstPage"><Link className="page-link pageNum" to="#" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>1</Link></li>
+                <li className="page-item"><Link className="page-link pageNum" to="#" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>2</Link></li>
+                <li className="page-item"><Link className="page-link pageNum" to="#" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>3</Link></li>
+                <li className="page-item" ><Link onClick={handleScroll} id="scrollRight" className="page-link" to="#" data-abc="true">»</Link></li>
             </ul>
         </nav>
     )
