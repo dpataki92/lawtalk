@@ -15,8 +15,7 @@ const Comment = (props) => {
             },
             body: JSON.stringify({
                 id: id,
-                vote: e.target.parentNode.id,
-                creator: props.commentCreator
+                vote: e.target.parentNode.id
             })
         })
         .then(resp => resp.json())
