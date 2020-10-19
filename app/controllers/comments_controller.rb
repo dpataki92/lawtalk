@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
 
     def vote
         comment = Comment.find_by(id: params[:id])
-        byebug
         if params[:vote] === "upvote"
             comment.upvotes += 1
             comment.user.upvotes += 1

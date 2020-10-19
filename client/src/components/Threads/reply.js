@@ -94,7 +94,7 @@ class Reply extends Component {
                                 {<ReplyForm type={"comment"} postId={props.answerId} currentUser={props.currentUser} renderOnUpdate={props.renderOnUpdate} updateComments={this.updateComments}/>}
                             </div>
                             <div className="card-body comments-div" style={{display: "none", borderBottom:"1px solid #0062cc"}}>
-                                {<Comments comments={this.props.comments}/>}
+                                {<Comments comments={this.props.comments} currentUser={props.currentUser}/>}
                             </div>
                         </div>
                     </div>
