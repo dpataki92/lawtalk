@@ -4,8 +4,33 @@ import { Link } from 'react-router-dom';
 
 const Comment = (props) => {
 
+    const handleVoting = (e) => {
+        let id = props.commentId;
+        let commentDiv = e.target.parentNode.parentNode;
+        fetch(`/api/comments/${id}/vote`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`
+            },
+            body: JSON.stringify({
+                id: id,
+                vote: e.target.parentNode.id,
+                creator: props.commentCreator
+            })
+        })
+        .then(resp => resp.json())
+        .then(function(json) {
+            alert(json.message);
+            commentDiv.querySelector("#upvote").style.visibility = "hidden";
+            commentDiv.querySelector("#downvote").style.visibility = "hidden";
+            commentDiv.querySelector("#upvoteNum").innerText = `${json.commentUpvotes} upvotes`
+            commentDiv.querySelector("#downvoteNum").innerText = `${json.commentDownvotes} downvotes`
+        })   
+    }
+
     return(
-        <div>
+        <div id={props.commentId}>
             <p><Link to={`/users/${props.commentCreatorId}`}>{props.commentCreator}</Link></p> 
             <p style={{opacity: "0.5"}}>{props.creation}</p><br/>
             <p>{props.content}</p><br/>
