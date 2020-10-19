@@ -25,4 +25,13 @@ class CommentsController < ApplicationController
         end
         render json: {commentUpvotes: comment.upvotes, commentDownvotes: comment.downvotes, message: "You have #{params[:vote]}d this comment." }
     end
+
+    def destroy
+        comment = Comment.find_by(id: params[:id])
+        if comment.destroy
+            render json: {message: "success"}
+        else
+            render json: {message: "failure"}
+        end
+    end
 end
