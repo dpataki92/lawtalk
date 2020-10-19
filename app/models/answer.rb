@@ -27,6 +27,7 @@ class Answer < ApplicationRecord
         result = []
         ranked_comments.each do |c|
             comment_hash = {
+                commentId: c.id,
                 content: c.content,
                 commentCreator: c.user.username,
                 commentCreatorId: c.user.id,
