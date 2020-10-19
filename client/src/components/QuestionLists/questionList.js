@@ -5,11 +5,11 @@ class QuestionList extends Component {
 
         handleVote = (e) => {
             e.preventDefault();
-            let text = e.target.innerText;
-            if (text === "0") {
-                e.target.innerText = "1"
+            let vote = e.target.nextSibling;
+            if (vote.innerHTML === " 0") {
+                vote.innerHTML = " 1"
             } else {
-                e.target.innerText = "0"
+                vote.innerHTML = " 0"
             }
 
         }
