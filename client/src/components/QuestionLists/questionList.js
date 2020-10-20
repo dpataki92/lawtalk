@@ -35,10 +35,7 @@ class QuestionList extends Component {
                     )
             })
 
-        return(
-            <React.Fragment>
-                {questions}
-            </React.Fragment>)
+            return questions
         }            
 }
 

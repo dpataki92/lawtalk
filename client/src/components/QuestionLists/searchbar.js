@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import JursidictionList from './jurisdictionList.js';
 import FieldList from './fieldList.js';
 import {Link} from 'react-router-dom';
@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 class SearchBar extends Component {
     render() {
         return(
-            <React.Fragment>
             <div style={{marginLeft: "12px", marginRight:"12px"}}>
             <div className="d-flex flex-wrap justify-content-between">
                 <div> <Link to="/questions/new"> <button type="button" className="btn btn-shadow btn-wide btn-primary">  <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New question </button> </Link> </div>
@@ -26,7 +25,6 @@ class SearchBar extends Component {
                 <button className="search-button" onMouseDown={this.props.setPageBackToOne} onMouseUp={this.props.handleSearchClick}>Search</button>
             </div>
             </div>
-            </React.Fragment>
         )
     }
 }

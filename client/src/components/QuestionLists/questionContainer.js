@@ -104,7 +104,6 @@ class QuestionContainer extends Component {
     getQuestionsBasedOnPageNumber = (e) => {
         document.querySelector("li.page-item.active").classList = "page-item";
         e.target.parentNode.classList = "page-item active";
-        console.log(this.state)
         this.props.getCurrentQuestions(this.state);
     }
 
@@ -122,7 +121,7 @@ class QuestionContainer extends Component {
 
     render() {
         return(
-            <div>
+            <React.Fragment>
                 <SearchBar handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
             handleOrderOnEnter={this.handleOrderOnEnter} handleOrderOnLeave={this.handleOrderOnLeave} setField={this.setField} setPageBackToOne={this.setPageBackToOne} 
             searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick}/>
@@ -131,7 +130,7 @@ class QuestionContainer extends Component {
                 <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username}/>
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
-            </div>
+            </React.Fragment>
         )
     }
 }

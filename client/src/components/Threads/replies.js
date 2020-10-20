@@ -10,10 +10,10 @@ class Replies extends Component {
             renderOnUpdate={this.props.renderOnUpdate}/>
         })
         return(
-            <div>
+            <React.Fragment>
                 <h5 style={{marginLeft:"12%", marginBottom:"5px", opacity:"0.5"}}>{this.props.replies.length} answers</h5>
                 {handleReplies}
-            </div>
+            </React.Fragment>
         )
     }
 }

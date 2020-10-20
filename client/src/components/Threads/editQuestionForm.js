@@ -49,7 +49,6 @@ class EditQuestionForm extends Component {
           })
           .then(resp => resp.json())
           .then(function(json) {
-            console.log(json);
             if (json.message === "success") {
                 alert("You have updated the question");
                 props.history.push('/questions/all');
@@ -73,31 +72,27 @@ class EditQuestionForm extends Component {
 
     render() {
         return(
-            <div class="container">
-	        <div class="row">
-	    
-                <div class="col-md-8 col-md-offset-2">
-                    
+            <div className="container">
+	        <div className="row">
+                <div className="col-md-8 col-md-offset-2">  
                     <h1>Edit question</h1>
-                    
-                    <form >
-                        
-                        <div class="form-group">
+                    <form > 
+                        <div className="form-group">
                             <label for="title">Title </label>
-                            <input type="text" class="form-control" name="title" onChange={this.handleChange} value={this.state.title} required/>
+                            <input type="text" className="form-control" name="title" onChange={this.handleChange} value={this.state.title} required/>
                         </div>
 
                         {<FieldList setField={this.setField}/>}
                         <button onClick={this.handleJurisdictionCategoryClick} style={{marginLeft: "10px"}}>EU</button> <div id="EUlist" style={{display: "none", marginRight: "10px"}}>{<EUJurisdictionList setJurisdiction={this.setJurisdiction}/>}</div>
                         <button onClick={this.handleJurisdictionCategoryClick}>USA</button> <div id="USlist" style={{display: "none", marginRight: "5px"}}>{<USAJurisdictionList setJurisdiction={this.setJurisdiction}/>}</div>
                         
-                        <div class="form-group" style={{marginTop: "10px"}}>
+                        <div className="form-group" style={{marginTop: "10px"}}>
                             <label for="description">Content </label>
-                            <textarea rows="5" class="form-control" name="content" onChange={this.handleChange} value={this.state.content} ></textarea>
+                            <textarea rows="5" className="form-control" name="content" onChange={this.handleChange} value={this.state.content} ></textarea>
                         </div>
                         
-                        <div class="form-group">
-                            <button onClick={this.handleEdit} type="submit" class="btn btn-primary">
+                        <div className="form-group">
+                            <button onClick={this.handleEdit} type="submit" className="btn btn-primary">
                                 Update
                             </button>
                             < DeleteButton postId={this.state.id} type={"question"}/>

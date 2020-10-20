@@ -16,7 +16,7 @@ const QuestionRow = props => {
     return(
         <div className="card-body py-3">
             <div className="row no-gutters align-items-center">
-                <div className="col"> <Link to={`/questions/${props.questionId}`} className="text-big" data-abc="true">{props.title}</Link> <span class={`badge badge-${userConnection()[1]} align-text-bottom ml-1`}>{userConnection()[0]}</span>
+                <div className="col"> <Link to={`/questions/${props.questionId}`} className="text-big" data-abc="true">{props.title}</Link> <span className={`badge badge-${userConnection()[1]} align-text-bottom ml-1`}>{userConnection()[0]}</span>
                     <div className="text-muted small mt-1">{`${props.jurisdiction},`} {props.field} &nbsp;·&nbsp; <Link to={`/users/${props.id}`} className="text-muted" data-abc="true">{props.creator}</Link></div>
                     <div>
                         <button className="search-button" onClick={props.handleVote}>Vote</button>

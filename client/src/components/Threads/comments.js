@@ -7,11 +7,7 @@ class Comments extends Component {
         const handleReplies = this.props.comments.map((c,id) => {
             return <Comment key={id} commentId={c.commentId} creation={c.creation} commentCreator={c.commentCreator} commentCreatorId={c.commentCreatorId} content={c.content} upvotes={c.upvotes} downvotes={c.downvotes} currentUser={this.props.currentUser}/>
         })
-        return(
-            <div>
-                {handleReplies}
-            </div>
-        )
+        return handleReplies
     }
 }
 
