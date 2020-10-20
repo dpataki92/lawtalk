@@ -6,12 +6,7 @@ class QuestionList extends Component {
         handleVote = (e) => {
             e.preventDefault();
             let vote = e.target.nextSibling;
-            if (vote.innerHTML === " 0") {
-                vote.innerHTML = " 1"
-            } else {
-                vote.innerHTML = " 0"
-            }
-
+            vote.innerHTML === " 0" ? vote.innerHTML = " 1" : vote.innerHTML = " 0";
         }
 
         render() {
