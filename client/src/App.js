@@ -17,8 +17,10 @@ class App extends React.Component {
   }
 
   changeState = () => {
-    this.setState({
-      signup: !this.state.signup
+    this.setState(prevState => {
+      return {
+        signup: !prevState.signup
+      }
     })
   }
 
@@ -26,12 +28,9 @@ class App extends React.Component {
     let component;
 
     if (this.props.currentUser) {component = <Home />}
-    else if (!this.state.signup) {component = <Login changeState={this.changeState}/>}
-    else if (this.state.signup) {component = <Signup changeState={this.changeState}/>}
+    else { this.state.signup ? component = <Signup changeState={this.changeState}/> : component = <Login changeState={this.changeState}/>}
 
-    return (
-        component
-    );
+    return component;
   }
   
 }
