@@ -16,16 +16,16 @@ class TopUsers extends Component {
     render() { 
 
         const renderTopUsers = this.props.topUsers.map((u, id)=> {
-            console.log(this.props.topUsers)
             return <Link to={`/users/${u.id}`}><UserRow key={id} username={u.username} avatar={u.avatar} location={u.location} fields={u.fields} upvotes={u.upvotes}/></Link> 
         })
 
-        return (<React.Fragment>
-            <div class="container mt-100 mb-100">
+        return (
+            <React.Fragment>
+            <div className="container mt-100 mb-100">
                 <h2 style={{marginBottom: "5px"}}>Top users</h2>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card"></div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="card"></div>
                         {renderTopUsers}
                     </div>
                 </div>

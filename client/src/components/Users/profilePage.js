@@ -36,21 +36,21 @@ class ProfilePage extends Component {
                     </div>
                     <div className="col-md-6">
                         <div className="profile-head">
-                                    <h5>
-                                        {currentProfile.username}
-                                    </h5>
-                                    <h6 style={{marginBottom:"15px"}}>
-                                        {currentProfile.location}
-                                    </h6>
-                                    <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
-                            <ul className="nav nav-tabs" id="myTab" role="tablist">
-                                <li className="nav-item">
-                                    <a className="nav-link active" onClick={this.handleClick} id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" onClick={this.handleClick} id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
-                                </li>
-                            </ul>
+                                <h5>
+                                    {currentProfile.username}
+                                </h5>
+                                <h6 style={{marginBottom:"15px"}}>
+                                    {currentProfile.location}
+                                </h6>
+                                <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
+                                <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                    <li className="nav-item">
+                                        <a className="nav-link active" onClick={this.handleClick} id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" onClick={this.handleClick} id="bio-tab" data-toggle="tab" href="#bio" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
+                                    </li>
+                                </ul>
                         </div>
                     </div>
 

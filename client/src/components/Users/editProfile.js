@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import  { getCurrentUser } from "../../actions/currentUser.js";
 
 class EditProfile extends Component {
     state = {
@@ -59,7 +58,10 @@ class EditProfile extends Component {
             <div className="container rounded bg-white mt-5">
                 <div className="row">
                     <div className="col-md-4 border-right">
-                        <div className="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90" alt="profile picture"/><span className="font-weight-bold">{currentUser.username}</span><span>{currentUser.location}</span></div>
+                        <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90" alt="profile picture"/>
+                            <span className="font-weight-bold">{currentUser.username}</span>
+                            <span>{currentUser.location}</span></div>
                     </div>
                     <div className="col-md-8">
                         <div className="p-3 py-5">
@@ -98,4 +100,4 @@ const mapStateToProps = state => {
     return ({ currentUser: state.currentUser })
   }
 
-export default connect(mapStateToProps, { getCurrentUser })(EditProfile);
+export default connect(mapStateToProps)(EditProfile);

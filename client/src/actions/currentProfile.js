@@ -19,7 +19,6 @@ export const getCurrentProfile = (id) => {
         .then(resp => resp.json())
         .then(json => {
             if (json.currentProfile) {
-                console.log(json.currentProfile)
                 dispatch(setCurrentProfile(json.currentProfile))
             } else {
                 dispatch(setCurrentProfile({}))

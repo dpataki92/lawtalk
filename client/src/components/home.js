@@ -16,10 +16,9 @@ import EditProfile from './Users/editProfile.js';
 class Home extends Component {
 
     render() {
-
         return(
             <Router>
-                <div>
+                <React.Fragment>
                 <Navbar logout={this.props.logout} id={this.props.currentUser.id} />
                 <Switch>
                 <Route exact path="/" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
@@ -29,15 +28,16 @@ class Home extends Component {
                 <Route key="edit question" exact path="/questions/:id/edit" component={EditQuestionForm} />
                 <Route key="thread" exact path="/questions/:id" component={Thread} />
                 <Route key="top" exact path="/users/top" render={() => <TopUsers />} />
-                <Route key="edit profile" path="/users/:id/edit" component={EditProfile} />
+                <Route key="edit profile" exact path="/users/:id/edit" component={EditProfile} />
                 <Route key="profile" exact path="/users/:id" component={ProfilePage} />
                 </Switch>
-                </div>
+                </React.Fragment>
             </Router>
         )
     }
 }
 const mapStateToProps = state => {
-    return ({ currentProfile: state.currentProfile, currentUser: state.currentUser })
-  }
+    return ({ currentUser: state.currentUser })
+}
+
 export default connect(mapStateToProps, { logout })(Home);
