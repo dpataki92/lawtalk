@@ -49,6 +49,7 @@ class User < ApplicationRecord
             fields: self.fields,
             bio: self.bio,
             answers: self.answers.size,
+            comments: self.comments.size,
             createdQuestions: self.created_questions.size,
             voteRatio: self.vote_ratio,
             answer1: self.top_rated_answers[0],

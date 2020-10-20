@@ -101,6 +101,14 @@ class ProfilePage extends Component {
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6">
+                                                <label>Comments</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p>{currentProfile.comments}</p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
                                                 <label>Member since</label>
                                             </div>
                                             <div className="col-md-6">
