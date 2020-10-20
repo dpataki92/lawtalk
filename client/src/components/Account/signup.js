@@ -30,25 +30,20 @@ const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
 						Lawtalk
 					</span>
 					
-					<div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+					<div className="wrap-input100 rs1-wrap-input100 m-b-20">
 						<input id="username" className="input100" type="text" name="username" placeholder="Username*" required onChange={handleInputChange} value={signupForm.username}/>
-						<span className="focus-input100"></span>
 					</div>
-					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+					<div className="wrap-input100 rs2-wrap-input100 m-b-20">
 						<input id="password" className="input100" type="password" name="password" placeholder="Password*" required onChange={handleInputChange} value={signupForm.password}/>
-						<span className="focus-input100"></span>
 					</div>
-                    <div className="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type email">
+                    <div className="wrap-input100 rs1-wrap-input100 m-b-20">
 						<input id="email" className="input100" type="text" name="email" placeholder="Email" onChange={handleInputChange} value={signupForm.email}/>
-						<span className="focus-input100"></span>
 					</div>
-					<div className="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type location">
+					<div className="wrap-input100 rs2-wrap-input100 m-b-20">
 						<input id="location" className="input100" type="text" name="location" placeholder="Location" onChange={handleInputChange} value={signupForm.location}/>
-						<span className="focus-input100"></span>
 					</div>
-                    <div className="wrap-input100 wrap-input100 validate-input m-b-20" data-validate="Type fields">
+                    <div className="wrap-input100 wrap-input100 m-b-20">
 						<input id="fields" className="input100" type="text" name="fields" placeholder="Legal fields..." onChange={handleInputChange} value={signupForm.fields}/>
-						<span className="focus-input100"></span>
 					</div>
 					
 					<div className="container-login100-form-btn">
@@ -58,7 +53,7 @@ const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
 					</div>
 
 					<div className="w-full text-center" style={{marginTop: "100px"}}>
-						<a className="txt3" href="#" onClick={changeState}>
+						<a className="txt3" href="#login" onClick={changeState}>
 							Back to Login
 						</a>
 					</div>
