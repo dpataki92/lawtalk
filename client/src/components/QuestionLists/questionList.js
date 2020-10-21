@@ -5,8 +5,10 @@ class QuestionList extends Component {
 
         handleVote = (e) => {
             e.preventDefault();
-            let vote = e.target.nextSibling;
-            vote.innerHTML === " 0" ? vote.innerHTML = " 1" : vote.innerHTML = " 0";
+            let button = e.target;
+            let voteCounter = e.target.nextSibling;
+            voteCounter.innerHTML === " 0" ? voteCounter.innerHTML = " 1" : voteCounter.innerHTML = " 0";
+            button.innerHTML === "↑" ? button.innerHTML = "↓" : button.innerHTML = "↑";
         }
 
         render() {
