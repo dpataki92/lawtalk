@@ -18,6 +18,9 @@ class SearchBar extends Component {
                 <div className="col-12 col-md-3 p-0 mb-3"> 
                     {<FieldList setField={this.props.setField}/>} 
                 </div>
+                <div className="col-12 col-md-3 p-0 mb-3"> 
+                    <button className="search-button" onClick={this.props.handleOrderOnReplies}>Order</button>
+                </div>
                 <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> 
                         <button id="EU" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button> 
                         <button id="USA" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>

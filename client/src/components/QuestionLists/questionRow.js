@@ -2,25 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const QuestionRow = props => {
-    const userConnection = () => {
-        if (props.creator === props.currentUser) {
+class QuestionRow extends React.Component {
+    
+    state = {
+        vote: '',
+        voteCounter: 0
+    }
+
+    userConnection = () => {
+        if (this.props.creator === this.props.currentUser) {
             return ["created", "success"]
-        } else if (props.followersNames.includes(`${props.currentUser}, `) || props.followersNames.slice(-6) === "user01") {
+        } else if (this.props.followersNames.includes(`${this.props.currentUser}, `) || this.props.followersNames.slice(-6) === "user01") {
             return ["followed", "danger"]
         } else {
             return ["",""]
         }
     }
 
+    handleVote = (e) => {
+        e.preventDefault();
+        const vote = e.target.name;
+        this.setState({
+            vote: vote,
+            voteCounter: vote === "upvote" ? 1  : 0
+        })
+    }
+
+    render() {
+    const props = this.props
     return(
         <div className="card-body py-3">
             <div className="row no-gutters align-items-center">
-                <div className="col"> <Link to={`/questions/${props.questionId}`} className="text-big" data-abc="true">{props.title}</Link> <span className={`badge badge-${userConnection()[1]} align-text-bottom ml-1`}>{userConnection()[0]}</span>
+                <div className="col"> <Link to={`/questions/${props.questionId}`} className="text-big" data-abc="true">{props.title}</Link> <span className={`badge badge-${this.userConnection()[1]} align-text-bottom ml-1`}>{this.userConnection()[0]}</span>
                     <div className="text-muted small mt-1" >{`${props.jurisdiction},`} {props.field} &nbsp;·&nbsp; <Link to={`/users/${props.id}`} className="text-muted" data-abc="true">{props.creator}</Link></div>
                     <div>
-                        <button className="search-button" onClick={props.handleVote} style={{display: 'inline'}}>↑</button>
-                        <strong> 0</strong>
+                        <button className="search-button" onClick={this.handleVote} style={{padding: "2px 8px"}} name="upvote">↑</button>
+                        <button className="search-button" onClick={this.handleVote} style={{padding: "2px 8px"}} name="downvote">↓</button>
+                        <strong> Votes: {this.state.voteCounter}</strong>
                     </div>
                 </div>
                 <div className="d-none d-md-block col-4">
@@ -35,7 +53,7 @@ const QuestionRow = props => {
                 </div>
             </div>
         </div>
-    )
+    )}
 }
 
 export default QuestionRow;

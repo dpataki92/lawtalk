@@ -3,16 +3,11 @@ import QuestionRow from './questionRow.js';
 
 class QuestionList extends Component {
 
-        handleVote = (e) => {
-            e.preventDefault();
-            let button = e.target;
-            let voteCounter = e.target.nextSibling;
-            voteCounter.innerHTML === " 0" ? voteCounter.innerHTML = " 1" : voteCounter.innerHTML = " 0";
-            button.innerHTML === "↑" ? button.innerHTML = "↓" : button.innerHTML = "↑";
-        }
-
         render() {
-            const questions = this.props.questions.map((question, id)=> {
+            let questions;
+            if (this.props.ordered === true) {questions = this.props.questions.slice().sort((a,b) => b.replies - a.replies)}
+            else {questions = this.props.questions}
+            return questions.map((question, id)=> {
                     return (
                         <React.Fragment>
                             {id > 1 ? <hr className="m-0"/> : null}
@@ -31,13 +26,10 @@ class QuestionList extends Component {
                           lastRespondentId={question.lastRespondentId}
                           currentUser={this.props.currentUser}
                           followersNames={question.followersNames}
-                          handleVote={this.handleVote}
                             />
                         </React.Fragment>
                     )
             })
-
-            return questions
         }            
 }
 

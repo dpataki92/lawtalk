@@ -15,7 +15,8 @@ class QuestionContainer extends Component {
         order: "creation",
         jurisdictionCategory: "",
         followed: this.props.followed,
-        username: this.props.currentUser.username
+        username: this.props.currentUser.username,
+        ordered: false
     }
 
     componentDidMount() {
@@ -24,6 +25,14 @@ class QuestionContainer extends Component {
 
 
     // Searchbar functions
+
+    handleOrderOnReplies = () => {
+        this.setState(prevState => {
+            return {
+                ordered: !prevState.ordered
+            }
+        }, console.log(this.state))
+    }
 
     handleSearchClick = () => {
         this.props.getCurrentQuestions(this.state)
@@ -124,10 +133,10 @@ class QuestionContainer extends Component {
             <React.Fragment>
                 <SearchBar handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
             handleOrderOnEnter={this.handleOrderOnEnter} handleOrderOnLeave={this.handleOrderOnLeave} setField={this.setField} setPageBackToOne={this.setPageBackToOne} 
-            searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick}/>
+            searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick} handleOrderOnReplies={this.handleOrderOnReplies}/>
             <div className="container-fluid mt-100">
                 <QuestionListHeader />
-                <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username}/>
+                <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username} ordered={this.state.ordered}/>
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
             </React.Fragment>
