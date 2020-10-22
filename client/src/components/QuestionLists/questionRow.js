@@ -11,7 +11,7 @@ class QuestionRow extends React.Component {
     userConnection = () => {
         if (this.props.creator === this.props.currentUser) {
             return ["created", "success"]
-        } else if (this.props.followersNames.includes(`${this.props.currentUser}, `) || this.props.followersNames.slice(-6) === "user01") {
+        } else if (this.props.followersNames.includes(`${this.props.currentUser}, `) || this.props.followersNames.slice(-6) === this.props.currentUser) {
             return ["followed", "danger"]
         } else {
             return ["",""]
