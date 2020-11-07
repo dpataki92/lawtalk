@@ -9,7 +9,7 @@ const QuestionListHeader = props => {
                     <div className="col-4 text-muted">
                         <div className="row no-gutters align-items-center">
                             <div className="col-4">Replies</div>
-                            <div className="col-8">Last update</div>
+                            <div className="col-8">Last reply</div>
                         </div>
                     </div>
                 </div>
