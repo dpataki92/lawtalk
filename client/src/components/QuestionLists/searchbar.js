@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import JursidictionList from './jurisdictionList.js';
 import FieldList from './fieldList.js';
+import EUJurisdictionList from './euJurisdictionList.js';
+import USAJurisdictionList from './usaJurisdictionList.js' 
 import {Link} from 'react-router-dom';
 
 class SearchBar extends Component {
+
     render() {
         return(
             <div style={{marginLeft: "12px", marginRight:"12px"}}>
@@ -19,9 +22,9 @@ class SearchBar extends Component {
                     {<FieldList setField={this.props.setField}/>} 
                 </div>
                 <div className="col-12 col-md-3 p-0 mb-3" id="jurisdiction"> 
-                        <button id="EU" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button> 
-                        <button id="USA" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button>
-                        {<JursidictionList category={this.props.jurisdictionCategory} setJurisdiction={this.props.setJurisdiction}/>}</div>
+                        <button id="EU" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginRight:"5px"}}>EU</button><div id="EUlist" style={{display: "none", marginRight: "10px"}}>{<EUJurisdictionList setJurisdiction={this.props.setJurisdiction}/>}</div>
+                        <button id="US" className="jurisdictionList search-button" onClick={this.props.handleJurisdictionButton} style={{marginLeft:"5px"}}>USA</button><div id="USlist" style={{display: "none", marginRight: "5px"}}>{<USAJurisdictionList setJurisdiction={this.props.setJurisdiction}/>}</div>
+                </div>
                 <button className="search-button" onMouseDown={this.props.setPageBackToOne} onMouseUp={this.props.handleSearchClick}>Search</button>
             </div>
             </div>

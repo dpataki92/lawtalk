@@ -45,16 +45,24 @@ class QuestionContainer extends Component {
 
     handleJurisdictionButton = (e) => {
         e.preventDefault();
-        if (e.target.id === "EU") {
-            e.target.parentNode.innerHTML ="";
+        const EUlist = document.getElementById("EUlist");
+        const USlist = document.getElementById("USlist");
+        if (e.target.innerText === "EU") {
             this.setState({
                 jurisdictionCategory: "EU"
-            })
-        } else if (e.target.id === "USA") {
-            e.target.parentNode.innerHTML ="";
+            });
+            EUlist.style.display = "inline";
+            if (USlist.style.display === "inline") {
+                USlist.style.display = "none";
+            }
+        } else if (e.target.innerText === "USA") {
             this.setState({
                 jurisdictionCategory: "USA"
-            })
+            });
+            USlist.style.display = "inline";
+            if (EUlist.style.display === "inline") {
+                EUlist.style.display = "none";
+            }
         }
     }
 
