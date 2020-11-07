@@ -2081,6 +2081,7 @@ input.input100 {
   border: 1px solid #0062cc;
   padding: 5px 10px;
   border-radius: 10%;
+  height: calc(1.5em + .75rem + 2px);
 }
 
 .edit-page:hover {
@@ -2088,4 +2089,12 @@ input.input100 {
   cursor: pointer;
 }
 
+select, #word-search {
+  border: 1px solid #0062cc;
+  color:#0062cc; 
+}
 
+#word-search::placeholder {
+  color: #0062cc; 
+  opacity: 0.7;
+}
