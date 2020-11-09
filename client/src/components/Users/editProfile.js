@@ -59,7 +59,7 @@ class EditProfile extends Component {
                 <div className="row">
                     <div className="col-md-4 border-right">
                         <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90" alt="profile picture"/>
+                            <img className="rounded-circle mt-5" src={`/${currentUser.avatar}`} width="90" height="100" alt="profile picture"/>
                             <span className="font-weight-bold">{currentUser.username}</span>
                             <span>{currentUser.location}</span></div>
                     </div>
@@ -82,7 +82,7 @@ class EditProfile extends Component {
                             </div>
                             <div className="row mt-3 data-row">
                                 <div className="col-md-6"><input type="text" className="form-control" name="email" onChange={this.handleChange} value={this.state.email}/></div>
-                                <div className="col-md-6"><input type="text" className="form-control" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password..."/></div>
+                                <div className="col-md-6"><input type="text" className="form-control" id="word-search" name="password" onChange={this.handleChange} value={this.state.password} placeholder="Password..."/></div>
                             </div>
                             <div className="row mt-3 data-row">
                                 <div className="col-md-6"><input type="text" className="form-control" name="fields" onChange={this.handleChange} value={this.state.fields}/></div>

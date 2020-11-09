@@ -1,5 +1,5 @@
 class Vote < ApplicationRecord
-    belongs_to :answer
-    belongs_to :comment
+    belongs_to :answer, optional: true
+    belongs_to :comment, optional: true
     belongs_to :user
 end
