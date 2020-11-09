@@ -12,7 +12,7 @@ class SocialMediaContainer extends React.Component {
 
     render() {
         return(
-                <div className="w-full text-center p-t-27 p-b-239">
+                <div className="w-full text-center p-t-10 p-b-100">
 						<span className="txt1">
 							or login with social media account
 						</span><br/><br/>

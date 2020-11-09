@@ -27,7 +27,7 @@ const Login = ({loginForm, updateLoginForm, login, changeState}) => {
 		<div className="container-login100">
 			<div className="wrap-login100">
 				<form className="login100-form" onSubmit={handleSubmit}>
-					<span className="login100-form-title p-b-34">
+					<span className="login100-form-title p-b-34" style={{marginTop:"-80px"}}>
 						Lawtalk
 					</span>
 					

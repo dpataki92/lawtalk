@@ -25,7 +25,7 @@ const Signup = ({signupForm, updateSignupForm, signup, changeState}) => {
         <div className="limiter" id="login-form">
 		<div className="container-login100">
 			<div className="wrap-login100">
-				<form className="login100-form validate-form" onSubmit={handleSubmit} style={{paddingTop: "100px"}}>
+				<form className="login100-form validate-form" onSubmit={handleSubmit} style={{paddingTop: "180px"}}>
 					<span className="login100-form-title p-b-34">
 						Lawtalk
 					</span>
