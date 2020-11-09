@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :answer
+    has_many :votes
 
     def creation_date_in_words
         self.created_at.strftime("%B %d, %Y")

@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :created_questions, foreign_key: :creator_id, class_name: 'Question'
     has_many :answers
     has_many :comments
+    has_many :votes
 
     validates :username, uniqueness: { case_sensitive: false }
 
