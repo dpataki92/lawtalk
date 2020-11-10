@@ -2095,3 +2095,9 @@ input.input100 {
 #word-search::placeholder {
   color: #0062cc; 
 }
+
+#update {
+  margin-top: 5px;
+  color: red;
+  opacity: 0.5
+}
