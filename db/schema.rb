@@ -14,8 +14,6 @@ ActiveRecord::Schema.define(version: 2020_11_09_203800) do
 
   create_table "answers", force: :cascade do |t|
     t.string "content"
-    t.integer "upvotes", default: 0
-    t.integer "downvotes", default: 0
     t.integer "user_id"
     t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
@@ -24,8 +22,6 @@ ActiveRecord::Schema.define(version: 2020_11_09_203800) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.integer "upvotes", default: 0
-    t.integer "downvotes", default: 0
     t.integer "user_id"
     t.integer "answer_id"
     t.datetime "created_at", precision: 6, null: false
@@ -56,8 +52,6 @@ ActiveRecord::Schema.define(version: 2020_11_09_203800) do
     t.string "fields", default: "-"
     t.string "avatar"
     t.string "bio"
-    t.integer "upvotes", default: 0
-    t.integer "downvotes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
