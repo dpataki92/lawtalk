@@ -35,7 +35,7 @@ class User < ApplicationRecord
     def top_rated_answers
         sorted = self.answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}[0..2].select {|a| a.upvotes > a.downvotes}
         if !sorted[0] || sorted[0].vote_ratio === 0
-            ["This user has no rated answers","", ""]
+            ["This user has no top rated answers","", ""]
         else
             sorted.collect {|a| a.question.title}
         end
