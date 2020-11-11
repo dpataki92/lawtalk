@@ -83,7 +83,7 @@ class Reply extends Component {
                             </div>
                             <div className="card-footer d-flex flex-wrap justify-content-between align-items-center px-0 pt-0 pb-3" id={props.answerId}>
                                 <div className="px-4 pt-3"> 
-                                <Link to=" " style={{cursor: "pointer"}} id="upvote" > <i className="fa fa-arrow-up text-success" style={{fontSize: "1.3em"}}></i> </Link>  <span id="upvoteNum" style={{opacity: "0.5", marginRight:"5px"}} >{props.upvotes} upvotes</span> 
+                                <Link to=" " style={{cursor: "pointer"}} id="upvote" onClick={this.handleVoting}> <i className="fa fa-arrow-up text-success" style={{fontSize: "1.3em"}}></i> </Link>  <span id="upvoteNum" style={{opacity: "0.5", marginRight:"5px"}} >{props.upvotes} upvotes</span> 
                                 <Link to=" " style={{cursor: "pointer"}} id="downvote" onClick={this.handleVoting}> <i className="fa fa-arrow-down text-danger" style={{fontSize: "1.3em"}}></i> </Link>  <span id="downvoteNum" style={{opacity: "0.5", marginRight:"5px"}}>{props.downvotes} downvotes</span> 
                                 <i className="fa fa-comments-o text-muted" style={{fontSize: "1.3em"}}></i> <a data-abc="true" style={{cursor: "pointer"}} id="downvote" onClick={this.handleComments}> <span id="comments" style={{opacity: "0.5"}}>Show comments ({props.commentsNum})</span>  </a>  
 
