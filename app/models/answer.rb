@@ -11,11 +11,13 @@ class Answer < ApplicationRecord
     end
 
     def vote_ratio
-        total = self.upvotes + self.downvotes
-        if self.upvotes === 0 && self.downvotes === 0
+        upvotes = self.votes.select {|v| v.upvote}.size
+        downvotes = self.votes.select {|v| v.downvote}.size
+        total = upvotes + downvotes
+        if upvotes === 0 && downvotes === 0
             0
         else
-            ((self.upvotes.to_f / total.to_f) * 100).to_i
+            ((upvotes.to_f / total.to_f) * 100).to_i
         end
     end
 
