@@ -2105,3 +2105,11 @@ input.input100 {
 img {
   object-fit: cover;
 }
+
+#logout {
+  opacity: 0.5
+}
+
+#logout:hover {
+  opacity: 0.7
+}

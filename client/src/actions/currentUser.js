@@ -8,6 +8,7 @@ export const setCurrentUser = user => {
 
 // asynchronous action creators
 export const logout = () => {
+    window.confirm("Are you sure?");
     return dispatch => {
       localStorage.clear();
       return dispatch({
