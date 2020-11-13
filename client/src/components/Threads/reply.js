@@ -25,11 +25,13 @@ class Reply extends Component {
         .then(resp => resp.json())
         .then(function(json) {
             alert(json.message);
-            let answerFooter = document.getElementById(id);
-            answerFooter.querySelector("#upvote").style.visibility = "hidden";
-            answerFooter.querySelector("#downvote").style.visibility = "hidden";
-            answerFooter.querySelector("#upvoteNum").innerText = `${json.answerUpvotes} upvotes`
-            answerFooter.querySelector("#downvoteNum").innerText = `${json.answerDownvotes} downvotes`
+            if (json.success) {
+                let answerFooter = document.getElementById(id);
+                answerFooter.querySelector("#upvote").style.opacity = "0.5";
+                answerFooter.querySelector("#downvote").style.opacity = "0.5";
+                answerFooter.querySelector("#upvoteNum").innerText = `${json.answerUpvotes} upvotes`
+                answerFooter.querySelector("#downvoteNum").innerText = `${json.answerDownvotes} downvotes`
+            }
         })   
     }
 
@@ -65,7 +67,6 @@ class Reply extends Component {
     render() {
         const props = this.props
         return(
-            
             <div className="container-fluid mt-100" style={{width: "80%"}} >
                 <div className="row">
                     <div className="col-md-12">

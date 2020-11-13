@@ -22,7 +22,7 @@ class AnswersController < ApplicationController
                 answer.user.downvotes += 1
                 answer.user.save
             end
-            render json: {answerUpvotes: answer.votes.select{|v| v.upvote}.size, answerDownvotes: answer.votes.select{|v| v.downvote}.size, message: "You have #{params[:vote]}d this answer." }
+            render json: {answerUpvotes: answer.votes.select{|v| v.upvote}.size, answerDownvotes: answer.votes.select{|v| v.downvote}.size, message: "You have #{params[:vote]}d this answer.", success: true }
         else
             render json: {message: "You have already voted on this answer."}
         end
