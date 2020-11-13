@@ -22,10 +22,12 @@ const Comment = (props) => {
         .then(resp => resp.json())
         .then(function(json) {
             alert(json.message);
-            commentDiv.querySelector("#upvote").style.visibility = "hidden";
-            commentDiv.querySelector("#downvote").style.visibility = "hidden";
-            commentDiv.querySelector("#upvoteNum").innerText = `${json.commentUpvotes} upvotes`
-            commentDiv.querySelector("#downvoteNum").innerText = `${json.commentDownvotes} downvotes`
+            if (json.success) {
+                commentDiv.querySelector("#upvote").style.opacity = "0.5";
+                commentDiv.querySelector("#downvote").style.opacity = "0.5";
+                commentDiv.querySelector("#upvoteNum").innerText = `${json.commentUpvotes} upvotes`
+                commentDiv.querySelector("#downvoteNum").innerText = `${json.commentDownvotes} downvotes`
+            }
         })   
     }
 
