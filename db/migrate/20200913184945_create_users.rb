@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :fields, default: "-"
       t.string :avatar
       t.string :bio
+      t.integer :upvotes, default: 0
+      t.integer :downvotes, default: 0
 
       t.timestamps
     end
