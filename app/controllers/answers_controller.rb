@@ -12,18 +12,20 @@ class AnswersController < ApplicationController
 
     def vote
         answer = Answer.find_by(id: params[:id])
-        if params[:vote] === "upvote"
-            answer.upvotes += 1
-            answer.user.upvotes += 1
-            answer.save
-            answer.user.save
-        elsif params[:vote] === "downvote"
-            answer.downvotes += 1
-            answer.user.downvotes += 1
-            answer.save
-            answer.user.save
+        if !current_user.votes.find {|v| v.answer === answer} 
+            if params[:vote] === "upvote"
+                answer.votes.create(answer: answer, user: current_user, upvote: true)
+                answer.user.upvotes += 1
+                answer.user.save
+            elsif params[:vote] === "downvote"
+                answer.votes.create(answer: answer, user: current_user, downvote: true)
+                answer.user.downvotes += 1
+                answer.user.save
+            end
+            render json: {answerUpvotes: answer.votes.select{|v| v.upvote}.size, answerDownvotes: answer.votes.select{|v| v.downvote}.size, message: "You have #{params[:vote]}d this answer." }
+        else
+            render json: {message: "You have already voted on this answer."}
         end
-        render json: {answerUpvotes: answer.upvotes, answerDownvotes: answer.downvotes, message: "You have #{params[:vote]}d this answer." }
     end
 
     def comments
