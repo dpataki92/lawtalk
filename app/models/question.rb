@@ -142,8 +142,8 @@ class Question < ApplicationRecord
                 answerCreator: a.user.username,
                 answerCreatorId: a.user.id,
                 creation: a.creation_date_in_words,
-                upvotes: a.upvotes,
-                downvotes: a.downvotes,
+                upvotes: a.votes.select {|v| v.upvote}.size,
+                downvotes: a.votes.select {|v| v.downvote}.size,
                 commentsNum: a.comments.size
             }
             result << answer_hash
