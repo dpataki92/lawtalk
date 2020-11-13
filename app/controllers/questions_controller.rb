@@ -4,8 +4,11 @@ class QuestionsController < ApplicationController
         if params[:followed] === "true"
             followed = User.find_by(username: params[:username]).followed_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
             created = User.find_by(username: params[:username]).created_questions.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
-            questions = followed + created
-            questions.sort_by! {|q| q.created_at}
+            if params[:order] === "creation" || !params[:order]
+                questions = (followed + created).sort {|a,b| b.created_at <=> a.created_at}
+            else 
+                questions = (followed + created).sort {|a,b| b.followers.size <=> a.followers.size}
+            end
         else
             questions = Question.all.sorted_and_ordered(params[:order], params[:field], params[:jurisdiction], params[:searchWord])
         end
