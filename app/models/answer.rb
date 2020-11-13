@@ -35,8 +35,8 @@ class Answer < ApplicationRecord
                 commentCreator: c.user.username,
                 commentCreatorId: c.user.id,
                 creation: c.creation_date_in_words,
-                upvotes: c.upvotes,
-                downvotes: c.downvotes
+                upvotes: c.votes.select {|v| v.upvote}.size,
+                downvotes: c.votes.select {|v| v.downvote}.size
             }
             result << comment_hash
         end
