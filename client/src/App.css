@@ -2101,3 +2101,7 @@ input.input100 {
   color: red;
   opacity: 0.5
 }
+
+img {
+  object-fit: cover;
+}
