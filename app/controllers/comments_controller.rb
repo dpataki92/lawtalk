@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
         comment = Comment.find_by(id: params[:id])
         if comment.user === current_user
             render json: {message: "You cannot vote on your own comment."}
-        if !current_user.votes.find {|v| v.comment === comment} 
+        elsif !current_user.votes.find {|v| v.comment === comment} 
             if params[:vote] === "upvote"
                 comment.votes.create(comment: comment, user: current_user, upvote: true)
                 comment.user.upvotes += 1
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
                 comment.user.downvotes += 1
                 comment.user.save
             end
-            render json: {commentUpvotes: comment.select{|c| c.upvote}.size, commentDownvotes: comment.select{|c| c.downvote}.size, message: "You have #{params[:vote]}d this comment.", success: true }
+            render json: {commentUpvotes: comment.votes.select{|c| c.upvote}.size, commentDownvotes: comment.votes.select{|c| c.downvote}.size, message: "You have #{params[:vote]}d this comment.", success: true }
         else
             render json: {message: "You have already voted on this comment."}
         end
