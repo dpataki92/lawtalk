@@ -12,7 +12,9 @@ class AnswersController < ApplicationController
 
     def vote
         answer = Answer.find_by(id: params[:id])
-        if !current_user.votes.find {|v| v.answer === answer} 
+        if answer.user === current_user
+            render json: {message: "You cannot vote on your own answer."}
+        elsif !current_user.votes.find {|v| v.answer === answer} 
             if params[:vote] === "upvote"
                 answer.votes.create(answer: answer, user: current_user, upvote: true)
                 answer.user.upvotes += 1

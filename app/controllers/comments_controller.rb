@@ -12,6 +12,8 @@ class CommentsController < ApplicationController
 
     def vote
         comment = Comment.find_by(id: params[:id])
+        if comment.user === current_user
+            render json: {message: "You cannot vote on your own comment."}
         if !current_user.votes.find {|v| v.comment === comment} 
             if params[:vote] === "upvote"
                 comment.votes.create(comment: comment, user: current_user, upvote: true)
