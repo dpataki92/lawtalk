@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_203800) do
     t.string "fields", default: "-"
     t.string "avatar"
     t.string "bio"
+    t.integer "upvotes", default: 0
+    t.integer "downvotes", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -60,6 +62,8 @@ ActiveRecord::Schema.define(version: 2020_11_09_203800) do
     t.integer "answer_id"
     t.integer "user_id"
     t.integer "comment_id"
+    t.boolean "upvote", default: false
+    t.boolean "downvote", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

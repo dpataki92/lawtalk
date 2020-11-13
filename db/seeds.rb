@@ -1,4 +1,4 @@
-# Creating users who asked questions related to EU law
+# Creates users who asked questions related to EU law
 u1= User.create(username: "user01", email: "user01@gmail.com", password_digest: BCrypt::Password.create("user01pw"), location: "Hungary")
 u2 = User.create(username: "user233", email: "ttfdc@gmail.com", password_digest: BCrypt::Password.create("pkfnjbhrpewrt"), location: "United Kingdom")
 u3= User.create(username: "user123", email: "eeddw@gmail.com", password_digest: BCrypt::Password.create("wgretbger"), location: "United States")
@@ -11,7 +11,7 @@ u9 = User.create(username: "user372", email: "ewfefvh4@gmail.com", password_dige
 u10 = User.create(username: "user010", email: "1333tg5h@gmail.com", password_digest: BCrypt::Password.create("354t3"), location: "South Korea")
 u11 = User.create(username: "user951", email: "nttzum@gmail.com", password_digest: BCrypt::Password.create("user11pw"), location: "United States")
 
-# Creating users who answered questions related to EU law
+# Creates users who answered questions related to EU law
 u12 = User.create(username: "user000", email: "user12@gmail.com", password_digest: BCrypt::Password.create("user12pw"), fields: "tax, immigration", location: "Austria")
 u13 = User.create(username: "user111", email: "mmkmn@gmail.com", password_digest: BCrypt::Password.create("userpw03445"), fields: "tax", location: "Hungary")
 u14 = User.create(username: "user222", email: "mknohvu@gmail.com", password_digest: BCrypt::Password.create("lawpw0342"), fields: "family", location: "France")
@@ -24,7 +24,7 @@ u20 = User.create(username: "user888", email: "weffw@gmail.com", password_digest
 u21 = User.create(username: "user999", email: "fwf@gmail.com", password_digest: BCrypt::Password.create("345h5"), fields: "criminal", location: "Portugal")
 u22 = User.create(username: "user090909", email: "0909@gmail.com", password_digest: BCrypt::Password.create("efwggw"), fields: "criminal, tax", location: "Slovenia")
 
-# Creating users who asked questions related to US law
+# Creates users who asked questions related to US law
 u23 = User.create(username: "USuser23", email: "USuser01@gmail.com", password_digest: BCrypt::Password.create("USuser23pw"), location: "United States")
 u24 = User.create(username: "USuser233", email: "USttf@gmail.com", password_digest: BCrypt::Password.create("USpkfnjbhrpew"), location: "Peru")
 u25 = User.create(username: "USuser123", email: "USeed@gmail.com", password_digest: BCrypt::Password.create("USwgretbg"), location: "India")
@@ -37,7 +37,7 @@ u31 = User.create(username: "USuser372", email: "USewfefv@gmail.com", password_d
 u32 = User.create(username: "USuser010", email: "US1333tg@gmail.com", password_digest: BCrypt::Password.create("US354"), location: "Portugal")
 u33 = User.create(username: "USuser951", email: "USnttz@gmail.com", password_digest: BCrypt::Password.create("USuser33pw"), location: "India")
 
-# Creating users who answered questions related to US law
+# Creates users who answered questions related to US law
 u34 = User.create(username: "USuser000", email: "USuser34@gmail.com", password_digest: BCrypt::Password.create("USuser34pw"), fields: "tax", location: "United States")
 u35 = User.create(username: "USuser111", email: "USttfdc@gmail.com", password_digest: BCrypt::Password.create("USpkfnjbhrpewrt"), fields: "tax, immigration", location: "United States")
 u36 = User.create(username: "USuser222", email: "USeeddw@gmail.com", password_digest: BCrypt::Password.create("USwgretbger"), fields: "tax, immigration", location: "United States")
@@ -50,12 +50,11 @@ u42 = User.create(username: "USuser888", email: "USewfefvh4@gmail.com", password
 u43 = User.create(username: "USuser999", email: "US1333tg5h@gmail.com", password_digest: BCrypt::Password.create("US354t3"), fields: "environmental",  location: "United States")
 u44 = User.create(username: "USuser0909", email: "USnttzum@gmail.com", password_digest: BCrypt::Password.create("USuser44pw"), fields: "environmental", location: "United States")
 
-# assigning avatars to users
+# assigns avatars to users
 def avatar_assign
-    users = User.all
     counter = 1
     30.times {
-        shuffled_users = users.shuffle
+        shuffled_users = User.all.shuffle
         user = shuffled_users.find {|u| u.avatar === nil}
         user.avatar = "user_#{counter}.jpg"
         counter += 1
@@ -71,7 +70,7 @@ def avatar_assign
 end
 avatar_assign
 
-# Creating questions (EU law threads)
+# Creates questions (EU law threads)
 q1 = Question.create(creator: u1, title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", content: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", field: "Tax Law")
 q2 = Question.create(creator: u1, title: "Tax exemptions on purchases of property", content: "I am planning to move to the Republic of Cyprus from Hungary where I work and pay taxes. If I buy or build a home in another Member State, am I eligible for a tax deduction in my home country?", jurisdiction: "Hungary", field: "Tax Law")
 q3 = Question.create(creator: u3, title: "Isn't double taxation prohibited under EU law?", content: "I have inherited property and am being taxed in both the country where I normally pay taxes(Italy) and the country where the inherited property is located(Austria).", jurisdiction: "Austria", field: "Tax Law")
@@ -83,7 +82,18 @@ q8 = Question.create(creator: u8, title: "Holiday entitlement in Germany", conte
 q9 = Question.create(creator: u8, title: "Missing employment contract from German employer", content: "I started to work for a German company 6 weeks ago and I was told I would get my contract signed after the first week. I still haven't gotten anything but they keep giving me new tasks to do. Is it legal?", jurisdiction: "Germany", field: "Labour Law")
 q10 = Question.create(creator: u9, title: "Using phone conversations in a criminal case as evidence", content: "Is it mandatory for a telecom company to produce electronic evidence if it can be used in a criminal case. I will have a criminal court hearing in Portugal and the only evidence I have would be a previous conversation with the alleged victim.", jurisdiction: "Portugal", field: "Criminal Law")
 
-# Creating questions (US law threads)
+q21 = Question.create(creator: u23, title: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "California", field: "Tax Law")
+q22 = Question.create(creator: u23, title: "Ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
+q23 = Question.create(creator: u23, title: "Sed perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque , totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration law") 
+q24 = Question.create(creator: u24, title: "Omnis ut perspiciatis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
+q25 = Question.create(creator: u25, title: "Error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Arizona", field: "Tax Law") 
+q26 = Question.create(creator: u26, title: "Sed ut perspiciatis unde omnis?", content: "Laudantium, totam rem , eaque ipsa quae ab illo  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Tax Law") 
+q27 = Question.create(creator: u27, title: "Voluptatem sed ut perspiciatis unde omnis error sit voluptatem?", content: "Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Florida", field: "Tax Law") 
+q28 = Question.create(creator: u28, title: "Perspiciatis unde omnis iste natus error sit voluptatem omnis iste natus?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Oregon", field: "Family Law") 
+q29 = Question.create(creator: u28, title: "Unde ut perspiciatis unde omnis iste natus omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eallo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
+q30 = Question.create(creator: u29, title: "Ut Sed ut perspiciatis unde?", content: "Accusantium doloremque laudantium, totam rem , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Oregon", field: "Environmental Law") 
+
+# Creates questions (US law threads)
 q11 = Question.create(creator: u23, title: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "California", field: "Tax Law")
 q12 = Question.create(creator: u23, title: "Ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
 q13 = Question.create(creator: u23, title: "Sed perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque , totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration law") 
@@ -95,7 +105,19 @@ q18 = Question.create(creator: u28, title: "Perspiciatis unde omnis iste natus e
 q19 = Question.create(creator: u28, title: "Unde ut perspiciatis unde omnis iste natus omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eallo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
 q20 = Question.create(creator: u29, title: "Ut Sed ut perspiciatis unde?", content: "Accusantium doloremque laudantium, totam rem , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Oregon", field: "Environmental Law") 
 
-# Creating answers (EU law threads)
+q31 = Question.create(creator: u23, title: "Ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Arizona", field: "Tax Law")
+q32 = Question.create(creator: u23, title: "Perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Competition Law") 
+q33 = Question.create(creator: u23, title: "Sed perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque , totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Oregon", field: "Competition law") 
+q34 = Question.create(creator: u24, title: "Iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
+q35 = Question.create(creator: u25, title: "Sed error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Georgia", field: "Tax Law") 
+q36 = Question.create(creator: u26, title: "Sed perspiciatis unde omnis?", content: "Laudantium, totam rem , eaque ipsa quae ab illo  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Tax Law") 
+q37 = Question.create(creator: u27, title: "Voluptatem perspiciatis unde omnis error sit voluptatem?", content: "Doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Criminal Law") 
+q38 = Question.create(creator: u28, title: "Unde omnis iste natus error sit voluptatem omnis iste natus?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Oregon", field: "Family Law") 
+q39 = Question.create(creator: u28, title: "Unde ut perspiciatis unde omnis iste natus omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eallo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
+q40 = Question.create(creator: u29, title: "Ut Sed ut perspiciatis?", content: "Accusantium doloremque laudantium, totam rem , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
+
+
+# Creates answers (EU law threads)
 q1.answers.create(content: "NO. If you move to another EU country for more than 6 months, you must under EU rules register your car in the new country.For registration taxes, however, there are no EU-wide rules. Countries may levy car-registration taxes or not, as they choose. Some –including Cyprus–do NOT tax you if you had to pay a similar tax when you bought the car new.", user: u12)
 u12.followed_questions << q1
 q1.answers.create(content: "If a country does tax imported second-hand cars, it must take account of the residual value when setting the amount of registration tax. Example: your type of car has a value in the new country of€10,000 when new and the tax on such a car would be €2,500 so that the car would cost €12,500 intotal and the tax component of the price would be 20%. Assume that you move the car when it is 5 years old and that after 5 years a similar car in the new country would be expected to have lost 30% of its value and only to be worth about €8,750. In that case the tax to be applied in the newcountry could only be 20% of €8,750 i.e. €1750. ", user: u13)
@@ -123,7 +145,7 @@ u20.followed_questions << q9
 q10.answers.create(content: "Yes, the European Preservation Order and the European Production Order made this mandatory and they are legally binding.", user: u21)
 u21.followed_questions << q10
 
-# Creating answers (US law threads)
+# Creates answers (US law threads)
 q11.answers.create(content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u34)
 u34.followed_questions << q11
 q11.answers.create(content: "Vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u35)
@@ -149,7 +171,7 @@ u43.followed_questions << q17
 q18.answers.create(content: "Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u43)
 u43.followed_questions << q18
 
-# Creating commments
+# Creates commments
 Answer.all.each do |a|
     n = rand(6)
     n.times {
@@ -159,40 +181,47 @@ Answer.all.each do |a|
     }
 end
 
-# Making certain users follow threads
+# Makes certain users follow threads
 u1.followed_questions << q3
 u1.followed_questions << q11
 u11.followed_questions << q7
 u23.followed_questions << q14
 u36.followed_questions << q12
 u36.followed_questions << q13
+u4.followed_questions << q19
+u21.followed_questions << q33
+u26.followed_questions << q34
+u28.followed_questions << q38
+u36.followed_questions << q40
+u37.followed_questions << q39
 
-# Adding fake bio to random users
-bio = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+# Adds fake bios to random users
 User.all.each do |u|
     add_bio = [true, false][rand(0..1)]
     if add_bio
-    u.bio = bio
-    u.save
+        u.bio = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+        u.save
     end
 end
 
-# Creating random user reactions to answers and comments (40% - ignore, 40% - upvote 20% - downvote)
+# Creates random user reactions to answers and comments (40% - ignore, 40% - upvote 20% - downvote)
 User.all.each do |u|
     10.times {
         answer = Answer.all[rand(0..Answer.all.size-1)]
         if answer.user != u
             num = rand(1..10)
             if num > 3 && num <= 7
-                answer.upvotes += 1
-                answer.user.upvotes += 1
-                answer.user.save
-                answer.save
+                if !u.votes.find {|v| v.answer === answer}
+                    answer.votes.create(user: u, answer: answer, upvote: true) 
+                    answer.user.upvotes += 1
+                    answer.user.save
+                end
             elsif num > 8 && num <= 10
-                answer.downvotes += 1
-                answer.user.downvotes += 1
-                answer.user.save
-                answer.save
+                if !u.votes.find {|v| v.answer === answer}
+                    answer.votes.create(user: u, answer: answer, downvote: true) 
+                    answer.user.downvotes += 1
+                    answer.user.save
+                end
             end
         end
     }
@@ -202,15 +231,17 @@ User.all.each do |u|
         if comment.user != u 
             num = rand(1..10)
             if num > 5 && num < 10
-                comment.upvotes += 1
-                comment.user.upvotes += 1
-                comment.user.save
-                comment.save
+                if !u.votes.find {|v| v.comment === comment}
+                    comment.votes.create(user: u, comment: comment, upvote: true)
+                    comment.user.upvotes += 1
+                    comment.user.save
+                end
             elsif num === 10
-                comment.downvotes += 1
-                comment.user.downvotes += 1
-                comment.user.save
-                comment.save
+                if !u.votes.find {|v| v.comment === comment}
+                    comment.votes.create(user: u, comment: comment, downvote: true)
+                    comment.user.downvotes += 1
+                    comment.user.save
+                end
             end
         end
     }
