@@ -28,24 +28,6 @@ class CommentsController < ApplicationController
         end
     end
 
-    def vote
-        answer = Answer.find_by(id: params[:id])
-        if !current_user.votes.find {|v| v.answer === answer} 
-            if params[:vote] === "upvote"
-                answer.votes.create(answer: answer, user: current_user, upvote: true)
-                answer.user.upvotes += 1
-                answer.user.save
-            elsif params[:vote] === "downvote"
-                answer.votes.create(answer: answer, user: current_user, downvote: true)
-                answer.user.downvotes += 1
-                answer.user.save
-            end
-            render json: {answerUpvotes: answer.votes.select{|v| v.upvote}.size, answerDownvotes: answer.votes.select{|v| v.downvote}.size, message: "You have #{params[:vote]}d this answer.", success: true }
-        else
-            render json: {message: "You have already voted on this answer."}
-        end
-    end
-
     def destroy
         comment = Comment.find_by(id: params[:id])
         if comment.destroy
