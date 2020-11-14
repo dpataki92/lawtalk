@@ -17,7 +17,8 @@ class Conversation < ApplicationRecord
                 id: c.id,
                 lastMessageDate: Date::ABBR_MONTHNAMES[c.updated_at.month] + " " + c.updated_at.day.to_s,
                 lastMessage: c.messages.sort {|a,b| b.created_at <=> a.created_at}[0].content[0..77],
-                chatPartner: chatPartner.username
+                chatPartner: chatPartner.username,
+                chatPartnerAvatar: chatPartner.avatar
             })
         end
 

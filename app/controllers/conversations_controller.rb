@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
     
     def index
-        render json: {conversations: Conversation.conversations_serizalizer(current_user)}
+        render json: {conversations: Conversation.conversations_serializer(current_user)}
     end
 
     def show
