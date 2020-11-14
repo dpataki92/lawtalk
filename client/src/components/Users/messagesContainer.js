@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import ChatList from './chatList.js';
+import { connect } from "react-redux";
+import  { getCurrentConversations } from "../../actions/conversations.js";
+
 
 class MessagesContainer extends Component {
+
+    componentDidMount() {
+        this.props.getCurrentConversations(this.props.currentUser.id);
+    }
+
     render() {
         return(
         <div className="container">
@@ -14,76 +23,7 @@ class MessagesContainer extends Component {
                     </div>
                 </div>
                 <div className="inbox_chat">
-                    <div className="chat_list active_chat">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div className="chat_list">
-                    <div className="chat_people">
-                        <div className="chat_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                        <div className="chat_ib">
-                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                        <p>Test, which is a new approach to have all solutions 
-                            astrology under one roof.</p>
-                        </div>
-                    </div>
-                    </div>
+                    <ChatList chatlist={this.props.conversations}/>
                 </div>
                 </div>
                 <div className="mesgs">
@@ -140,4 +80,11 @@ class MessagesContainer extends Component {
     }
 }
 
-export default MessagesContainer;
+const mapStateToProps = ({conversations, currentUser}) => {
+    return {
+        conversations,
+        currentUser
+    }
+  }
+
+  export default connect(mapStateToProps, { getCurrentConversations })(MessagesContainer);
