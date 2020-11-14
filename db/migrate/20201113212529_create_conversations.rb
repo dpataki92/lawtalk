@@ -6,7 +6,5 @@ class CreateConversations < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-
-    add_index :conversations, [:author_id, :receiver_id], unique: true
   end
 end

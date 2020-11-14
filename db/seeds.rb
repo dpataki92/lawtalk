@@ -244,6 +244,35 @@ User.all.each do |u|
                 end
             end
         end
+    }  
+end
+
+# creates conversations
+User.all.each do |u|
+    3.times {
+        receiver = User.all[rand(0..User.all.size-1)]
+        if receiver != u && (!u.authored_conversations.find {|c| c.receiver === receiver} && !u.received_conversations.find {|c| c.author === receiver})
+            conversation = Conversation.create(author: u, receiver: receiver)
+            6.times {
+                message1 = Message.create(content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis?", user: u)
+                conversation.messages << message1
+                message2 = Message.create(content: "Et iusto odio dignissimos ducimus qui voluptatum.", user: receiver)
+                conversation.messages << message2
+            }
+        end
     }
-     
+
+    2.times {
+        author = User.all[rand(0..User.all.size-1)]
+        if author != u && (!u.authored_conversations.find {|c| c.receiver === author} && !u.received_conversations.find {|c| c.author === author})
+            conversation = Conversation.create(author: author, receiver: u)
+            6.times {
+                message1 = Message.create(content: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis?", user: author)
+                conversation.messages << message1
+                message2 = Message.create(content: "Et iusto odio dignissimos ducimus qui voluptatum.", user: u)
+                conversation.messages << message2
+
+            }
+        end
+    }
 end
