@@ -14,6 +14,7 @@ const Navbar = props => {
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/questions/followed">My questions</NavLink> </li>
+                        <li className="nav-item"> <NavLink className="nav-link" to={`/users/${props.id}/messages`}>Messages</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/users/top">Top users</NavLink> </li>
                     </ul>
                     <p className="d-none d-md-block lead mb-0 text-white"> <b> LAWTALK</b> </p>
