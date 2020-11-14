@@ -5,6 +5,7 @@ class ChatList extends Component {
     render() {
         let chatlist = this.props.chatlist.map((c, id)=> {
             return (
+                    <div className={`chat_list ${id === 0 ? 'active_chat' : null}`}> 
                     <ChatListItem
                         key={id}
                         conversationId={c.id}
@@ -13,6 +14,7 @@ class ChatList extends Component {
                         chatPartner={c.chatPartner}
                         chatPartnerAvatar={c.chatPartnerAvatar}
                     />
+                    </div>
             )
         })
         return chatlist;
