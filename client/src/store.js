@@ -9,7 +9,7 @@ import currentQuestionReducer from './reducers/currentQuestion.js';
 import currentAnswersReducer from './reducers/currentAnswers.js';
 import currentCommentsReducer from './reducers/currentComments.js';
 import signupFormReducer from './reducers/signupForm.js';
-
+import conversationsReducer from './reducers/conversations.js';
 
 const reducer = combineReducers({
     currentUser: currentUserReducer,
@@ -20,7 +20,8 @@ const reducer = combineReducers({
     currentQuestion: currentQuestionReducer,
     currentAnswers: currentAnswersReducer,
     currentComments: currentCommentsReducer,
-    signupForm: signupFormReducer
+    signupForm: signupFormReducer,
+    conversations: conversationsReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
