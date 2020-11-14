@@ -2305,3 +2305,7 @@ img {
 .chat_ib h5 {
   color: #007bff;
 }
+
+.chat_list {
+  cursor: pointer;
+}
