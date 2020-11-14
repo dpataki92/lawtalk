@@ -14,6 +14,7 @@ class Conversation < ApplicationRecord
         conversations.each do |c|
             chatPartner = c.author === user ? c.receiver : c.author
             result.push({
+                id: c.id,
                 lastMessageDate: Date::ABBR_MONTHNAMES[c.updated_at.month] + " " + c.updated_at.day.to_s,
                 lastMessage: c.messages.sort {|a,b| b.created_at <=> a.created_at}[0].content[0..77],
                 chatPartner: chatPartner.username
@@ -21,6 +22,22 @@ class Conversation < ApplicationRecord
         end
 
         result
+    end
+
+    def messages_serializer(user)
+        result = []
+
+        self.messages.each do |m|
+            status = m.user === user ? "sent" : "received"
+            result.push({
+                id: m.id,
+                status: status,
+                content: m.content,
+                messageDate: Date::ABBR_MONTHNAMES[m.created_at.month] + " " + c.created_at.day.to_s,
+                messageTime: m.created_at.strftime("%I:%M %p")
+            })
+        end
+
     end
 
 end
