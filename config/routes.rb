@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     post '/comments/:id/vote', to: 'comments#vote'
 
     get '/users/:id/messages', to: 'conversations#index'
-    get '/users/:id/messages/:msgid', to: 'conversations#show'
+    get '/users/:id/messages/:convId', to: 'conversations#show'
   end
 end
