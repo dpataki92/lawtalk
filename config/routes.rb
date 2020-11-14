@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :update, :destroy]
     post '/comments/:id/vote', to: 'comments#vote'
 
-    get '/users/:id/messages', to: 'conversations#index'
-    get '/users/:id/messages/:convId', to: 'conversations#show'
+    get '/users/:id/conversations', to: 'conversations#index'
+    get '/users/:id/conversations/:convId', to: 'conversations#show'
   end
 end
