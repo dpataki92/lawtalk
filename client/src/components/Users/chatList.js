@@ -10,7 +10,8 @@ class ChatList extends Component {
                         conversationId={c.id}
                         lastMessageDate={c.lastMessageDate}
                         lastMessage={c.lastMessage}
-                        chatPartner={c.chatlist}
+                        chatPartner={c.chatPartner}
+                        chatPartnerAvatar={c.chatPartnerAvatar}
                     />
             )
         })
