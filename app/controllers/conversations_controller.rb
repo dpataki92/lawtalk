@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
     end
 
     def show
-        conversation = Conversation.find_by(id: params[:id])
+        conversation = Conversation.find_by(id: params[:msgid])
         render json: {messages: conversation.messages_serializer}
     end
 
