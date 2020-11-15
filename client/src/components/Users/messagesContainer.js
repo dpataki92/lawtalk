@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import ChatList from './chatList.js';
 import { connect } from "react-redux";
 import  { getCurrentConversations } from "../../actions/conversations.js";
-
+import  { getCurrentConversation } from "../../actions/currentConversation.js";
 
 class MessagesContainer extends Component {
+
+    state = {
+        currentConversation: []
+    }
 
     componentDidMount() {
         this.props.getCurrentConversations(this.props.currentUser.id);
@@ -80,11 +84,12 @@ class MessagesContainer extends Component {
     }
 }
 
-const mapStateToProps = ({conversations, currentUser}) => {
+const mapStateToProps = ({conversations, currentUser, currentConversation}) => {
     return {
         conversations,
-        currentUser
+        currentUser,
+        currentConversation
     }
   }
 
-  export default connect(mapStateToProps, { getCurrentConversations })(MessagesContainer);
+  export default connect(mapStateToProps, { getCurrentConversations, getCurrentConversation })(MessagesContainer);
