@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChatList from './chatList.js';
+import MessagesContainer from './messagesContainer.js';
 import { connect } from "react-redux";
 import  { getCurrentConversations } from "../../actions/conversations.js";
 import  { getCurrentConversation } from "../../actions/currentConversation.js";
@@ -7,11 +8,20 @@ import  { getCurrentConversation } from "../../actions/currentConversation.js";
 class ConversationsContainer extends Component {
 
     state = {
-        currentConversation: []
+        currentConversationKey: 0
     }
 
     componentDidMount() {
-        this.props.getCurrentConversations(this.props.currentUser.id);
+        let myThis = this
+        async function getData () {
+            await myThis.props.getCurrentConversations(myThis.props.currentUser.id);
+            await myThis.props.getCurrentConversation(myThis.props.currentUser.id, myThis.props.conversations[myThis.state.currentConversationKey].id);
+        }
+        getData();
+    }
+
+    componentDidUpdate() {
+        this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
     }
 
     render() {
@@ -28,6 +38,7 @@ class ConversationsContainer extends Component {
                 </div>
                 <div className="inbox_chat">
                     <ChatList chatlist={this.props.conversations}/>
+                    <MessagesContainer currentConversation={this.props.currentConversation} />
                 </div>
                 </div>
                 <div className="mesgs">
