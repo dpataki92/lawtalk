@@ -28,6 +28,9 @@ class ConversationsContainer extends Component {
 
     componentDidUpdate() {
         this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
+
+        let msgDiv = document.querySelector(".msg_history");
+        msgDiv.scrollTop = msgDiv.scrollHeight;
     }
 
     handleKeyChange = (newKey) => {
