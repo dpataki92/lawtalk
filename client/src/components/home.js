@@ -11,7 +11,7 @@ import ProfilePage from './Users/profilePage.js';
 import Thread from './Threads/thread.js';
 import EditQuestionForm from './Threads/editQuestionForm.js';
 import EditProfile from './Users/editProfile.js';
-import MessagesContainer from "./Users/messagesContainer.js";
+import ConversationsContainer from "./Users/conversationsContainer.js";
 
 
 class Home extends Component {
@@ -31,7 +31,7 @@ class Home extends Component {
                 <Route key="top" exact path="/users/top" render={() => <TopUsers />} />
                 <Route key="edit profile" exact path="/users/:id/edit" component={EditProfile} />
                 <Route key="profile" exact path="/users/:id" component={ProfilePage} />
-                <Route key="messages" exact path="/users/:id/messages" component={MessagesContainer} />
+                <Route key="messages" exact path="/users/:id/messages" component={ConversationsContainer} />
                 </Switch>
                 </React.Fragment>
             </Router>

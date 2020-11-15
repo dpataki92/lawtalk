@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import  { getCurrentConversations } from "../../actions/conversations.js";
 import  { getCurrentConversation } from "../../actions/currentConversation.js";
 
-class MessagesContainer extends Component {
+class ConversationsContainer extends Component {
 
     state = {
         currentConversation: []
@@ -92,4 +92,4 @@ const mapStateToProps = ({conversations, currentUser, currentConversation}) => {
     }
   }
 
-  export default connect(mapStateToProps, { getCurrentConversations, getCurrentConversation })(MessagesContainer);
+  export default connect(mapStateToProps, { getCurrentConversations, getCurrentConversation })(ConversationsContainer);
