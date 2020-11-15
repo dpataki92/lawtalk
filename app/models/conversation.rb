@@ -35,10 +35,12 @@ class Conversation < ApplicationRecord
                 status: status,
                 content: m.content,
                 messageDate: Date::ABBR_MONTHNAMES[m.created_at.month] + " " + m.created_at.day.to_s,
-                messageTime: m.created_at.strftime("%I:%M %p")
+                messageTime: m.created_at.strftime("%I:%M %p"),
+                chatPartnerAvatar: m.user.avatar
             })
         end
-
+        
+        result
     end
 
 end
