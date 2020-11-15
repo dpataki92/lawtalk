@@ -6,12 +6,13 @@ class ChatList extends Component {
     handleClick = (e) => {
         document.querySelector(".active_chat").classList.remove("active_chat");
         e.target.closest(".chat_list").classList.add("active_chat");
+        this.props.handleKeyChange(e.target.closest(".chat_list").id)
     }
 
     render() {
         let chatlist = this.props.chatlist.map((c, id)=> {
             return (
-                    <div className={`chat_list ${id === 0 ? 'active_chat' : ""}`} onClick={this.handleClick}> 
+                    <div id={id} className={`chat_list ${id === 0 ? 'active_chat' : ""}`} onClick={this.handleClick}> 
                     <ChatListItem
                         key={id}
                         conversationId={c.id}

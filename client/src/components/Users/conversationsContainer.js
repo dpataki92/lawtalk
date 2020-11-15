@@ -24,6 +24,12 @@ class ConversationsContainer extends Component {
         this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
     }
 
+    handleKeyChange = (newKey) => {
+        this.setState({
+            currentConversationKey: newKey
+        })
+    }
+
     render() {
         return(
         <div className="container">
@@ -37,8 +43,8 @@ class ConversationsContainer extends Component {
                     </div>
                 </div>
                 <div className="inbox_chat">
-                    <ChatList chatlist={this.props.conversations}/>
-                    <MessagesContainer currentConversation={this.props.currentConversation} />
+                    <ChatList chatlist={this.props.conversations} handleKeyChange={this.handleKeyChange}/>
+                    <MessagesContainer currentConversation={this.props.currentConversation}/>
                 </div>
                 </div>
                 <div className="mesgs">
