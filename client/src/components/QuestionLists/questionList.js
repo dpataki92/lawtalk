@@ -24,6 +24,7 @@ class QuestionList extends Component {
                           currentUser={this.props.currentUser}
                           followersNames={question.followersNames}
                             />
+                          {id === this.props.questions.length-1 ? <hr/> : null}
                         </React.Fragment>
                     )
             })
