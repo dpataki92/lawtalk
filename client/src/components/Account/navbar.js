@@ -12,8 +12,8 @@ const Navbar = props => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbar20">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/questions/followed">My questions</NavLink> </li>
+                        <li className="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to={`/users/${props.id}/messages`}>Messages</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/users/top">Top users</NavLink> </li>
                     </ul>

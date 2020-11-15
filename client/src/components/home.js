@@ -22,7 +22,7 @@ class Home extends Component {
                 <React.Fragment>
                 <Navbar logout={this.props.logout} id={this.props.currentUser.id} />
                 <Switch>
-                <Route exact path="/" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
+                <Route exact path="/" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
                 <Route key="all" exact path="/questions/all" render={(props) => <QuestionContainer {...props} followed={"false"}/>}/>
                 <Route key="followed" exact path="/questions/followed" render={(props) => <QuestionContainer {...props} followed={"true"}/>}/>
                 <Route key="new" exact path="/questions/new" render={() => <QuestionForm />} />
