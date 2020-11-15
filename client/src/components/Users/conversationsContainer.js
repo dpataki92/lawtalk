@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ChatList from './chatList.js';
 import MessagesContainer from './messagesContainer.js';
+import MessagesInput from './messagesInput.js';
 import { connect } from "react-redux";
 import  { getCurrentConversations } from "../../actions/conversations.js";
 import  { getCurrentConversation } from "../../actions/currentConversation.js";
@@ -8,7 +9,8 @@ import  { getCurrentConversation } from "../../actions/currentConversation.js";
 class ConversationsContainer extends Component {
 
     state = {
-        currentConversationKey: 0
+        currentConversationKey: 0,
+        currentConversationId: ''
     }
 
     componentDidMount() {
@@ -16,19 +18,18 @@ class ConversationsContainer extends Component {
         async function getData () {
             await myThis.props.getCurrentConversations(myThis.props.currentUser.id);
             await myThis.props.getCurrentConversation(myThis.props.currentUser.id, myThis.props.conversations[myThis.state.currentConversationKey].id);
+            myThis.setState({
+                currentConversationId: myThis.props.conversations[myThis.state.currentConversationKey].id
+            })
         }
         getData();
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextState.currentConversationKey === this.state.currentConversationKey) {
-            return true;
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.currentConversationKey !== this.state.currentConversationKey) {
+            this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
         }
-    }
-
-    componentDidUpdate() {
-        this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
-
         let msgDiv = document.querySelector(".msg_history");
         msgDiv.scrollTop = msgDiv.scrollHeight;
     }
@@ -60,10 +61,7 @@ class ConversationsContainer extends Component {
                     <MessagesContainer currentConversation={Array.from(this.props.currentConversation)} />
                 </div>
                 <div className="type_msg">
-                    <div className="input_msg_write">
-                    <input type="text" className="write_msg" placeholder="Type a message" />
-                    <button className="msg_send_btn" type="button"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                    </div>
+                    <MessagesInput currentConversationId={this.state.currentConversationId}/>
                 </div>
                 </div>
             </div>
