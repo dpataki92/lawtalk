@@ -29,7 +29,7 @@ class Conversation < ApplicationRecord
         result = []
 
         self.messages.each do |m|
-            status = m.user === user ? "sent" : "received"
+            status = m.user === user ? "outgoing" : "incoming"
             result.push({
                 id: m.id,
                 status: status,
