@@ -20,6 +20,12 @@ class ConversationsContainer extends Component {
         getData();
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextState.currentConversationKey === this.state.currentConversationKey) {
+            return true;
+        }
+    }
+
     componentDidUpdate() {
         this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
     }
@@ -44,49 +50,11 @@ class ConversationsContainer extends Component {
                 </div>
                 <div className="inbox_chat">
                     <ChatList chatlist={this.props.conversations} handleKeyChange={this.handleKeyChange}/>
-                    <MessagesContainer currentConversation={this.props.currentConversation}/>
                 </div>
                 </div>
                 <div className="mesgs">
                 <div className="msg_history">
-                    <div className="incoming_msg">
-                    <div className="incoming_msg_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                    <div className="received_msg">
-                        <div className="received_withd_msg">
-                        <p>Test which is a new approach to have all
-                            solutions</p>
-                        <span className="time_date"> 11:01 AM    |    June 9</span></div>
-                    </div>
-                    </div>
-                    <div className="outgoing_msg">
-                    <div className="sent_msg">
-                        <p>Test which is a new approach to have all
-                        solutions</p>
-                        <span className="time_date"> 11:01 AM    |    June 9</span> </div>
-                    </div>
-                    <div className="incoming_msg">
-                    <div className="incoming_msg_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                    <div className="received_msg">
-                        <div className="received_withd_msg">
-                        <p>Test, which is a new approach to have</p>
-                        <span className="time_date"> 11:01 AM    |    Yesterday</span></div>
-                    </div>
-                    </div>
-                    <div className="outgoing_msg">
-                    <div className="sent_msg">
-                        <p>Apollo University, Delhi, India Test</p>
-                        <span className="time_date"> 11:01 AM    |    Today</span> </div>
-                    </div>
-                    <div className="incoming_msg">
-                    <div className="incoming_msg_img"> <img className="msg-profile-img" src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                    <div className="received_msg">
-                        <div className="received_withd_msg">
-                        <p>We work directly with our designers and suppliers,
-                            and sell direct to you, which means quality, exclusive
-                            products, at a price anyone can afford.</p>
-                        <span className="time_date"> 11:01 AM    |    Today</span></div>
-                    </div>
-                    </div>
+                    <MessagesContainer currentConversation={Array.from(this.props.currentConversation)} />
                 </div>
                 <div className="type_msg">
                     <div className="input_msg_write">

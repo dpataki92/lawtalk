@@ -4,9 +4,9 @@ import ChatListItem from './chatListItem.js'
 class ChatList extends Component {
 
     handleClick = (e) => {
+        this.props.handleKeyChange(e.target.closest(".chat_list").id)
         document.querySelector(".active_chat").classList.remove("active_chat");
         e.target.closest(".chat_list").classList.add("active_chat");
-        this.props.handleKeyChange(e.target.closest(".chat_list").id)
     }
 
     render() {
