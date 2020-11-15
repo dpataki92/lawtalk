@@ -2120,7 +2120,8 @@ img {
   background: #f8f8f8 none repeat scroll 0 0;
   float: left;
   overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
+  width: 30%; 
+  border-right:1px solid #c4c4c4;
 }
 
 .inbox_msg {
@@ -2240,7 +2241,7 @@ img {
 .mesgs {
   float: left;
   padding: 30px 15px 0 25px;
-  width: 60%;
+  width: 70%;
 }
 
  .sent_msg p {
@@ -2308,4 +2309,8 @@ img {
 
 .chat_list {
   cursor: pointer;
+}
+
+.container.conversation {
+  max-width: 1320px
 }

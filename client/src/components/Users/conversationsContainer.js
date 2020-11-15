@@ -21,6 +21,8 @@ class ConversationsContainer extends Component {
             myThis.setState({
                 currentConversationId: myThis.props.conversations[myThis.state.currentConversationKey].id
             })
+            let msgDiv = document.querySelector(".msg_history");
+            msgDiv.scrollTop = msgDiv.scrollHeight;
         }
         getData();
     }
@@ -29,9 +31,12 @@ class ConversationsContainer extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.currentConversationKey !== this.state.currentConversationKey) {
             this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
+            this.setState({
+                currentConversationId: this.props.conversations[this.state.currentConversationKey].id
+            })
+            let msgDiv = document.querySelector(".msg_history");
+            msgDiv.scrollTop = msgDiv.scrollHeight;
         }
-        let msgDiv = document.querySelector(".msg_history");
-        msgDiv.scrollTop = msgDiv.scrollHeight;
     }
 
     handleKeyChange = (newKey) => {
@@ -42,7 +47,7 @@ class ConversationsContainer extends Component {
 
     render() {
         return(
-        <div className="container">
+        <div className="container conversation">
         <h3 style={{marginBottom: 5}}>Private messages</h3>
         <div className="messaging">
             <div className="inbox_msg">
