@@ -37,6 +37,8 @@ class ConversationsContainer extends Component {
             let msgDiv = document.querySelector(".msg_history");
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
+        let msgDiv = document.querySelector(".msg_history");
+        msgDiv.scrollTop = msgDiv.scrollHeight;
     }
 
     handleKeyChange = (newKey) => {
@@ -66,7 +68,7 @@ class ConversationsContainer extends Component {
                     <MessagesContainer currentConversation={Array.from(this.props.currentConversation)} />
                 </div>
                 <div className="type_msg">
-                    <MessagesInput currentConversationId={this.state.currentConversationId}/>
+                    <MessagesInput currentUserId={this.props.currentUser.id} currentConversationId={this.state.currentConversationId} getCurrentConversation={this.props.getCurrentConversation} getCurrentConversations={this.props.getCurrentConversations}/>
                 </div>
                 </div>
             </div>
