@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
     get '/users/:id/conversations', to: 'conversations#index'
     get '/users/:id/conversations/:convId', to: 'conversations#show'
+    post '/users/:id/conversations', to: 'conversations#create'
+    post '/users/:id/conversations/:convId', to: 'conversations#add_message'
   end
 end
