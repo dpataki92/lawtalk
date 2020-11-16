@@ -30,12 +30,25 @@ class MessagesInput extends Component {
                 alert("Something went wrong.")
             }
           })
+          this.setState({
+            message: ""
+        })
+    }
+
+    handleOnKeyUp = (e) => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            document.querySelector(".msg_send_btn").click();
+            this.setState({
+                message: ""
+            })
+        }
     }
 
     render() {
         return(
             <div className="input_msg_write">
-                <input type="text" className="write_msg" placeholder="Type a message" name="message" onChange={this.handleChange} value={this.state.message} required/>
+                <input type="text" className="write_msg" placeholder="Type a message" name="message" onChange={this.handleChange} onKeyUp={this.handleOnKeyUp} value={this.state.message} required/>
                 <button className="msg_send_btn btn-primary" type="button" onClick={this.handleSubmit}><i className="fa fa-gavel" aria-hidden="true"></i></button>
             </div>
         )
