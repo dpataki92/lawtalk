@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getCurrentProfile } from '../../actions/currentProfile.js';
+import { Link } from 'react-router-dom';
 
 class ProfilePage extends Component {
 
@@ -59,9 +60,9 @@ class ProfilePage extends Component {
                     <div className="col-md-4">
                         <div className="profile-work">
                             <p>TOP RATED ANSWERS</p>
-                            <a href="">{currentProfile.answer1}</a><br/>
-                            <a href="">{currentProfile.answer2}</a><br/>
-                            <a href="">{currentProfile.answer3}</a>
+                            <Link to={currentProfile.answer1QuestionId ? `/questions/${currentProfile.answer1QuestionId}` : "#"}>{currentProfile.answer1}</Link><br/>
+                            <Link to={`/questions/${currentProfile.answer2QuestionId}`}>{currentProfile.answer2}</Link><br/>
+                            <Link to={`/questions/${currentProfile.answer3QuestionId}`}>{currentProfile.answer3}</Link>
                         </div>
                     </div>
                     <div className="col-md-8">

@@ -42,9 +42,9 @@ class User < ApplicationRecord
     def top_rated_answers
         sorted = self.answers.sort {|a,b| b.vote_ratio <=> a.vote_ratio}[0..2].select {|a| a.votes.select{|v| v.upvote}.size > a.votes.select{|v| v.downvote}.size}
         if !sorted[0] || sorted[0].vote_ratio === 0
-            ["This user has no top rated answers","", ""]
+            [["This user has no top rated answers","", ""], ["", "", ""]]
         else
-            sorted.collect {|a| a.question.title}
+            [sorted.collect {|a| a.question.title}, sorted.collect {|a| a.question.id}]
         end
     end
 
@@ -60,9 +60,12 @@ class User < ApplicationRecord
             comments: self.comments.size,
             createdQuestions: self.created_questions.size,
             voteRatio: self.vote_ratio,
-            answer1: self.top_rated_answers[0],
-            answer2: self.top_rated_answers[1],
-            answer3: self.top_rated_answers[2],
+            answer1: self.top_rated_answers[0][0],
+            answer1QuestionId: self.top_rated_answers[1][0],
+            answer2: self.top_rated_answers[0][1],
+            answer2QuestionId: self.top_rated_answers[1][1],
+            answer3: self.top_rated_answers[0][2],
+            answer3QuestionId: self.top_rated_answers[1][2],
             memberSince: self.creation_date_in_words
         }
     end
