@@ -18,11 +18,15 @@ class User < ApplicationRecord
     end
 
     def vote_diff
-        self.upvotes - self.downvotes   
+        if self.upvotes === 0 && self.downvotes === 0
+            0
+        else
+            self.upvotes.to_f / (self.downvotes.to_f + self.upvotes.to_f) 
+        end
     end
 
     def self.rank_top_15
-        sorted = User.all.sort {|a,b| b.vote_diff <=> a.vote_diff}
+        sorted = User.all.select {|u| u.answers.size + u.comments.size > 3}.0sort {|a,b| b.vote_diff <=> a.vote_diff}
         sorted[0..14]
     end
 
@@ -31,7 +35,7 @@ class User < ApplicationRecord
         if self.upvotes === 0 && self.downvotes === 0
             "User has no votes"
         else
-            "#{((self.upvotes.to_f / total.to_f) * 100).to_i}%"
+            "#{((self.upvotes.to_f / total.to_f) * 100).round}%"
         end
     end
 

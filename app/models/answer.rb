@@ -17,7 +17,7 @@ class Answer < ApplicationRecord
         if upvotes === 0 && downvotes === 0
             0
         else
-            ((upvotes.to_f / total.to_f) * 100).to_i
+            ((upvotes.to_f / total.to_f) * 100).round
         end
     end
 
