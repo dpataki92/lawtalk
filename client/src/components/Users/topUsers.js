@@ -16,7 +16,7 @@ class TopUsers extends Component {
     render() { 
 
         const renderTopUsers = this.props.topUsers.map((u, id)=> {
-            return <Link to={`/users/${u.id}`}><UserRow key={id} username={u.username} avatar={u.avatar} location={u.location} fields={u.fields} upvotes={u.upvotes}/></Link> 
+            return <Link to={`/users/${u.id}`}><UserRow key={id} username={u.username} avatar={u.avatar} location={u.location} fields={u.fields} upvotes={u.upvotes} downvotes={u.downvotes}/></Link> 
         })
 
         return (
