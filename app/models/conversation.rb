@@ -9,7 +9,7 @@ class Conversation < ApplicationRecord
     def self.conversations_serializer(user)
         result = []
         
-        conversations = (user.authored_conversations + user.received_conversations).sort {|a,b| b.updated_at <=> a.updated_at}
+        conversations = (user.authored_conversations + user.received_conversations).sort {|a,b| b.messages.last.updated_at <=> a.messages.last.updated_at}
 
         conversations.each do |c|
             chatPartner = c.author === user ? c.receiver : c.author
