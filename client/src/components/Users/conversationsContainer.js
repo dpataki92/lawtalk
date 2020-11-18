@@ -13,21 +13,16 @@ class ConversationsContainer extends Component {
         currentConversationId: ''
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        await this.props.getCurrentConversations(this.props.currentUser.id);
         if (this.props.conversations.length !== 0) {
-
-        let myThis = this;
-        async function getData () {
-            await myThis.props.getCurrentConversations(myThis.props.currentUser.id);
-            await myThis.props.getCurrentConversation(myThis.props.currentUser.id, myThis.props.conversations[myThis.state.currentConversationKey].id);
-            myThis.setState({
-                currentConversationId: myThis.props.conversations[myThis.state.currentConversationKey].id
+            await this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
+            this.setState({
+                currentConversationId: this.props.conversations[this.state.currentConversationKey].id
             })
             let msgDiv = document.querySelector(".msg_history");
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
-        getData();
-    }
     }
 
 
@@ -41,7 +36,7 @@ class ConversationsContainer extends Component {
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
         let msgDiv = document.querySelector(".msg_history");
-        msgDiv.scrollTop = msgDiv.scrollHeight;
+        if (msgDiv) {msgDiv.scrollTop = msgDiv.scrollHeight};
     }
 
     handleKeyChange = (newKey) => {
