@@ -9,6 +9,16 @@ class ConversationsController < ApplicationController
         render json: {currentConversation: conversation.messages_serializer(current_user)}
     end
 
+    def create
+        user = User.find_by(id: params[:userId])
+
+        conversation = Conversation.create(author: current_user, receiver: user)
+        current_user.authored_conversations << conversation
+        user.received_conversations << conversation
+
+        render json: {currentConversation: conversation.messages_serializer(current_user)}
+    end
+
     def add_message
         conversation = Conversation.find_by(id: params[:convId])
         user = User.find_by(id: params[:id])
