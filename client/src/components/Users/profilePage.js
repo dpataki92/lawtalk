@@ -24,6 +24,12 @@ class ProfilePage extends Component {
         }
     }
 
+    handleConversationStart = async () => {
+        window.confirm("Do you want to start a private conversations with this user?")
+        await this.props.startConversation(currentProfile.id);
+        this.props.history.push(`/users/${this.props.currentUser.id}/messages`);
+    }
+
     render() {
         const {currentProfile} = this.props
         return(
@@ -43,7 +49,7 @@ class ProfilePage extends Component {
                                 <h6 style={{marginBottom:"15px"}}>
                                     {currentProfile.location}
                                 </h6>
-                                <p className="profile-conversation"><Link><i className="fa fa-comments"></i> Start conversation</Link></p>
+                                <p className="profile-conversation"><button onClick={this.handleConversationStart}><span><i className="fa fa-comments"></i> Start conversation</span></button></p>
                                 <p className="profile-rating">UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
                                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                                     <li className="nav-item">

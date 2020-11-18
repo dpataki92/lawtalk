@@ -1993,6 +1993,11 @@ input.input100 {
   color: #818182;
   margin-top: 5%;
 }
+
+.profile-conversation span:hover {
+  color:  #007bff;
+}
+
 .profile-rating span{
   color: #495057;
   font-size: 15px;
