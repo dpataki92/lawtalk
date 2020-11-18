@@ -36,11 +36,16 @@ export const login = credentials => {
     }
 }
 
-export const loginSocialMedia = provider => {
+export const loginSocialMedia = user => {
+    console.log(user)
     return dispatch => {
-        return fetch(`api//auth/${provider}/callback`, {
-            method: "GET",
-            headers: {"Content-Type": "application/json"}
+        return fetch(`api/users`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                username: user.name,
+                social: "true"
+            })
           })
           .then(resp => resp.json())
           .then(function(json) {

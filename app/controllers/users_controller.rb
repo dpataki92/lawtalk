@@ -10,11 +10,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.password = params[:password]
+    @user = User.find_or_create_by(username: params[:username])
+    if params[:social]
+      @user.password = SecureRandom.urlsafe_base64(n=6)
+    else
+      @user.password = params[:password]
+    end
+
     @user.avatar = 'default.jpg'
     @user.save
-    
+
     if @user.valid?
       @token = encode_token(user_id: @user.id)
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
