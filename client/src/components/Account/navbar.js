@@ -1,7 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuth0} from '@auth0/auth0-react';
 
 const Navbar = props => {
+
+    const { logout } = useAuth0();
+
+    const handleSocialLogout = () => {
+        logout();
+        props.logout();
+    }
 
     return(
         <React.Fragment>
@@ -20,7 +28,7 @@ const Navbar = props => {
                     <p className="d-none d-md-block lead mb-0 text-white"> <b> LAWTALK</b> </p>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item mx-1"> <NavLink className="nav-link" to={`/users/${props.id}/edit`}> <i className="fa fa-edit fa-fw fa-lg"></i> </NavLink> </li>
-                        <li className="nav-item mx-1"> <NavLink id="logout" className="nav-link" to="/" onClick={props.logout}> <i className="fa fa-sign-out fa-fw fa-lg"></i> </NavLink> </li>
+                        <li className="nav-item mx-1"> <NavLink id="logout" className="nav-link" to="/" onClick={localStorage.getItem('social') === "true" ? handleSocialLogout : props.logout}> <i className="fa fa-sign-out fa-fw fa-lg"></i> </NavLink> </li>
                     </ul>
                 </div>
             </div>

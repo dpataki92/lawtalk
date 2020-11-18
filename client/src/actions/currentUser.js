@@ -54,6 +54,7 @@ export const loginSocialMedia = user => {
                 alert(json.message)
             } else {
                 localStorage.setItem('jwt_token', json.jwt);
+                localStorage.setItem('social', json.social);
                 dispatch((setCurrentUser(json.user)));
             }
           })

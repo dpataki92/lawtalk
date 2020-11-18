@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.find_or_create_by(username: params[:username])
-    if params[:social]
+    if params[:social] === "true"
       @user.password = SecureRandom.urlsafe_base64(n=6)
     else
       @user.password = params[:password]
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @token = encode_token(user_id: @user.id)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+      render json: { user: UserSerializer.new(@user), jwt: @token, social: params[:social] }, status: :created
     else
       render json: { message: 'failed to create user' }, status: :not_acceptable
     end
