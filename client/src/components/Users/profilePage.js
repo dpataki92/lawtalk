@@ -43,7 +43,8 @@ class ProfilePage extends Component {
                                 <h6 style={{marginBottom:"15px"}}>
                                     {currentProfile.location}
                                 </h6>
-                                <p class="proile-rating" style={{marginBottom:"15px"}}>UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
+                                <p className="profile-conversation"><Link><i className="fa fa-comments"></i> Start conversation</Link></p>
+                                <p className="profile-rating">UPVOTE/DOWNVOTE : <span>{currentProfile.voteRatio}</span></p>
                                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                                     <li className="nav-item">
                                         <a className="nav-link active" onClick={this.handleClick} id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -55,7 +56,7 @@ class ProfilePage extends Component {
                         </div>
                     </div>
 
-                </div>
+                </div >
                 <div className="row">
                     <div className="col-md-4">
                         <div className="profile-work">
@@ -65,7 +66,7 @@ class ProfilePage extends Component {
                             <Link to={`/questions/${currentProfile.answer3QuestionId}`}>{currentProfile.answer3}</Link>
                         </div>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-8" style={{marginTop:"35px"}}>
                         <div className="tab-content profile-tab" id="myTabContent">
                             <div className="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="home-tab" style={{marginTop: "-80px"}}>
                                         <div className="row">

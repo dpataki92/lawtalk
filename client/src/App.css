@@ -1988,17 +1988,18 @@ input.input100 {
   color: #6c757d;
   cursor: pointer;
 }
-.proile-rating{
+.profile-rating, .profile-conversation{
   font-size: 12px;
   color: #818182;
   margin-top: 5%;
 }
-.proile-rating span{
+.profile-rating span{
   color: #495057;
   font-size: 15px;
   font-weight: 600;
 }
 .profile-head .nav-tabs{
+  margin-top: 2%;
   margin-bottom:5%;
 }
 .profile-head .nav-tabs .nav-link{
