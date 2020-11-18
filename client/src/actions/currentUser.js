@@ -38,12 +38,13 @@ export const login = credentials => {
 
 export const loginSocialMedia = provider => {
     return dispatch => {
-        return fetch(`/api/auth/${provider}/callback`, {
+        return fetch(`api//auth/${provider}/callback`, {
             method: "GET",
             headers: {"Content-Type": "application/json"}
           })
           .then(resp => resp.json())
           .then(function(json) {
+            console.log(json)
             if (json.message) {
                 alert(json.message)
             } else {
