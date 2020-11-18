@@ -1977,7 +1977,7 @@ input.input100 {
   color: #333;
 }
 .profile-head h6{
-  color: #0062cc;
+  color: #007bff;
 }
 .profile-edit-btn{
   border: none;
@@ -2007,7 +2007,7 @@ input.input100 {
 }
 .profile-head .nav-tabs .nav-link.active{
   border: none;
-  border-bottom:2px solid #0062cc;
+  border-bottom:2px solid #007bff;
 }
 .profile-work{
   padding: 14%;
@@ -2025,6 +2025,11 @@ input.input100 {
   font-weight: 600;
   font-size: 14px;
 }
+
+.profile-work a:hover {
+  color: #007bff;
+}
+
 .profile-work ul{
   list-style: none;
 }
@@ -2033,7 +2038,7 @@ input.input100 {
 }
 .profile-tab p{
   font-weight: 600;
-  color: #0062cc;
+  color: #007bff;
 }
 
 /* Googlr */
