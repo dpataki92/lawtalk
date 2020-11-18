@@ -14,7 +14,9 @@ class ConversationsContainer extends Component {
     }
 
     componentDidMount() {
-        let myThis = this
+        if (this.props.conversations.length !== 0) {
+
+        let myThis = this;
         async function getData () {
             await myThis.props.getCurrentConversations(myThis.props.currentUser.id);
             await myThis.props.getCurrentConversation(myThis.props.currentUser.id, myThis.props.conversations[myThis.state.currentConversationKey].id);
@@ -25,6 +27,7 @@ class ConversationsContainer extends Component {
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }
         getData();
+    }
     }
 
 
@@ -48,31 +51,37 @@ class ConversationsContainer extends Component {
     }
 
     render() {
-        return(
-        <div className="container conversation">
-        <h3 style={{marginBottom: 5}}>Private messages</h3>
-        <div className="messaging">
-            <div className="inbox_msg">
-                <div className="inbox_people">
-                <div className="headind_srch">
-                    <div className="recent_heading">
-                    <h4>Recent</h4>
+        return this.props.conversations.length === 0 ? 
+        (
+            <div className="container conversation">
+            <h3 style={{marginBottom: 5}}>No conversations yet.</h3>
+            </div>
+        ) :
+        (
+            <div className="container conversation">
+            <h3 style={{marginBottom: 5}}>Private messages</h3>
+            <div className="messaging">
+                <div className="inbox_msg">
+                    <div className="inbox_people">
+                    <div className="headind_srch">
+                        <div className="recent_heading">
+                        <h4>Recent</h4>
+                        </div>
+                    </div>
+                    <div className="inbox_chat">
+                        <ChatList chatlist={this.props.conversations} handleKeyChange={this.handleKeyChange}/>
+                    </div>
+                    </div>
+                    <div className="mesgs">
+                    <div className="msg_history">
+                        <MessagesContainer currentConversation={Array.from(this.props.currentConversation)} />
+                    </div>
+                    <div className="type_msg">
+                        <MessagesInput currentUserId={this.props.currentUser.id} currentConversationId={this.state.currentConversationId} getCurrentConversation={this.props.getCurrentConversation} getCurrentConversations={this.props.getCurrentConversations}/>
+                    </div>
                     </div>
                 </div>
-                <div className="inbox_chat">
-                    <ChatList chatlist={this.props.conversations} handleKeyChange={this.handleKeyChange}/>
-                </div>
-                </div>
-                <div className="mesgs">
-                <div className="msg_history">
-                    <MessagesContainer currentConversation={Array.from(this.props.currentConversation)} />
-                </div>
-                <div className="type_msg">
-                    <MessagesInput currentUserId={this.props.currentUser.id} currentConversationId={this.state.currentConversationId} getCurrentConversation={this.props.getCurrentConversation} getCurrentConversations={this.props.getCurrentConversations}/>
-                </div>
-                </div>
-            </div>
-            </div></div>
+                </div></div>
         )
     }
 }
