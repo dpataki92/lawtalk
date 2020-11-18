@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getCurrentProfile } from '../../actions/currentProfile.js';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { startConversation } from '../../actions/currentConversation.js';
+
 
 class ProfilePage extends Component {
 
@@ -26,7 +29,7 @@ class ProfilePage extends Component {
 
     handleConversationStart = async () => {
         window.confirm("Do you want to start a private conversations with this user?")
-        await this.props.startConversation(currentProfile.id);
+        await this.props.startConversation(this.props.currentProfile.id);
         this.props.history.push(`/users/${this.props.currentUser.id}/messages`);
     }
 
@@ -137,7 +140,7 @@ class ProfilePage extends Component {
 }
 
 const mapStateToProps = state => {
-    return ({ currentProfile: state.currentProfile })
+    return ({ currentProfile: state.currentProfile, currentUser: state.currentUser })
   }
   
 export default connect(mapStateToProps, { getCurrentProfile })(ProfilePage);
