@@ -24,7 +24,6 @@ export const getCurrentQuestions = (conditions) => {
             } else {
                 dispatch(setCurrentQuestions([]))
             }
-            
         })
     }
 }

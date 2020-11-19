@@ -37,7 +37,6 @@ export const login = credentials => {
 }
 
 export const loginSocialMedia = user => {
-    console.log(user)
     return dispatch => {
         return fetch(`api/users`, {
             method: "POST",
@@ -49,7 +48,6 @@ export const loginSocialMedia = user => {
           })
           .then(resp => resp.json())
           .then(function(json) {
-            console.log(json)
             if (json.message) {
                 alert(json.message)
             } else {

@@ -23,7 +23,6 @@ export const getCurrentAnswers = (id) => {
             } else {
                 dispatch(setCurrentAnswers([]))
             }
-            
         })
     }
 }
