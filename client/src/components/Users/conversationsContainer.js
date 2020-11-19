@@ -14,7 +14,25 @@ class ConversationsContainer extends Component {
     }
 
     async componentDidMount() {
+        if (this.props.location.userId) {
+            await fetch(`/api/users/${this.props.currentUser.id}/conversations`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem('jwt_token')}`
+                },
+                body: JSON.stringify({userId: this.props.location.userId})
+            })
+            .then(resp => resp.json())
+            .then(json => {
+                if (json.message) {
+                    console.log(json.message)
+                }         
+            })
+        }
+        
         await this.props.getCurrentConversations(this.props.currentUser.id);
+
         if (this.props.conversations.length !== 0) {
             await this.props.getCurrentConversation(this.props.currentUser.id, this.props.conversations[this.state.currentConversationKey].id);
             this.setState({
