@@ -63,6 +63,21 @@ class ConversationsContainer extends Component {
         })
     }
 
+    handleFullScreen = (e) => {
+        if (e.target.parentNode.id === "open-full-screen") {
+            document.querySelector(".inbox_chat").style.display= "none";
+            document.querySelector(".headind_srch").style.display= "none";
+            document.querySelector(".mesgs").style.width = "100%";
+            document.querySelector("#close-full-screen").style.display="initial"
+        } else if (e.target.parentNode.id === "close-full-screen") {
+            document.querySelector(".inbox_chat").style.display= "initial";
+            document.querySelector(".headind_srch").style.display= "block";
+            document.querySelector(".mesgs").style.width = "70%";
+            document.querySelector("#close-full-screen").style.display="none"
+        }
+
+    }
+
     render() {
         return this.props.conversations.length === 0 ? 
         (
@@ -72,7 +87,9 @@ class ConversationsContainer extends Component {
         ) :
         (
             <div className="container conversation">
-            <h3 style={{marginBottom: 5}}>Private messages</h3>
+            <h3 style={{display: "inline", marginBottom: 5}}>Private messages</h3>
+            <div id="close-full-screen" style={{cursor:"pointer", display: "none", float: "right", color: "#007bff"}} onClick={this.handleFullScreen}><span><i class="fa fa-times"></i> Close full screen</span></div>
+
             <div className="messaging">
                 <div className="inbox_msg">
                     <div className="inbox_people">
@@ -80,6 +97,7 @@ class ConversationsContainer extends Component {
                         <div className="recent_heading">
                         <h4>Recent</h4>
                         </div>
+                        <div id="open-full-screen" style={{cursor:"pointer", float: "right", color: "#007bff"}} onClick={this.handleFullScreen}><i class="fa fa-times"></i></div>
                     </div>
                     <div className="inbox_chat">
                         <ChatList chatlist={this.props.conversations} handleKeyChange={this.handleKeyChange}/>
