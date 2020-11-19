@@ -26,32 +26,21 @@ class Conversation < ApplicationRecord
     end
 
     def messages_serializer(user)
-        if !self.messages.empty?
-            result = []
+        result = []
 
-            self.messages.each do |m|
-                status = m.user === user ? "outgoing" : "incoming"
-                result.push({
-                    id: m.id,
-                    status: status,
-                    content: m.content,
-                    messageDate: Date::ABBR_MONTHNAMES[m.created_at.month] + " " + m.created_at.day.to_s,
-                    messageTime: m.created_at.strftime("%I:%M %p"),
-                    chatPartnerAvatar: m.user.avatar
-                })
-            end
-            
-            result
-        else
-            m = self.messages.create(user: user, content: "You have started a conversation with #{self.receiver}!")
-            [{
+        self.messages.each do |m|
+            status = m.user === user ? "outgoing" : "incoming"
+            result.push({
                 id: m.id,
-                status: "outgoing",
+                status: status,
                 content: m.content,
                 messageDate: Date::ABBR_MONTHNAMES[m.created_at.month] + " " + m.created_at.day.to_s,
-                messageTime: m.created_at.strftime("%I:%M %p")
-            }]
+                messageTime: m.created_at.strftime("%I:%M %p"),
+                chatPartnerAvatar: m.user.avatar
+            })
         end
+        
+        result
     end
 
 end
