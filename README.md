@@ -1,18 +1,40 @@
-# README
+# LAWTALK
 
-Lawtalk is legal Q&A site that intends to function as a “legal stack overflow”. Users can discuss legal issues, ask questions, provide answers, upvote or downvote answers, and search for Q&A threads relevant to their jurisdiction and chosen legal areas in various ways. 
+Legal Q&A site built with React/Redux and Ruby on Rails that intends to function as a “legal stack overflow”. The application provides a platform to discuss legal issues and find legal experts quickly. Among other features, users can:
 
-The app uses React and Redux on the front-end and Rails on the back-end as an API. The project was built as part of my studies at the Flatiron School (US).
+- ask questions and provide replies
+- upvote or downvote replies
+- search for Q&A threads related to their jurisdiction and chosen legal field in various ways
+- initiate private conversations and chat with users
+- follow user ranking to find users with best upvote/downvote ratio
 
-# Installation and Usage
+# Technologies
 
-* Fork and git clone repo
+- Ruby 2.6.1
+- Ruby on Rails 6.0.3
+- React 16.8
+- React-Redux 5.0.7
+- Redux 4.0.0
+- React-Router-Dom 5.1.2
+- @auth0/auth0-react 1.2.0
+- SQLite3 1.4.2
+- Puma 4.3.6
+- Bcrypt 3.1.16
+- Dotenv-rails 2.7.6
+- Pry 0.13.1
+- Foreman 0.87.2
 
-* Cd into lawtalk folder
+# Installation
 
-* Run rails db:migrate & rails db:seed
+- Fork and git clone repo. 
 
-* Run servers with 'rake start'
+# Usage
+
+- Cd into lawtalk folder
+
+- Run 'rake db:migrate' & 'rake db:seed'
+
+- Run servers with 'rake start'
 
 # Contributing
 
