@@ -50,6 +50,7 @@ class User < ApplicationRecord
 
     def profile_hash
         {
+            id: self.id,
             avatar: self.avatar,
             username: self.username,
             location: self.location,
