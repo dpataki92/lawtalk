@@ -4,11 +4,18 @@ import { useAuth0} from '@auth0/auth0-react';
 
 const Navbar = props => {
 
+    console.log(props)
+
     const { logout } = useAuth0();
 
     const handleSocialLogout = () => {
         logout();
         props.logout();
+    }
+
+    const handleClickOnTitle = () => {
+        let homePageLink = document.getElementById("followed-link");
+        homePageLink.click();
     }
 
     return(
@@ -20,12 +27,12 @@ const Navbar = props => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbar20">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item"> <NavLink className="nav-link" to="/questions/followed">My questions</NavLink> </li>
+                        <li className="nav-item"> <NavLink id="followed-link" className="nav-link" to="/questions/followed">My questions</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/questions/all">All questions</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to={`/users/${props.id}/messages`}>Messages</NavLink> </li>
                         <li className="nav-item"> <NavLink className="nav-link" to="/users/top">Top users</NavLink> </li>
                     </ul>
-                    <p className="d-none d-md-block lead mb-0 text-white"> <b> LAWTALK</b> </p>
+                    <p className="d-none d-md-block lead mb-0 text-white"> <b style={{cursor: 'pointer'}} onClick={handleClickOnTitle}> LAWTALK</b> </p>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item mx-1"> <NavLink className="nav-link" to={`/users/${props.id}/edit`}> <i className="fa fa-edit fa-fw fa-lg"></i> </NavLink> </li>
                         <li className="nav-item mx-1"> <NavLink id="logout" className="nav-link" to="/" onClick={localStorage.getItem('social') === "true" ? handleSocialLogout : props.logout}> <i className="fa fa-sign-out fa-fw fa-lg"></i> </NavLink> </li>
