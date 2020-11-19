@@ -31,7 +31,7 @@ class Home extends Component {
                 <Route key="top" exact path="/users/top" render={() => <TopUsers />} />
                 <Route key="edit profile" exact path="/users/:id/edit" component={EditProfile} />
                 <Route key="profile" exact path="/users/:id" component={ProfilePage} />
-                <Route key="messages" exact path="/users/:id/messages" component={ConversationsContainer} />
+                <Route key="messages" exact path="/users/:id/messages" render={(props) => <ConversationsContainer {...props} />} />
                 </Switch>
                 </React.Fragment>
             </Router>
