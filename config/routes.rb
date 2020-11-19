@@ -3,8 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :destroy]
     get '/users/top', to: 'users#top_users'
     get '/users/:id', to: 'users#show'
-    get '/profile', to: 'users#profile'
-        
+    get '/profile', to: 'users#profile'    
     post '/login', to: 'auth#create'
 
     resources :questions, only: [:create, :update, :new, :show, :destroy]

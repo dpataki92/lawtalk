@@ -12,11 +12,13 @@ class ConversationsController < ApplicationController
     def create
         user = User.find_by(id: params[:userId])
 
-        conversation = Conversation.create(author: current_user, receiver: user)
-        current_user.authored_conversations << conversation
-        user.received_conversations << conversation
+        conversation = Conversation.find_or_create_by(author: current_user, receiver: user)
 
-        render json: {currentConversation: conversation.messages_serializer(current_user)}
+        if conversation && conversation.messages.empty?
+            conversation.messages.create(content: "#{current_user.username} has initited a conversation.", user: current_user)
+        end
+
+        render json: {message: 'success'}
     end
 
     def add_message
