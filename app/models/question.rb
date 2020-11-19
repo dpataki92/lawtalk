@@ -12,7 +12,6 @@ class Question < ApplicationRecord
     validates :jurisdiction, presence: true
     validates :field, presence: true
 
-
     def creation_date_in_words
         self.created_at.strftime("%B %d, %Y")
     end

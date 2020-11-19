@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
     def create
         answer = Answer.find_by(id: params[:postId])
         comment = Comment.create(content: params[:content], user: User.find_by(username: params[:currentUser]), answer: answer)
+
         if comment.valid?
             answer.comments << comment
             render json: {message: "success"}
@@ -12,6 +13,7 @@ class CommentsController < ApplicationController
 
     def vote
         comment = Comment.find_by(id: params[:id])
+
         if comment.user === current_user
             render json: {message: "You cannot vote on your own comment."}
         elsif !current_user.votes.find {|v| v.comment === comment} 
@@ -32,6 +34,7 @@ class CommentsController < ApplicationController
 
     def destroy
         comment = Comment.find_by(id: params[:id])
+        
         if comment.destroy
             render json: {message: "success"}
         else

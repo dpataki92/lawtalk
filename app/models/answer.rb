@@ -14,6 +14,7 @@ class Answer < ApplicationRecord
         upvotes = self.votes.select {|v| v.upvote}.size
         downvotes = self.votes.select {|v| v.downvote}.size
         total = upvotes + downvotes
+
         if upvotes === 0 && downvotes === 0
             0
         else
@@ -28,6 +29,7 @@ class Answer < ApplicationRecord
     def answer_comments_serializer
         ranked_comments = Comment.ranked(self.comments)
         result = []
+        
         ranked_comments.each do |c|
             comment_hash = {
                 commentId: c.id,

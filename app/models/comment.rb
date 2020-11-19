@@ -11,6 +11,7 @@ class Comment < ApplicationRecord
         upvotes = self.votes.select {|v| v.upvote}.size
         downvotes = self.votes.select {|v| v.downvote}.size
         total = upvotes + downvotes
+        
         if upvotes === 0 && downvotes === 0
             0
         else

@@ -3,7 +3,6 @@ class Conversation < ApplicationRecord
     belongs_to :receiver, class_name: 'User'
     has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
 
-
     validates :author, uniqueness: {scope: :receiver}
 
     def self.conversations_serializer(user)

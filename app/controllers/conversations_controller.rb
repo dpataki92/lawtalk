@@ -11,7 +11,6 @@ class ConversationsController < ApplicationController
 
     def create
         user = User.find_by(id: params[:userId])
-
         conversation = Conversation.find_or_create_by(author: current_user, receiver: user)
 
         if conversation && conversation.messages.empty?
@@ -24,6 +23,7 @@ class ConversationsController < ApplicationController
     def add_message
         conversation = Conversation.find_by(id: params[:convId])
         user = User.find_by(id: params[:id])
+        
         if params[:message]
             conversation.messages.create(user: user, content: params[:message])
             render json: {message: "success"}

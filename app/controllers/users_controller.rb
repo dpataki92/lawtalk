@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.find_or_create_by(username: params[:username])
+    
     if params[:social] === "true"
       @user.password = SecureRandom.urlsafe_base64(n=6)
     else
@@ -30,11 +31,13 @@ class UsersController < ApplicationController
 
   def top_users
     users = User.rank_top_15
+
     render json: { topUsers: users }, status: :accepted
   end
 
   def show
     user = User.find_by(id: params[:id])
+
     render json: {currentProfile: user.profile_hash}, status: :accepted
   end
 

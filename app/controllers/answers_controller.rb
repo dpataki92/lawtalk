@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
     def create
         question = Question.find_by(id: params[:postId])
         answer = Answer.create(content: params[:content], user: User.find_by(username: params[:currentUser]), question: question)
+
         if answer.valid?
             question.answers << answer
             render json: {message: "success"}
@@ -12,6 +13,7 @@ class AnswersController < ApplicationController
 
     def vote
         answer = Answer.find_by(id: params[:id])
+
         if answer.user === current_user
             render json: {message: "You cannot vote on your own answer."}
         elsif !current_user.votes.find {|v| v.answer === answer} 
@@ -32,6 +34,7 @@ class AnswersController < ApplicationController
 
     def comments
         answer = Answer.find_by(id: params[:id])
+
         if answer.comments.size === 0
             render json: {empty: true}
         else
@@ -41,6 +44,7 @@ class AnswersController < ApplicationController
 
     def destroy
         answer = Answer.find_by(id: params[:id])
+        
         if answer.destroy
             render json: {message: "success"}
         else
