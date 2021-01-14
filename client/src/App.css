@@ -2325,3 +2325,8 @@ img {
 .container.conversation {
   max-width: 1320px
 }
+
+.reply_count_header {
+  margin-bottom: 10px; 
+  opacity: 0.5;
+}
