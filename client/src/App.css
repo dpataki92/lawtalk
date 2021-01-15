@@ -2089,7 +2089,7 @@ input.input100 {
   color: #0062cc; 
   border: 1px solid #0062cc;
   padding: 5px 10px;
-  border-radius: 10%;
+  border-radius: 0.25em;
   height: calc(1.5em + .75rem + 2px);
 }
 
@@ -2101,6 +2101,14 @@ input.input100 {
 .form-control, select, #word-search {
   border: 1px solid #0062cc;
   color:#0062cc; 
+}
+
+#word-search {
+  width: 75%
+}
+
+#legalFields {
+  border-radius: .25rem;
 }
 
 #word-search::placeholder {

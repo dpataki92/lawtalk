@@ -12,7 +12,7 @@ class QuestionContainer extends Component {
         jurisdiction: "",
         searchWord: "",
         pageNumber: "",
-        order: "creation",
+        order: "recent",
         jurisdictionCategory: "",
         followed: this.props.followed,
         username: this.props.currentUser.username
@@ -74,7 +74,7 @@ class QuestionContainer extends Component {
 
     ordering = (e) => {
         let orderingButton = e.target;
-        orderingButton.innerText === "Creation ↓" ? orderingButton.innerText = "Relevance ↓" : orderingButton.innerText = "Creation ↓";
+        orderingButton.innerText === "Recent ↓" ? orderingButton.innerText = "Popular ↓" : orderingButton.innerText = "Recent ↓";
         this.props.getCurrentQuestions(this.state);
         let value = e.target.innerText.slice(0,-2).toLowerCase();
         this.setState({
@@ -91,7 +91,7 @@ class QuestionContainer extends Component {
 
     handleOrderOnLeave = (e) => {
         let value = e.target.innerText.slice(0,-2).toLowerCase();
-        let prevValue = (value === "creation" ? "relevance" : "creation");
+        let prevValue = (value === "recent" ? "popular" : "recent");
         this.setState({
             order: prevValue
         })

@@ -102,9 +102,9 @@ class Question < ApplicationRecord
     end
 
     def self.ordered_questions(order)
-        if order === "creation"
+        if order === "recent"
             self.recent
-        elsif order === "relevance"
+        elsif order === "popular"
             self.relevant
         end
     end
