@@ -8,9 +8,7 @@ import Signup from './components/Account/signup.js'
 
 class App extends React.Component {
 
-  componentDidMount() {
-    this.props.getCurrentUser();
-  }
+
 
   state = {
     signup: false
