@@ -16,7 +16,7 @@ class SearchBar extends Component {
             </div>
             <div className="d-flex flex-wrap justify-content-between" style={{marginTop:"5px"}}>
                 <div className="col-12 col-md-3 p-0 mb-3"> 
-                    <input id="word-search" type="text" name="searchWord" className="form-control" placeholder="Search word" onChange={this.props.handleOnChange} value={this.props.searchWord}/> 
+                    <input id="word-search" type="text" name="searchWord" className="form-control" placeholder="Search word" onChange={this.props.handleOnChange} onKeyUp={this.props.handleOnKeyUp} value={this.props.searchWord}/> 
                 </div>
                 <div className="col-12 col-md-3 p-0 mb-3"> 
                     {<FieldList setField={this.props.setField}/>} 

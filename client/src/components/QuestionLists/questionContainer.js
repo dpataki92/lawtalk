@@ -24,6 +24,12 @@ class QuestionContainer extends Component {
 
 
     // Searchbar functions
+    handleOnKeyUp = (e) => {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            document.querySelector(".search-button").click();
+        }
+    }
 
     handleOrderOnReplies = () => {
         this.setState(prevState => {
@@ -138,7 +144,7 @@ class QuestionContainer extends Component {
     render() {
         return(
             <React.Fragment>
-                <SearchBar handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
+                <SearchBar handleOnKeyUp={this.handleOnKeyUp} handleOnChange={this.handleOnChange} handleJurisdictionButton={this.handleJurisdictionButton} setJurisdiction={this.setJurisdiction} ordering={this.ordering} 
             handleOrderOnEnter={this.handleOrderOnEnter} handleOrderOnLeave={this.handleOrderOnLeave} setField={this.setField} setPageBackToOne={this.setPageBackToOne} 
             searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick} handleOrderOnReplies={this.handleOrderOnReplies}/>
             <div className="container-fluid mt-100">
