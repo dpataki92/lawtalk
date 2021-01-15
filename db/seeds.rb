@@ -1,3 +1,6 @@
+# Creates demo user
+u0 = User.create(username: "Demo User", avatar: "demo_user.jpg", email: "demoUser@gmail.com", password_digest: BCrypt::Password.create("demoUserPassword"), fields: "tax, employment", location: "Hungary", bio: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.")
+
 # Creates users who asked questions related to EU law
 u1= User.create(username: "user01", email: "user01@gmail.com", password_digest: BCrypt::Password.create("user01pw"), location: "Hungary")
 u2 = User.create(username: "user233", email: "ttfdc@gmail.com", password_digest: BCrypt::Password.create("pkfnjbhrpewrt"), location: "United Kingdom")
@@ -53,7 +56,7 @@ u44 = User.create(username: "USuser0909", email: "USnttzum@gmail.com", password_
 # assigns avatars to users
 def avatar_assign
     counter = 1
-    30.times {
+    29.times {
         shuffled_users = User.all.shuffle
         user = shuffled_users.find {|u| u.avatar === nil}
         user.avatar = "user_#{counter}.jpg"
@@ -71,8 +74,8 @@ end
 avatar_assign
 
 # Creates questions (EU law threads)
-q1 = Question.create(creator: u1, title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", content: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", field: "Tax Law")
-q2 = Question.create(creator: u1, title: "Tax exemptions on purchases of property", content: "I am planning to move to the Republic of Cyprus from Hungary where I work and pay taxes. If I buy or build a home in another Member State, am I eligible for a tax deduction in my home country?", jurisdiction: "Hungary", field: "Tax Law")
+q1 = Question.create(creator: u0, title: "Are there any EU rules on how much registration tax I have to pay in Cyprus?", content: "I have retired and am going to live full-time in my holiday home in Cyprus. I am bringing my car, which was bought and registered in Hungary.", jurisdiction: "Republic of Cyprus", field: "Tax Law")
+q2 = Question.create(creator: u0, title: "Tax exemptions on purchases of property", content: "I am planning to move to the Republic of Cyprus from Hungary where I work and pay taxes. If I buy or build a home in another Member State, am I eligible for a tax deduction in my home country?", jurisdiction: "Hungary", field: "Tax Law")
 q3 = Question.create(creator: u3, title: "Isn't double taxation prohibited under EU law?", content: "I have inherited property and am being taxed in both the country where I normally pay taxes(Italy) and the country where the inherited property is located(Austria).", jurisdiction: "Austria", field: "Tax Law")
 q4 = Question.create(creator: u4, title: "What are the legal consequences of a divorce under French law as regards the obligation to pay maintenance to the other spouse?", content: "I am an Italian citizen who lives in France and we are about to divorce with my French wife in France.", jurisdiction: "France", field: "Family Law")
 q5 = Question.create(creator: u5, title: "What are the grounds for divorce in Spain?", content: "I am Litvanian and I want a divorce with my Spanish wife. We have been living in Spain together for 4 years now and we have been married for 2,5 years.", jurisdiction: "Spain", field: "Family Law")
@@ -82,7 +85,7 @@ q8 = Question.create(creator: u8, title: "Holiday entitlement in Germany", conte
 q9 = Question.create(creator: u8, title: "Missing employment contract from German employer", content: "I started to work for a German company 6 weeks ago and I was told I would get my contract signed after the first week. I still haven't gotten anything but they keep giving me new tasks to do. Is it legal?", jurisdiction: "Germany", field: "Labour Law")
 q10 = Question.create(creator: u9, title: "Using phone conversations in a criminal case as evidence", content: "Is it mandatory for a telecom company to produce electronic evidence if it can be used in a criminal case. I will have a criminal court hearing in Portugal and the only evidence I have would be a previous conversation with the alleged victim.", jurisdiction: "Portugal", field: "Criminal Law")
 
-q21 = Question.create(creator: u23, title: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "California", field: "Tax Law")
+q21 = Question.create(creator: u0, title: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "California", field: "Tax Law")
 q22 = Question.create(creator: u23, title: "Ut perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
 q23 = Question.create(creator: u23, title: "Sed perspiciatis unde omnis iste natus error sit voluptatem?", content: "Accusantium doloremque , totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration law") 
 q24 = Question.create(creator: u24, title: "Omnis ut perspiciatis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Federal", field: "Immigration Law") 
@@ -116,6 +119,31 @@ q38 = Question.create(creator: u28, title: "Unde omnis iste natus error sit volu
 q39 = Question.create(creator: u28, title: "Unde ut perspiciatis unde omnis iste natus omnis iste natus error sit voluptatem?", content: "Accusantium doloremque laudantium, totam rem aperiam, eallo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
 q40 = Question.create(creator: u29, title: "Ut Sed ut perspiciatis?", content: "Accusantium doloremque laudantium, totam rem , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.", jurisdiction: "Washington", field: "Environmental Law") 
 
+# Adds additional questions with answers and comments
+40.times {
+    # Creates question properties
+    user = User.all[rand(0..User.all.size-1)]
+    title = "Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint?"
+    content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ipsum dolor sit, consectetur adipiscing elit. ui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores."
+    jurisdiction = ["Hungary", "Germany", "New York", "Calfornia"][rand(0..3)]
+    field = ["Tax Law", "Immigration Law", "Employment Law", "Criminal Law"][rand(0..3)]
+    
+    question = Question.create(creator: user, title: title, content: content, jurisdiction: jurisdiction, field: field)
+
+    # creates 2 answers
+    2.times {
+        user = User.all[rand(0..User.all.size-1)]
+        content = "Sit amet, consectetur adipiscing elit, ipsum dolor sit, consectetur adipiscing elit. Tque corrupti quos dolores et quas molestias excepturi."
+        question.answers.create(content: content, user: user)
+        question.save
+    }
+}
+
+# make users follow a thread
+User.all.each do |u|
+    question = Question.all[rand(0..Question.all.size-1)]
+    u.followed_questions << question
+end
 
 # Creates answers (EU law threads)
 q1.answers.create(content: "NO. If you move to another EU country for more than 6 months, you must under EU rules register your car in the new country.For registration taxes, however, there are no EU-wide rules. Countries may levy car-registration taxes or not, as they choose. Some –including Cyprus–do NOT tax you if you had to pay a similar tax when you bought the car new.", user: u12)
@@ -171,7 +199,7 @@ u43.followed_questions << q17
 q18.answers.create(content: "Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.", user: u43)
 u43.followed_questions << q18
 
-# Creates commments
+# Creates comments
 Answer.all.each do |a|
     n = rand(6)
     n.times {
@@ -182,9 +210,11 @@ Answer.all.each do |a|
 end
 
 # Makes certain users follow threads
-u1.followed_questions << q3
-u1.followed_questions << q11
-u11.followed_questions << q7
+u0.followed_questions << q3
+u0.followed_questions << q10
+u0.followed_questions << q7
+u0.followed_questions << q6
+u0.followed_questions << q9
 u23.followed_questions << q14
 u36.followed_questions << q12
 u36.followed_questions << q13
@@ -194,6 +224,15 @@ u26.followed_questions << q34
 u28.followed_questions << q38
 u36.followed_questions << q40
 u37.followed_questions << q39
+u23.followed_questions << q13
+u36.followed_questions << q11
+u36.followed_questions << q12
+u4.followed_questions << q18
+u21.followed_questions << q32
+u26.followed_questions << q33
+u28.followed_questions << q37
+u36.followed_questions << q39
+u37.followed_questions << q40
 
 # Adds fake bios to random users
 User.all.each do |u|
