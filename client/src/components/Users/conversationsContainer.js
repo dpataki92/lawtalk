@@ -64,16 +64,21 @@ class ConversationsContainer extends Component {
     }
 
     handleFullScreen = (e) => {
+        let inbox_chat = document.querySelector(".inbox_chat");
+        let headind_srch = document.querySelector(".headind_srch");
+        let mesgs = document.querySelector(".mesgs");
+        let closeFullScreen = document.querySelector("#close-full-screen");
+
         if (e.target.parentNode.id === "open-full-screen") {
-            document.querySelector(".inbox_chat").style.display= "none";
-            document.querySelector(".headind_srch").style.display= "none";
-            document.querySelector(".mesgs").style.width = "100%";
-            document.querySelector("#close-full-screen").style.display="initial"
+            inbox_chat.style.display= "none";
+            headind_srch.style.display= "none";
+            mesgs.style.width = "100%";
+            closeFullScreen.style.display="initial";
         } else if (e.target.parentNode.id === "close-full-screen") {
-            document.querySelector(".inbox_chat").style.display= "initial";
-            document.querySelector(".headind_srch").style.display= "block";
-            document.querySelector(".mesgs").style.width = "70%";
-            document.querySelector("#close-full-screen").style.display="none"
+            inbox_chat.style.display="block"
+            headind_srch.style.display= "block";
+            mesgs.style.width = "70%";
+            closeFullScreen.style.display="none";
         }
 
     }
