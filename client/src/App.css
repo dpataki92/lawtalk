@@ -2330,3 +2330,8 @@ img {
   margin-bottom: 10px; 
   opacity: 0.5;
 }
+
+.pagination {
+  position: fixed;
+  bottom: 0;
+}

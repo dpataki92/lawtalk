@@ -23,7 +23,7 @@ const Pagination = props => {
 
     return(
         <nav>
-            <ul className="pagination mb-5">
+            <ul className="pagination mb-20 pull-left">
                 <li className="page-item disabled" ><Link onClick={handleScroll} id="scrollLeft" className="page-link" to="#" data-abc="true">«</Link></li>
                 <li className="page-item active" id="firstPage"><Link className="page-link pageNum" to="#" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>1</Link></li>
                 <li className="page-item"><Link className="page-link pageNum" to="#" data-abc="true" onMouseEnter={props.handlePageChangeOnEnter} onMouseLeave={props.handlePageChangeOnLeave} onClick={props.getQuestionsBasedOnPageNumber}>2</Link></li>

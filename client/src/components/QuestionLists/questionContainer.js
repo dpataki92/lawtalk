@@ -133,7 +133,7 @@ class QuestionContainer extends Component {
         this.setState({
             pageNumber: ""
         })
-        }
+    }
 
     render() {
         return(
@@ -143,7 +143,7 @@ class QuestionContainer extends Component {
             searchWord={this.state.searchWord} jurisdictionCategory={this.state.jurisdictionCategory} handleSearchClick={this.handleSearchClick} handleOrderOnReplies={this.handleOrderOnReplies}/>
             <div className="container-fluid mt-100">
                 <QuestionListHeader />
-                <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username} />
+                {this.props.questions.length === 0 ? <h3>No more questions.</h3> : <QuestionList questions={this.props.questions} currentUser={this.props.currentUser.username} />}
                 <Pagination handlePageChangeOnEnter={this.handlePageChangeOnEnter} handleOrderOnLeave={this.handlePageChangeOnLeave} getQuestionsBasedOnPageNumber={this.getQuestionsBasedOnPageNumber}/>
             </div>
             </React.Fragment>
