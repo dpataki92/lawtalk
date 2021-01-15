@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def top_users
-    users = User.rank_top_15
+    users = User.rank_top_20
 
     render json: { topUsers: users }, status: :accepted
   end

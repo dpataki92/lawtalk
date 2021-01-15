@@ -25,9 +25,9 @@ class User < ApplicationRecord
         end
     end
 
-    def self.rank_top_15
-        sorted = User.all.select {|u| u.answers.size + u.comments.size > 3}.sort {|a,b| b.vote_diff <=> a.vote_diff}
-        sorted[0..14]
+    def self.rank_top_20
+        sorted = User.all.select {|u| u.answers.size + u.comments.size > 2}.sort {|a,b| b.vote_diff <=> a.vote_diff}
+        sorted[0..19]
     end
 
     def vote_ratio
