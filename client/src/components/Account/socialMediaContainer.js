@@ -14,7 +14,7 @@ const SocialMediaContainer = ({loginSocialMedia}) => {
     const { user } = useAuth0();
 
     return(
-            <div className="w-full text-center p-t-10 p-b-100">
+            <div className="w-full text-center p-b-100">
                     <span className="txt1">
                         or login with social media account
                     </span><br/><br/>
