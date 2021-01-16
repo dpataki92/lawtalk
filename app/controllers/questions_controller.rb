@@ -16,7 +16,8 @@ class QuestionsController < ApplicationController
         end
 
         cut_questions = Question.page_cut(questions, params[:pageNumber])
-        render json: {questions: Question.questions_data_for_list(cut_questions)} 
+        questions_data = Question.questions_data_for_list(cut_questions)
+        render json: {questions: questions_data} 
     end
 
     def create
