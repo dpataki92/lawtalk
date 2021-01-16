@@ -1,0 +1,32 @@
+{
+  "name": "lawtalk",
+  "version": "1.0.0",
+  "description": "Legal Q&A site built with React/Redux and Ruby on Rails that intends to function as a “legal stack overflow”. The application provides a platform to discuss legal issues and find legal experts quickly. Among other features, users can:",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpataki92/lawtalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpataki92/lawtalk/issues"
+  },
+  "homepage": "https://github.com/dpataki92/lawtalk#readme"
+}
