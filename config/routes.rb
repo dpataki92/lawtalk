@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post '/login', to: 'auth#create'
 
     resources :questions, only: [:create, :update, :new, :show, :destroy]
-    post '/questions/list', to: 'questions#questions_list'
+    post '/questions/list', to: 'questions#index'
     get '/questions/:id/replies', to: 'questions#replies'
     get '/questions/:id/follow', to: 'questions#follow_thread'
     get '/questions/:id/unfollow', to: 'questions#unfollow_thread'
