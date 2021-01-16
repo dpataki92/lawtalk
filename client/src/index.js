@@ -9,7 +9,7 @@ const domain = process.env['REACT_APP_AUTH0_DOMAIN'];
 const clientId = process.env['REACT_APP_AUTH0_CLIENT_ID'];
 
 ReactDOM.render(
-  <Auth0Provider domain={"shiny-field-3546.us.auth0.com"} clientId={"OhknRwdeHFcewtKTe0U6xFfFzuQnwjas"} redirectUri={window.location.origin}>
+  <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
   <Provider store={store}>
       <App />
     </Provider>
