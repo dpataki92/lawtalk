@@ -1,5 +1,8 @@
 {
   "name": "lawtalk",
+  "engines": {
+    "node": "14.4.0"
+  },
   "version": "1.0.0",
   "description": "Legal Q&A site built with React/Redux and Ruby on Rails that intends to function as a “legal stack overflow”. The application provides a platform to discuss legal issues and find legal experts quickly. Among other features, users can:",
   "main": "index.js",
