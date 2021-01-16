@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-    def index
+    def questions_list
         questions = []
 
         if params[:followed] === "true"
