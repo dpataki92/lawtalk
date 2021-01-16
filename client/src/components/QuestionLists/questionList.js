@@ -6,10 +6,9 @@ class QuestionList extends Component {
         render() {
             let questions = this.props.questions.map((question, id)=> {
                     return (
-                        <React.Fragment>
+                        <React.Fragment key={id}>
                             {id > 0 ? <hr className="m-0"/> : null}
                             <QuestionRow
-                          key={id}
                           questionId={question.id}
                           id={question.creatorId}
                           title={question.title}
