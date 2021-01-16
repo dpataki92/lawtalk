@@ -62,7 +62,7 @@ class Question < ApplicationRecord
 
     def self.field(field)
         if (field.empty?)
-            where('field != ""')
+            where('field != ''')
         else
             where(field: field)  
         end
@@ -70,7 +70,7 @@ class Question < ApplicationRecord
 
     def self.jurisdiction(jurisdiction)
         if (jurisdiction.empty?)
-            where('jurisdiction != ""')
+            where('jurisdiction != ''')
         else
             where(jurisdiction: jurisdiction)  
         end
@@ -78,7 +78,7 @@ class Question < ApplicationRecord
 
     def self.search_word(word)
         if (word.empty?)
-            where('title != ""')
+            where('title != ''')
         else
             Question.all.select {|q| q.title.downcase.include?(word.strip.downcase)}
         end 
