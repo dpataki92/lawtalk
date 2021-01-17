@@ -30,11 +30,19 @@ Legal Q&A site built with React/Redux and Ruby on Rails that intends to function
 
 # Usage
 
+- Go to https://lawtalk-dp.herokuapp.com/
+
+- Login with Demo User
+
+OR
+
 - Cd into lawtalk folder
 
 - Run 'rake db:migrate' & 'rake db:seed'
 
 - Run servers with 'rake start'
+
+- Login with Demo User
 
 # Contributing
 
