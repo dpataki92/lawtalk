@@ -8,6 +8,8 @@ Legal Q&A site built with React/Redux and Ruby on Rails that intends to function
 - initiate private conversations and chat with users
 - follow user ranking to find users with best upvote/downvote ratio
 
+This project was built in 2020 as part of my stuides at The Flatiron School.
+
 # Technologies
 
 - Ruby 2.6.1
